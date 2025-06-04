@@ -1,8 +1,7 @@
-.navbar {
-  background-color: #004080 !important;
-}
+/*-- scss:defaults --*/
+$navbar-bg: #d4eee5;  // Change to your desired navbar color
 
-.navbar .navbar-brand,
-.navbar .nav-link {
-  color: white !important;
+/*-- scss:rules --*/
+.navbar {
+  background-color: $navbar-bg;
 }
