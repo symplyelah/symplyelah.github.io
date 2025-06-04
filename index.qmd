@@ -1,7 +1,12 @@
 ---
 title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
 subtitle: "Nnamdi Azikwe University"
-format: html
+format:
+  html:
+    include-in-header: 
+      text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 ---
 
 ## Join
@@ -10,9 +15,9 @@ format: html
 
 ## Instructor
 
-{{< fa user >}}   [Ifeoma Egbogah](https://ifeoma-egbogah.netlify.app/)
+<i class="fas fa-user"></i> [Ifeoma Egbogah](https://ifeoma-egbogah.netlify.app/)
 
-{{< fa enveope >}}   [Ifeoma Egbogah](mailto:negbogah@gmail.com)
+<i class="fas fa-envelope"></i> [Ifeoma Egbogah](mailto:negbogah@gmail.com)
 
 ------------------------------------------------------------------------
 
