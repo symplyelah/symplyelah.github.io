@@ -2,6 +2,9 @@
 title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
 subtitle: "Nnamdi Azikwe University"
 format:
+   theme: 
+      - default
+      - custom.scss
   html:
     include-in-header: 
       text: |
