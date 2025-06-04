@@ -1,0 +1,7 @@
+---
+title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
+author: Ifeoma Egbogah
+format: forwardspres-revealjs
+editor: visual
+---
+

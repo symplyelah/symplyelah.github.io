@@ -4,12 +4,22 @@ format: html
 editor: visual
 ---
 
-A webinar by Ifeoma Egbogah
+## Join
+
+[Register on Zoom](https://us02web.zoom.us/meeting/#/registration){.btn .btn-primary target="_blank"}
+
+## Instructor
+
+{{< fa user >}}   [Ifeoma Egbogah](https://ifeoma-egbogah.netlify.app/)
+
+{{< fa enveope >}}   [Ifeoma Egbogah](mailto:negbogah@gmail.com)
 
 --------------------------------------------------------------------------------
 
 <span class='code'>📆 &ensp;June , 2025</span>\
-<span class='code'>⏰ &ensp;0CAT/span>\
+
+<span class='code'>⏰ &ensp;0CAT</span>\ [See in your time zone](https://dateful.com/convert/utc?t=1430)
+
 <span class='code'>🏨 &ensp;Zoom</span>\
 
 --------------------------------------------------------------------------------
