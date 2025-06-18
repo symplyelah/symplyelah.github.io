@@ -1,7 +1,7 @@
 /*-- scss:defaults --*/
-$navbar-bg: #d4eee5;  // Change to your desired navbar color
+$navbar-bg: #d4eee5;  // Light teal background
 
 /*-- scss:rules --*/
 .navbar {
-  background-color: $navbar-bg;
+  background-color: $navbar-bg !important;
 }
