@@ -1,7 +1,109 @@
 ---
-title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
+title: Bridging Data and Decision-Making: Data Visualization Techniques with R
+subtitle: Nnamdi Azikwe University
 author: Ifeoma Egbogah
 format: forwardspres-revealjs
 editor: visual
 ---
+
+# Data {.inverse}
+
+## What is Data?
+
+## Data Types
+
+*Numerical*
+
+::: {column}
+::: {column width=50%} ![](images/numerical.png)
+:::
+
+:::::
+
+## Data Types Contd
+
+*Categorical*
+
+::: {column}
+:::{column width=50%} ![](images/categorical.png)
+:::
+
+:::::
+
+## Why Data Visualization Matters
+
+-   Humans process visuals 60,000x faster than text
+
+-   Visuals simplify complex data
+
+-   Helps identify trends, outliers, and patterns
+
+-   Supports data-driven decisions
+
+## Real-World Example:
+
+COVID-19 dashboards helped governments track and respond to infection spikes and vaccinations.
+
+:::: columns
+::: {.column width="50%"}
+![](images/maryland_covid.png)
+:::
+::::
+
+# Bridging the Gap Between Data and Decisions {.inverse}
+
+**Problem:** Data is abundant, but insights are scarce.
+
+**Solution:** Visualization bridges the gap between raw data and strategic action.
+
+**Outcome:** Simplifies storytelling and supports real-time decisions.
+
+# What is R and Why Use It? {.inverse}
+
+## R
+
+-   Free and open-source statistical language
+
+-   Used in academia and business
+
+-   Integrates data wrangling, analysis, and visualization
+
+*Key Visualization Packages:*
+
+`ggplot2`
+
+`plotly`
+
+`shiny`
+
+## Data Visualization
+
+:::: columns
+::: {.column width="50%"}
+![](images/program.png)
+:::
+::::
+
+## Understanding Visualization Types
+
+| Chart Type   | Best For                     |
+|--------------|------------------------------|
+| Line Chart   | Trends over time             |
+| Bar Chart    | Comparing categories         |
+| Scatter Plot | Correlations, relationships  |
+| Maps         | Geospatial data              |
+| Dashboard    | Monitoring KPIs in real-time |
+
+*Tip:* Choose simplicity and clarity over complexity.
+
+# Case Study {.inverse}
+
+## Academic Use Case – Education Access
+
+**Dataset:** World Bank (Literacy vs Internet Access)
+
+**Visualization:** Scatter plot showing socio-economic development.
+
+**Insight:** Nigeria lags behind Kenya and Egypt in internet penetration despite comparable literacy rates.
+
 
