@@ -1,6 +1,6 @@
 ---
-title: Bridging Data and Decision-Making: Data Visualization Techniques with R
-subtitle: Nnamdi Azikwe University
+title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
+subtitle: "Nnamdi Azikwe University"
 author: Ifeoma Egbogah
 format: forwardspres-revealjs
 editor: visual
@@ -14,21 +14,22 @@ editor: visual
 
 *Numerical*
 
-::: {column}
-::: {column width=50%} ![](images/numerical.png)
+:::: columns
+::: {.column width="50%"} 
+![](images/numerical.png)
 :::
 
-:::::
+::::
 
 ## Data Types Contd
 
 *Categorical*
 
-::: {column}
-:::{column width=50%} ![](images/categorical.png)
+:::: columns
+:::{.column width="50%"} 
+![](images/categorical.png)
 :::
-
-:::::
+::::
 
 ## Why Data Visualization Matters
 

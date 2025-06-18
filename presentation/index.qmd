@@ -1,5 +1,5 @@
 ---
-title: Bridging Data and Decision-Making: Data Visualization Techniques with R
+title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
 subtitle: "Nnamdi Azikwe University"
 description: Webinar Presentation
 author: Ifeoma Egbogah
@@ -12,9 +12,8 @@ Here's a link to the [slides](/slides/index.qmd){target="_blank"} in a new windo
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar16x9" src="/slides/index.html" title="Presentation slides">
+<iframe class="slide-deck ar16x9" src="/slides/index.html" title="slides"></iframe>
 
-</iframe>
 
 # Citations and data
 
