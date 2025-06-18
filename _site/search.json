@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Register on Zoom"
+  },
+  {
+    "objectID": "index.html#join",
+    "href": "index.html#join",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Register on Zoom"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Instructor",
+    "text": "Instructor\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n📆  June , 2025\n⏰  0CAT See in your time zone🏨  Zoom\n\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this course for me?\nThis course is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "index.html#is-this-course-for-me",
+    "href": "index.html#is-this-course-for-me",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Is this course for me?",
+    "text": "Is this course for me?\nThis course is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "webinar.html",
+    "href": "webinar.html",
+    "title": "Webinar",
+    "section": "",
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom"
+  },
+  {
+    "objectID": "webinar.html#upcoming-workshops",
+    "href": "webinar.html#upcoming-workshops",
+    "title": "Webinar",
+    "section": "",
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom"
+  },
+  {
+    "objectID": "slides/index.html",
+    "href": "slides/index.html",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Numerical\n\n\n\n\n\n\n\n\nCategorical\n\n\n\n\n\n\n\n\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions\n\n\n\n\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
+  },
+  {
+    "objectID": "slides/index.html#data-types",
+    "href": "slides/index.html#data-types",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types",
+    "text": "Data Types\nNumerical"
+  },
+  {
+    "objectID": "slides/index.html#data-types-contd",
+    "href": "slides/index.html#data-types-contd",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types Contd",
+    "text": "Data Types Contd\nCategorical"
+  },
+  {
+    "objectID": "slides/index.html#why-data-visualization-matters",
+    "href": "slides/index.html#why-data-visualization-matters",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Why Data Visualization Matters",
+    "text": "Why Data Visualization Matters\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions"
+  },
+  {
+    "objectID": "slides/index.html#real-world-example",
+    "href": "slides/index.html#real-world-example",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Real-World Example:",
+    "text": "Real-World Example:\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
+  },
+  {
+    "objectID": "slides/index.html#r",
+    "href": "slides/index.html#r",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "R",
+    "text": "R\n\nFree and open-source statistical language\nUsed in academia and business\nIntegrates data wrangling, analysis, and visualization\n\nKey Visualization Packages:\nggplot2\nplotly\nshiny"
+  },
+  {
+    "objectID": "slides/index.html#data-visualization",
+    "href": "slides/index.html#data-visualization",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
+  },
+  {
+    "objectID": "slides/index.html#understanding-visualization-types",
+    "href": "slides/index.html#understanding-visualization-types",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Understanding Visualization Types",
+    "text": "Understanding Visualization Types\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
+  },
+  {
+    "objectID": "slides/index.html#academic-use-case-education-access",
+    "href": "slides/index.html#academic-use-case-education-access",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Academic Use Case – Education Access",
+    "text": "Academic Use Case – Education Access\nDataset: World Bank (Literacy vs Internet Access)\nVisualization: Scatter plot showing socio-economic development.\nInsight: Nigeria lags behind Kenya and Egypt in internet penetration despite comparable literacy rates."
+  },
+  {
+    "objectID": "prerequisites.html",
+    "href": "prerequisites.html",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Last updated: May 16th, 2025"
+  },
+  {
+    "objectID": "prerequisites.html#prior-knowledge",
+    "href": "prerequisites.html#prior-knowledge",
+    "title": "Prerequisites",
+    "section": "Prior knowledge",
+    "text": "Prior knowledge\nWe do not assume any prior knowledge of R pacakge development, but basic knowledge of R is expected. In particular, participants should be confident writing functions. Some experience with RStudio is beneficial."
+  },
+  {
+    "objectID": "prerequisites.html#r-and-rstudio",
+    "href": "prerequisites.html#r-and-rstudio",
+    "title": "Prerequisites",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
+  },
+  {
+    "objectID": "webinar/index.html",
+    "href": "webinar/index.html",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "webinar/index.html#r-packages",
+    "href": "webinar/index.html#r-packages",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\ngghighlight: Hiroaki Yutani (2020). gghighlight: Highlight Lines and Points in ‘ggplot2’. R package version 0.3.1. https://github.com/yutannihilation/gghighlight/\nR Markdown: Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide. Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.\nsf: Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009\npaletteer: See AUTHORS file. (2021). paletteer: Comprehensive Collection of Color Palettes. R package version 1.3.0. https://github.com/EmilHvitfeldt/paletteer\ngapminder: Jennifer Bryan (2017). gapminder: Data from Gapminder. https://github.com/jennybc/gapminder, http://www.gapminder.org/data/, https://doi.org/10.5281/zenodo.594018.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
+  },
+  {
+    "objectID": "slides/index.html#what-is-data",
+    "href": "slides/index.html#what-is-data",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "What is Data?",
+    "text": "What is Data?"
+  }
+]
