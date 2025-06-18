@@ -1,0 +1,9 @@
+---
+title: Webinar
+---
+
+## Upcoming workshops
+
+Click on the links below for details on how to join, the schedule, and the instructors.
+
+- [Summer 2025, Zoom](webinar/index.qmd)
