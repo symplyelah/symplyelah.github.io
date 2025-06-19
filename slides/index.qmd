@@ -158,7 +158,7 @@ COVID-19 dashboards helped governments track and respond to infection spikes and
 :::: columns
 ::: {.column width="100%"}
 <div style="text-align: center;">
-<img src="images/program.png" width="70%>
+  <img src="images/program.png" width="70%">
 </div>
 :::
 ::::
