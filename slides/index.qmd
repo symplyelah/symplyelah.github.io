@@ -12,26 +12,96 @@ embed-resources: true
 
 ## What is Data?
 
+Data refers to **raw facts, figures,** and **statistics** that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.
+
+
+### Key Characteristics of Data:
+
+-   **Raw**: Unprocessed and unorganized
+
+-   **Factual:** Based on real-world events, measurements, or records
+
 ## Data Types
 
-*Numerical*
+### **Numerical** or **Quantitative Data**
+
+Numerical (or Quantitative) Data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.
 
 :::: columns
-::: {.column width="50%"} 
-![](images/numerical.png)
-:::
+::: {.column width="100%"} 
 
+<div style="text-align: center;">
+  <img src="images/numerical.png" width="50%">
+</div>
+
+:::
 ::::
 
-## Data Types Contd
+## Data Types Contd.
 
-*Categorical*
+### **Numerical** or **Quantitative Data**
+
+
+::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center; font-size: 0.75em;">
++--------------------------------------------------------+----------------------------------------------------------+
+| Continuous Data                                        | Discrete Data                                            |
++========================================================+==========================================================+
+| Data that can take **any value within a range**.       | Data that can take only **specific, separate values**.   |
++--------------------------------------------------------+----------------------------------------------------------+
+| **Usually measured** (can include decimals/fractions). | **Usually countable** (no decimals)                      |
++--------------------------------------------------------+----------------------------------------------------------+
+| **Examples:**                                          | **Examples:**                                            |
+|                                                        |                                                          |
+| -    Height of a person (e.g., 1.75 meters)            | -    Number of employees in a company (e.g., 15, 23, 50) |
+|                                                        |                                                          |
+| -    Temperature (e.g., 36.6°C)                        | -    Number of students in a classroom                   |
+|                                                        |                                                          |
+| -    Sales revenue (e.g., ₦1,254,500.75)               | -    Number of cars sold in a day                        |
++--------------------------------------------------------+----------------------------------------------------------+
+</div>
+:::
+:::
+
+## Data Types Contd.
+
+### Key Features of Numerical Data:
+- Can be compared, ordered, added, or averaged
+
+- Suitable for mathematical and statistical analysis
+
+- Often visualized using bar charts, histograms, line graphs, or scatter plots
+
+
+
+## Data Types Contd.
+
+### **Categorical** or **Qualitative Data**
+
+Categorical (or Qualitative) Data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.
+
 
 :::: columns
-:::{.column width="50%"} 
-![](images/categorical.png)
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/categorical.png" width="50%">
+</div>
 :::
 ::::
+
+## Data Types Contd.
+
+### Key Feature of Categorical Data:
+- Descriptive rather than numerical
+
+- Used to classify or group data
+
+- Cannot be meaningfully added, subtracted, or averaged
+
+- Can be visualized using bar charts, pie charts, or tables
 
 ## Why Data Visualization Matters
 
@@ -43,7 +113,7 @@ embed-resources: true
 
 -   Supports data-driven decisions
 
-## Real-World Example:
+## Real-World Example {.inverse}
 
 COVID-19 dashboards helped governments track and respond to infection spikes and vaccinations.
 
@@ -108,5 +178,3 @@ COVID-19 dashboards helped governments track and respond to infection spikes and
 **Visualization:** Scatter plot showing socio-economic development.
 
 **Insight:** Nigeria lags behind Kenya and Egypt in internet penetration despite comparable literacy rates.
-
-

@@ -53,7 +53,7 @@
     "href": "slides/index.html#data-types",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types",
-    "text": "Data Types\nNumerical"
+    "text": "Data Types\nNumerical or Quantitative Data\nNumerical (or Quantitative) Data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers."
   },
   {
     "objectID": "slides/index.html#data-types-contd",
@@ -144,6 +144,34 @@
     "href": "slides/index.html#what-is-data",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "What is Data?",
-    "text": "What is Data?"
+    "text": "What is Data?\nData refers to raw facts, figures, and statistics that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.\nKey Characteristics of Data:\n\nRaw: Unprocessed and unorganized\nFactual: Based on real-world events, measurements, or records"
+  },
+  {
+    "objectID": "slides/index.html#data-types-contd.",
+    "href": "slides/index.html#data-types-contd.",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types Contd.",
+    "text": "Data Types Contd.\nNumerical or Quantitative Data\n\n\n\n\n\n\n\n\n\n\nContinuous Data\nDiscrete Data\n\n\n\n\nData that can take any value within a range.\nData that can take only specific, separate values.\n\n\nUsually measured (can include decimals/fractions).\nUsually countable (no decimals)\n\n\nExamples:\n\nHeight of a person (e.g., 1.75 meters)\nTemperature (e.g., 36.6°C)\nSales revenue (e.g., ₦1,254,500.75)\n\nExamples:\n\nNumber of employees in a company (e.g., 15, 23, 50)\nNumber of students in a classroom\nNumber of cars sold in a day"
+  },
+  {
+    "objectID": "slides/index.html#data-types-contd.-1",
+    "href": "slides/index.html#data-types-contd.-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types Contd.",
+    "text": "Data Types Contd.\nKey Features of Numerical Data:\n\nCan be compared, ordered, added, or averaged\nSuitable for mathematical and statistical analysis\nOften visualized using bar charts, histograms, line graphs, or scatter plots"
+  },
+  {
+    "objectID": "slides/index.html#data-types-contd.-2",
+    "href": "slides/index.html#data-types-contd.-2",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types Contd.",
+    "text": "Data Types Contd.\nCategorical or Qualitative Data\nCategorical (or Qualitative) Data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information."
+  },
+  {
+    "objectID": "slides/index.html#data-types-contd.-3",
+    "href": "slides/index.html#data-types-contd.-3",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data Types Contd.",
+    "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, pie charts, or tables"
   }
 ]
