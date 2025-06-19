@@ -73,8 +73,8 @@
     "objectID": "slides/index.html#real-world-example",
     "href": "slides/index.html#real-world-example",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Real-World Example:",
-    "text": "Real-World Example:\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
+    "section": "Real-World Example",
+    "text": "Real-World Example\nCOVID-19\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
   },
   {
     "objectID": "slides/index.html#r",
@@ -173,5 +173,12 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types Contd.",
     "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, pie charts, or tables"
+  },
+  {
+    "objectID": "slides/index.html#mind-the-gap",
+    "href": "slides/index.html#mind-the-gap",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Mind the Gap",
+    "text": "Mind the Gap\nProblem: Data is abundant, but insights are scarce.\nSolution: Visualization bridges the gap between raw data and strategic action.\nOutcome: Simplifies storytelling and supports real-time decisions."
   }
 ]
