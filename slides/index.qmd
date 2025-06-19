@@ -113,9 +113,9 @@ Categorical (or Qualitative) Data refers to data that describes qualities or cha
 
 -   Supports data-driven decisions
 
-## Real-World Example {.inverse}
+# Real-World Example {.inverse}
 
-### COVID-19
+## COVID-19
 
 COVID-19 dashboards helped governments track and respond to infection spikes and vaccinations.
 
@@ -156,8 +156,10 @@ COVID-19 dashboards helped governments track and respond to infection spikes and
 ## Data Visualization
 
 :::: columns
-::: {.column width="50%"}
-![](images/program.png)
+::: {.column width="100%"}
+<div style="text-align: center;">
+<img src="images/program.png" width="70%>
+</div>
 :::
 ::::
 

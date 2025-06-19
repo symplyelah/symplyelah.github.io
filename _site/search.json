@@ -88,7 +88,7 @@
     "href": "slides/index.html#data-visualization",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Visualization",
-    "text": "Data Visualization"
+    "text": "Data Visualization\n\n\n\n&lt;img src=“images/program.png” width=“70%&gt;"
   },
   {
     "objectID": "slides/index.html#understanding-visualization-types",
@@ -180,5 +180,12 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Mind the Gap",
     "text": "Mind the Gap\nProblem: Data is abundant, but insights are scarce.\nSolution: Visualization bridges the gap between raw data and strategic action.\nOutcome: Simplifies storytelling and supports real-time decisions."
+  },
+  {
+    "objectID": "slides/index.html#covid-19",
+    "href": "slides/index.html#covid-19",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "COVID-19",
+    "text": "COVID-19\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
   }
 ]
