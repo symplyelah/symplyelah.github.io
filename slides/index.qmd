@@ -6,6 +6,8 @@ format:
   rladies-revealjs
 incremental: false
 embed-resources: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Data {.inverse}
@@ -113,7 +115,112 @@ Categorical (or Qualitative) Data refers to data that describes qualities or cha
 
 -   Supports data-driven decisions
 
-# Real-World Example {.inverse}
+# Real World Scenario: Walmart and Weather {.inverse}
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/poptarts.png" width="50%">
+</div>
+:::
+::::
+
+## Walmart Hurricane Forecasting 
+
+<div style="font-size: 0.75em;">
+
+**Context:** We can’t control the weather, yet it affects everything we do. Most days are calm, but when Mother Nature shows her power, normal life is turned upside down.
+
+In these moments, how can businesses keep operating and support communities?
+
+In 2004 as Hurricane Frances roared through the Caribbean toward Florida, Walmart’s team asked themselves — how can we prepare smarter? Which products will people desperately need?
+
+Walmart used historical sales data to anticipate what people would need most.
+
+**Insight:** While obvious necessities like bottled water, flashlights, and batteries were expected, the data revealed a surprising pattern: strawberry Pop‑Tarts sales increased sevenfold, and beer became the top-selling item
+
+**Action Taken:** Walmart stocked these items in bulk at regional distribution centers in the hurricane path.
+
+</div>
+
+# Demo {.inverse}
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library(tidytext)
+
+theme_set(theme_light())
+
+wal_train <- read_csv("data/train.csv")
+```
+
+## Walmart Store Sales from 2012 to 2014
+
+::: panel-tabset
+
+### Code 1
+
+
+```{r}
+#| echo: true
+store <- 
+  wal_train |>
+  group_by(store_nbr) |>
+  summarise(total = sum(units)) |>
+  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |> 
+  ggplot(aes(total, store_nbr)) +
+  geom_col() +
+  scale_x_continuous(labels = scales::comma_format()) +
+  labs(x = "Total Units Sold",
+       y = "Walmart Store",
+       caption = "Data:Kaggle • Viz = Ifeoma Egbogah")
+
+```
+
+### Plot: Single-Year
+
+
+```{r}
+
+store
+
+```
+
+
+### Code 2
+
+```{r}
+#| echo: true
+store_year <- wal_train |> 
+  mutate(year = year(date)) |>
+  group_by(store_nbr, year) |>
+  summarise(total = sum(units), .groups = "drop") |>
+  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)) |> 
+  ggplot(aes(total, store_nbr)) +
+  geom_col() +
+  scale_y_reordered() +
+  scale_x_continuous(labels = scales::comma_format()) +
+  facet_wrap(~year, scales = "free") +
+  labs(x = "Total Units Sold",
+       y = "Walmart Store",
+       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
+
+```
+
+### Plot: Faceted Yearly
+
+```{r}
+
+store_year
+
+```
+
+:::
+
+
 
 ## COVID-19
 

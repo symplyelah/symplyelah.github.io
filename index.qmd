@@ -28,6 +28,7 @@ format:
 
 :::{.smaller80}
 Lead Data Scientist
+
 [Zelah Ltd](https://www.zelahexports.com/)
 
 <i class="fa fa-envelope"></i> [negbogah@gmail.com](mailto:negbogah@gmail.com)
