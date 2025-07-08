@@ -1,6 +1,6 @@
 ---
 title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
-subtitle: "Nnamdi Azikwe University"
+subtitle: "IEEE Nigeria Southeast Subsection"
 format:
   html:
     include-in-header: 
@@ -16,9 +16,9 @@ format:
 
 ## Join
 
-[Register on Zoom](https://us02web.zoom.us/meeting/#/registration){.btn .btn-primary target="_blank"}
+[Google Meet](https:/meet.google.com/jyn-ftyj-cdz){.btn .btn-primary target="_blank"}
 
-## Instructor
+## Speaker
 
 :::: columns
 ::: {.column width="85%"}
@@ -38,11 +38,11 @@ Lead Data Scientist
 
 ------------------------------------------------------------------------
 
-[📆  June , 2025]{.code}\
+[📆  July 26, 2025]{.code}\
 
 [⏰  0CAT]{.code} [See in your time zone](https://dateful.com/convert/utc?t=1430)
 
-[🏨  Zoom]{.code}\
+[🏨  Google Meet]{.code}\
 
 ------------------------------------------------------------------------
 
@@ -52,9 +52,9 @@ In today’s world, data is everywhere—but data alone doesn’t drive decision
 
 Communicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you're a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.
 
-## Is this course for me?
+## Is this webinar for me?
 
-This course is ideal for you if you:
+This webinar is ideal for you if you:
 
 -   want to master the art of presenting data through clear, impactful visualizations;
 

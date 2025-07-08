@@ -1,6 +1,6 @@
 ---
 title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
-subtitle: "Nnamdi Azikwe University"
+subtitle: "IEEE Nigeria Southeast Subsection"
 author: Ifeoma Egbogah
 format: 
   rladies-revealjs
@@ -9,6 +9,7 @@ embed-resources: true
 editor_options: 
   chunk_output_type: console
 ---
+
 
 # Data {.inverse}
 
@@ -115,6 +116,196 @@ Categorical (or Qualitative) Data refers to data that describes qualities or cha
 
 -   Supports data-driven decisions
 
+## Choosing the appropriate graph(s) for the data
+
+So before any visualisation always consider:
+
+- Discrete & continuous quantities
+- Categeories
+
+# Understanding Visualization Types {.inverse}
+
+## Visualising numerical variables
+
+Sometimes you are interested in the magnitude of some set of numbers.
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/amounts-1.png" width="100%">
+</div>
+
+:::
+::::
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library(ggalt)
+library(tidytext)
+
+theme_set(theme_light())
+
+phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
+
+wal_train <- read_csv("data/train.csv")
+```
+
+## PhD
+
+::: panel-tabset
+
+### Code 1
+
+
+```{r}
+#| echo: true
+ 
+  phd_field |>
+    group_by(broad_field) |> 
+    summarise(phd_total = sum(n_phds, na.rm = TRUE)) |>
+    mutate(broad_field = fct_reorder(broad_field, phd_total)) |> 
+    ggplot(aes(phd_total, broad_field)) +
+    geom_col() +
+    scale_x_continuous(labels = scales::comma_format()) +
+    labs(title = "PhD Awarded from 2008 to 2017 in the USA",
+       x = "Number of PhD",
+       y = "Field/Faulty",
+       caption = "Data: Dr Ellie • Viz: Ifeoma Egbogah")
+
+```
+
+### PhD Awards
+
+
+```{r}
+
+phd_total
+
+```
+
+
+### Code 2
+
+```{r}
+#| echo: true
+
+phd_field |> 
+  group_by(broad_field, major_field) |> 
+  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
+  mutate(major_field = fct_reorder(major_field, phd_total)) |> 
+  ggplot(aes(phd_total, major_field)) +
+  geom_col() +
+  scale_x_continuous(labels = scales::comma_format()) +
+  labs(x = "Number of PhD",
+       y = "Department",
+       title = "Total Number of PhDs Awarded by Departments from 2008 to 2017")
+
+  geom_lollipop(horizontal = TRUE, point.size = 2) +
+  geom_lollipop(data = wal_train |> 
+                  mutate(year = year(date)) |>
+                  group_by(store_nbr, year) |>
+                  summarise(total = sum(units), .groups = "drop") |>
+                  filter(store_nbr == 16) |> 
+                  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)), 
+                aes(total, store_nbr), horizontal = TRUE, colour = "#88398A", fill = "#88398A", point.colour = "#88398A", point.size = 3, size = 1.4) +
+  scale_y_reordered() +
+  scale_x_continuous(labels = scales::comma_format()) +
+  facet_wrap(~year, scales = "free") +
+  labs(title = "Walmart Store Sales Faceted by Year",
+       subtitle = str_wrap("This visualization breaks down total units sold by store for each year (2012, 2013, 2014) separately. Faceting shows how demand patterns shifted year-to-year, revealing trends or anomalies over time.", width = 150),
+       x = "Total Units Sold",
+       y = "Walmart Store",
+       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
+
+```
+
+### Depart. Total
+
+```{r}
+
+depart_total
+
+```
+
+### Code 3
+```{r}
+
+phd_field |> 
+ # filter(year %in% seq(2008, 2010, 1)) |> 
+  group_by(major_field, year) |> 
+  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
+  mutate(major_field = fct_reorder(major_field, phd_total)) |> 
+  ggplot(aes(phd_total, major_field)) +
+  geom_lollipop(horizontal = TRUE) +
+  facet_wrap(~year, nrow = 2)
+  
+
+
+```
+
+
+### By year
+
+```{r}
+phd_by_year
+```
+
+
+:::
+
+
+## Visualising numerical variables
+
+We frequently encounter situations where we want to understand how a particular variable is distributed within a dataset. For example, in a sales dataset, we might be interested in examining the distribution of monthly revenue, the number of units sold per product, or the average transaction value. Understanding these distributions helps us identify patterns, spot outliers, and make data-driven decisions for improving business performance.
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/single-distributions-1.png" width="70%">
+</div>
+
+:::
+::::
+
+###  Walmart Distribution of Sales
+
+::: panel-tabset
+
+### Code 1
+```{r}
+#| echo: true
+item_stat <- wal_train |> 
+  ggplot(aes(units)) +
+  geom_histogram() +
+  guides(x = guide_axis(angle = 90)) +
+  labs(title = "Distribution of Items Sold",
+       y = "Item Number",
+       x = "Units Sold",
+       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
+
+```
+
+### Plot:Item
+```{r}
+item_stat
+```
+
+:::
+
+| Chart Type   | Best For                     |
+|--------------|------------------------------|
+| Line Chart   | Trends over time             |
+| Bar Chart    | Comparing categories         |
+| Scatter Plot | Correlations, relationships  |
+| Maps         | Geospatial data              |
+| Dashboard    | Monitoring KPIs in real-time |
+
+*Tip:* Choose simplicity and clarity over complexity.
+
 # Real World Scenario: Walmart and Weather {.inverse}
 
 :::: columns
@@ -126,7 +317,7 @@ Categorical (or Qualitative) Data refers to data that describes qualities or cha
 :::
 ::::
 
-## Walmart Hurricane Forecasting 
+## Walmart  
 
 <div style="font-size: 0.75em;">
 
@@ -144,81 +335,103 @@ Walmart used historical sales data to anticipate what people would need most.
 
 </div>
 
-# Demo {.inverse}
 
-```{r}
-#| echo: false
+## Walmart: Summary statistics of active inventory performance
 
-library(tidyverse)
-library(tidytext)
-
-theme_set(theme_light())
-
-wal_train <- read_csv("data/train.csv")
-```
-
-## Walmart Store Sales from 2012 to 2014
 
 ::: panel-tabset
 
 ### Code 1
-
-
 ```{r}
 #| echo: true
-store <- 
-  wal_train |>
-  group_by(store_nbr) |>
-  summarise(total = sum(units)) |>
-  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |> 
-  ggplot(aes(total, store_nbr)) +
-  geom_col() +
-  scale_x_continuous(labels = scales::comma_format()) +
-  labs(x = "Total Units Sold",
-       y = "Walmart Store",
-       caption = "Data:Kaggle • Viz = Ifeoma Egbogah")
-
-```
-
-### Plot: Single-Year
-
-
-```{r}
-
-store
-
-```
-
-
-### Code 2
-
-```{r}
-#| echo: true
-store_year <- wal_train |> 
-  mutate(year = year(date)) |>
-  group_by(store_nbr, year) |>
-  summarise(total = sum(units), .groups = "drop") |>
-  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)) |> 
-  ggplot(aes(total, store_nbr)) +
-  geom_col() +
-  scale_y_reordered() +
-  scale_x_continuous(labels = scales::comma_format()) +
-  facet_wrap(~year, scales = "free") +
-  labs(x = "Total Units Sold",
-       y = "Walmart Store",
+item_stat <- wal_train |> 
+  filter(units > 0 & units <2000) |>  
+  mutate(store = glue::glue("Store {store_nbr}")) |> 
+  group_by(store) |> 
+  ggplot(aes(units, factor(item_nbr))) +
+  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
+  coord_flip() +
+  guides(x = guide_axis(angle = 90)) +
+  labs(title = "Distribution of Items Sold",
+       y = "Item Number",
+       x = "Units Sold",
        caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
 
 ```
 
-### Plot: Faceted Yearly
-
+### Plot:Item
 ```{r}
+item_stat
+```
 
-store_year
+### Code 2
+```{r}
+#| echo: true
+store <- wal_train |> 
+  filter(units > 0) |>  
+  filter(store_nbr %in% seq(1, 5, 1)) |> 
+  mutate(store = glue::glue("Store {store_nbr}")) |> 
+  group_by(store) |> 
+  ggplot(aes(units, factor(item_nbr))) +
+  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
+  facet_wrap(~store,  scales = "free", nrow = 1) +
+  labs(title = "Distribution of Units Sold by Item across Stores 1 to 5",
+       y = "Item Number",
+       x = "Units Sold",
+       caption = "Data: Kaggle • Viz: Ifeoma Egbogah") +
+  theme_minimal() + 
+  theme(plot.title = element_text(colour = "#562457", face = "bold", hjust = 0.5),
+        strip.text = element_text(face = "bold"), 
+        axis.text.y = element_text(size = 6))
+```
+
+### Plot:Store 1-5
+```{r}
+store
+```
+
+### Code 3
+```{r}
+#| echo: true
+store_by_year <- wal_train |> 
+  mutate(year = year(date)) |>
+  filter(units > 0) |> 
+  filter(store_nbr %in% seq(1, 5, 1)) |> 
+  group_by(store_nbr, year) |> 
+  ggplot(aes(units, factor(item_nbr))) +
+ geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
+  facet_grid(rows = vars(year), cols = vars(store_nbr), scales = "free_y") +
+  labs(title = "Distribution of Units Sold by Item across Stores 1 to 5",
+       y = "Item Number",
+       x = "Units Sold",
+       caption = "Data: Kaggle • Viz: Ifeoma Egbogah") +
+  #theme_minimal() + 
+  theme(plot.title = element_text(colour = "#562457", face = "bold", hjust = 0.5),
+        strip.text = element_text(face = "bold"), 
+        axis.text.y = element_text(size = 6))
+  
 
 ```
 
+### Plot: By_year
+```{r}
+store_by_year
+```
+
 :::
+
+
+
+# Real World Scenario: Nigerian Brewries {.inverse}
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/nig_brew_logo.png" width="60%", height="70%">
+</div>
+:::
+::::
 
 
 
@@ -270,17 +483,7 @@ COVID-19 dashboards helped governments track and respond to infection spikes and
 :::
 ::::
 
-## Understanding Visualization Types
 
-| Chart Type   | Best For                     |
-|--------------|------------------------------|
-| Line Chart   | Trends over time             |
-| Bar Chart    | Comparing categories         |
-| Scatter Plot | Correlations, relationships  |
-| Maps         | Geospatial data              |
-| Dashboard    | Monitoring KPIs in real-time |
-
-*Tip:* Choose simplicity and clarity over complexity.
 
 # Case Study {.inverse}
 
