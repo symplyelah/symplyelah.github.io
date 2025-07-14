@@ -285,6 +285,16 @@ customer_survey |>
 ```
 :::
 
+## Why Data Visualization Matters
+
+-   Humans process visuals 60,000x faster than text
+
+-   Visuals simplify complex data
+
+-   Helps identify trends, outliers, and patterns
+
+-   Supports data-driven decisions
+
 # Data {.inverse}
 
 ## What is Data?
@@ -302,7 +312,7 @@ Data refers to **raw facts, figures,** and **statistics** that are collected thr
 
 ### **Numerical** or **Quantitative Data**
 
-Numerical (or Quantitative) Data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.
+Numerical (or Quantitative) data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.
 
 :::: columns
 ::: {.column width="100%"} 
@@ -357,7 +367,7 @@ Numerical (or Quantitative) Data refers to data that represents measurable quant
 
 ### **Categorical** or **Qualitative Data**
 
-Categorical (or Qualitative) Data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.
+Categorical (or Qualitative) data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.
 
 
 :::: columns
@@ -380,15 +390,7 @@ Categorical (or Qualitative) Data refers to data that describes qualities or cha
 
 - Can be visualized using bar charts, pie charts, or tables
 
-## Why Data Visualization Matters
 
--   Humans process visuals 60,000x faster than text
-
--   Visuals simplify complex data
-
--   Helps identify trends, outliers, and patterns
-
--   Supports data-driven decisions
 
 ## Choosing the appropriate graph(s) for the data
 
@@ -397,31 +399,83 @@ So before any visualisation always consider:
 - Discrete & continuous quantities
 - Categeories
 
-# Understanding Visualization Types {.inverse}
+# Effective Visualization Techniques {.inverse}
 
-## Visualising numerical variables
+## Simple Text
 
-Sometimes you are interested in the magnitude of some set of numbers.
+<div style="font-size: 0.75em;">
+When you’re dealing with just one or two figures, using plain text can often be the most effective way to share them. 
+
+To illustrate, the figure below appeared in an April 2014 report by the Pew Research Center focusing on stay-at-home mothers.
+</div>
 
 :::: columns
 ::: {.column width="100%"}
 
 <div style="text-align: center;">
-  <img src="images/amounts-1.png" width="100%">
+  <img src="images/pew.jpg" width="28%">
 </div>
 
 :::
 ::::
 
+
+## Simple Text
+
+<div style = "font-size: 0.75em;">
+In this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below.
+</div>
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/stay.jpg" width="50%">
+</div>
+
+:::
+::::
+
+## Tables
+
+* Engage our **verbal system** — we read them like text.
+* Ideal for **scanning rows and columns** to compare specific values.
+* Best for **mixed audiences** — each person can locate their row or column of interest.
+* Handle **multiple units of measure** better than graphs (e.g., percentages, currency, counts).
+* Preserve **exact figures** for precision-focused communication.
+
+## Tables That Talk: Making Your Data Shine
+
+<div style="font-size: 0.75em;">
+
+* The **table design should be subtle**—don’t let it distract.
+* Use **light borders** or **white space** to separate rows and columns.
+* Avoid **heavy gridlines**, bold shading, or intense colours.
+* Keep fonts clean and consistent; emphasize only what matters (e.g., bold totals or key values).
+* The goal: **data takes center stage**, not the formatting.
+</div>
+
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/table.jpg" width="70%">
+</div>
+
+:::
+::::
+
+
+## Heatmaps
+
+
 ```{r}
 #| echo: false
-
-library(palmerpenguins)
 
 
 #phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
 
-data("penguins")
 
 phd_field <- read_csv("data/phd_field.csv")
 
@@ -429,6 +483,30 @@ phd_field <- read_csv("data/phd_field.csv")
 
 ## PhDs Awarded by Field
 The US gov collects data on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
+
+```{r}
+
+phd_field |> 
+  mutate(year = factor(year)) |> 
+  group_by(major_field, year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_tile(aes(year, major_field, fill = total)) +
+  geom_text(aes(year, major_field, label = total), colour = "white") +
+  scale_fill_got(option = "greyjoy") 
+
+
+phd_field |> 
+  mutate(year = factor(year)) |> 
+  group_by(broad_field, year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_tile(aes(year, broad_field, fill = total)) +
+  geom_text(aes(year, broad_field, label = total), colour = "white") +
+  scale_fill_got(option = "tully") 
+
+```
+
 
 ::: panel-tabset
 
@@ -535,30 +613,7 @@ We frequently encounter situations where we want to understand how a particular 
 :::
 ::::
 
-###  Penguins Distribution
 
-::: panel-tabset
-
-### Code 1
-```{r}
-#| echo: true
-
-penguins |> 
-  ggplot(aes(bill_length_mm)) +
-  geom_histogram() +
-  labs(title = "Distribution of the Bills Of Penguins",
-       y = "Count",
-       x = "Bill Length (mm)",
-       caption = "Data: Palmer Penguins • Viz: Ifeoma Egbogah")
-
-```
-
-### Plot:Item
-```{r}
-#item_stat
-```
-
-:::
 
 | Chart Type   | Best For                     |
 |--------------|------------------------------|
