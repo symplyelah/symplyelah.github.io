@@ -10,6 +10,280 @@ editor_options:
   chunk_output_type: console
 ---
 
+# Drowning in Data, Starving for Insight {.inverse}
+
+## Story: “Too Many Reports, Not Enough Direction”
+
+Let me tell you about Amina.
+
+She worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns… 
+
+All of it collected diligently by the operations team.
+
+But something was wrong.
+
+Despite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.
+
+Until one day, she decided to stop sending spreadsheets and start telling stories with the data.
+
+## 
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(gameofthrones)
+library(ggtext)
+library(patchwork)
+library(ggalt)
+
+theme_set(theme_light())
+
+logistics_data <- read_csv("data/logistics_data.csv") |> 
+  janitor::clean_names() |> 
+  mutate(date = dmy(glue::glue("1-{month}")),
+         month2 = month(date, label = TRUE))  
+  
+customer_survey <- read_csv("data/customer_survey.csv")|> 
+  janitor::clean_names() 
+
+customer_survey <- customer_survey |> 
+  mutate(likert_scale = case_when(customer_survey_score >= 1 & customer_survey_score <= 2 ~ "Very Dissatisfied",
+                                  customer_survey_score >= 3 & customer_survey_score <= 4 ~ "Dissatisfied",
+                                  customer_survey_score >= 5 & customer_survey_score <= 6 ~ "Neutral",
+                                  
+customer_survey_score >= 7 & customer_survey_score <= 8 ~ "Satisfied",
+customer_survey_score >= 9 & customer_survey_score <= 10 ~ "Very Satisfied"))
+  
+```
+
+
+```{r}
+#| echo: false
+#| 
+
+data <- logistics_data |> 
+  select(-date, -month2) |> 
+  head(5) 
+
+clean_names <- names(data) |> 
+  (\(x) gsub("_", " ", x))() |>   # Replace underscores
+  (\(x) tolower(x))() |>      # Convert to lowercase
+  (\(x) tools::toTitleCase(x))() 
+
+data |> 
+  knitr::kable(col.names = clean_names, caption = "XYZ Logistics Customer Data") |> 
+  kableExtra::kable_paper("hover", full_width = F)
+
+```
+
+
+```{r}
+#| echo: false
+#| eval: false
+
+logistics_data <- logistics_data |> 
+  mutate(date = dmy(glue::glue("1-{month}")),
+         month2 = month(date, label = TRUE))  
+
+
+
+
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints),
+         month2 = factor(month2, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun")),
+         month2 = fct_rev(month2) 
+         ) |> 
+  ggplot(aes(customer_complaints, region)) +
+  geom_col(aes(colour = month2, fill = month2), position = position_dodge()) 
+  
+
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints),
+         month2 = fct_rev(month2)) |> 
+  group_by(month2) |> 
+  reframe(total = sum(returns),
+            percent = returns/total,
+            returns = returns,
+            region = region) |>  
+  ggplot(aes(percent, month2, fill = region)) +
+  geom_col() +
+  geom_col(colour ="white") +
+  scale_x_continuous(labels = scales::percent_format(), position = "top") +
+  scale_fill_got_d(option = "greyjoy", direction = -1) +
+  theme_minimal() +
+  labs(title = "",
+       fill = "Region",
+       x = "% of Returns",
+       y = "Date")
+
+```
+
+
+```{r}
+#| echo: false
+ld <- logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)) |> 
+  group_by(region) |> 
+  summarise(total = sum(customer_complaints)) |>
+  mutate(region = fct_reorder(region, total)) |> 
+  ggplot(aes(total, region)) +
+  geom_col(colour = "#4A3F37FF", fill = "#4A3F37FF") +
+  geom_col(data = logistics_data |> 
+             mutate(region = str_replace(region, "-", " "),
+                    region = fct_reorder(region, customer_complaints)) |> 
+             group_by(region) |> 
+             summarise(total = sum(customer_complaints)) |> 
+             filter(region == "North Central"), colour =  "#ECB939FF", fill = "#ECB939FF") +
+  geom_text(aes(label = total), nudge_x = -40, colour = "white", fontface = "bold") +
+  theme_minimal() +
+  labs(y = "Region",
+       x = "Total Compliants",
+       title = "<b><span style = 'color:#ECB939FF;'>North Central:</span></b> A Hot Spot for Customer Compliants") +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+         axis.title.y = element_text(hjust = 0.9),
+        plot.title = element_textbox_simple())
+
+```
+
+
+
+``` {r}
+#| echo: false
+ld1 <- logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)) |> 
+  ggplot(aes(date, customer_complaints, group = region)) +
+  geom_line(linewidth = 1, colour = "#4A3F37FF") +
+  
+  geom_line(data = logistics_data |> 
+              mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)) |> 
+              filter(region == "North Central"),    
+             colour =  "#ECB939FF", linewidth = 1) +
+  
+  geom_text(data = logistics_data |> 
+              filter(month2 == "Jun") |> 
+               mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)),    
+             aes(label = region), nudge_y = 1, nudge_x = 5) +
+  
+  geom_text(data = logistics_data |> 
+              mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)) |> 
+           filter(month2 == "Jun" & region == "North Central"),    
+             aes(label = region), colour =  "#ECB939FF", nudge_y = 1, nudge_x = 5) +
+  
+  theme_minimal() +
+  coord_fixed(clip = "off") +
+  scale_y_continuous(limits = c(0, 160)) +
+#  scale_x_date(position = "top") +
+  labs(title = "Complaint Trend Watch: A Widening Gap Emerges After Q1",
+       subtitle = "With customer complaints rising steadily from March to June, the <b><span style = 'color:#ECB939FF;'>North Central</span></b> region consistently recorded the highest number across all months — signaling persistent service challenges.",
+       x = "Date",
+       y = "# of Compliants") +
+  theme(legend.position = "bottom",
+        legend.text.position = "bottom",
+        legend.title.position = "top",
+        legend.justification.top = "left",
+        legend.location = "plot",
+        axis.title.y = element_text(hjust = 0.9),
+        plot.subtitle = element_textbox_simple(margin = margin(18, 0, 0, 0)))
+
+```
+
+
+## XYZ Logistics
+
+::: panel-tabset
+
+### Customer Compliant
+```{r}
+
+#| echo: false
+
+
+ld 
+
+```
+
+
+### Monthly Trend
+
+```{r fig.width=10}
+
+#| echo: false
+
+
+
+ld1
+
+```
+:::
+
+## XYZ Logistics
+
+::: panel-tabset
+
+### Returns
+```{r}
+#| echo: false
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, returns),
+        month2 = factor(month2, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun")),
+         month2 = fct_rev(month2) 
+         ) |> 
+  ggplot(aes(returns, region)) +
+  geom_col(aes(colour = month2, fill = month2), position = position_dodge()) +
+  scale_fill_got_d(option = "greyjoy")+
+  scale_colour_got_d(option = "greyjoy") +
+  labs(title = "",
+       y = "Region",
+       x ="Returns") +
+  theme(axis.title.y = element_text(hjust = 0.9))
+
+```
+
+
+
+### Customer Survey
+```{r}
+#| echo: false
+
+
+customer_survey |> 
+  mutate(likert_scale = factor(likert_scale, levels = c("Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"))) |> 
+  group_by(region, likert_scale) |> 
+  summarise(survey = n(), .groups = "drop") |> 
+  group_by(region) |> 
+  mutate(total = sum(survey),
+         percent = survey/total) |> 
+  ggplot() +
+  geom_col(aes(percent, region, fill = fct_rev(likert_scale)), show.legend = FALSE) +
+  geom_col(aes(percent, region, fill = fct_rev(likert_scale)), colour ="white", show.legend = FALSE) +
+  scale_x_continuous(labels = scales::percent_format(), position = "top") +
+  scale_fill_got_d(option = "greyjoy", direction = -1,  guide = guide_legend(reverse = T)) +
+  labs(title = "Survey Results",
+       x = "% of Total",
+       y = "Region",
+       subtitle = "<b><span style = 'color:#000000FF;'>Very Dissatisfied</span></b> | <b><span style = 'color:#372E29FF;'>Dissatisfied</span></b> | <b><span style = 'color:#726255FF;'>Neutral</span></b> | <b><span style = 'color:#F0C75EFF;'>Satisfied</span></b> | <b><span style = 'color:#ECB939FF;'>Very Satisfied</span></b>",
+       fill = "") +
+  theme(legend.position = "top",
+        legend.text.position = "bottom",
+        plot.subtitle = element_textbox_simple(),
+        axis.title.y = element_text(hjust = 0.9))
+  
+  
+
+```
+:::
 
 # Data {.inverse}
 
@@ -142,18 +416,19 @@ Sometimes you are interested in the magnitude of some set of numbers.
 ```{r}
 #| echo: false
 
-library(tidyverse)
-library(ggalt)
-library(tidytext)
+library(palmerpenguins)
 
-theme_set(theme_light())
 
-phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
+#phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
 
-wal_train <- read_csv("data/train.csv")
+data("penguins")
+
+phd_field <- read_csv("data/phd_field.csv")
+
 ```
 
-## PhD
+## PhDs Awarded by Field
+The US gov collects data on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
 
 ::: panel-tabset
 
@@ -163,7 +438,7 @@ wal_train <- read_csv("data/train.csv")
 ```{r}
 #| echo: true
  
-  phd_field |>
+phd_total <-   phd_field |>
     group_by(broad_field) |> 
     summarise(phd_total = sum(n_phds, na.rm = TRUE)) |>
     mutate(broad_field = fct_reorder(broad_field, phd_total)) |> 
@@ -173,7 +448,7 @@ wal_train <- read_csv("data/train.csv")
     labs(title = "PhD Awarded from 2008 to 2017 in the USA",
        x = "Number of PhD",
        y = "Field/Faulty",
-       caption = "Data: Dr Ellie • Viz: Ifeoma Egbogah")
+       caption = "Data: NSF • Viz: Ifeoma Egbogah")
 
 ```
 
@@ -192,7 +467,7 @@ phd_total
 ```{r}
 #| echo: true
 
-phd_field |> 
+depart_total <- phd_field |> 
   group_by(broad_field, major_field) |> 
   summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
   mutate(major_field = fct_reorder(major_field, phd_total)) |> 
@@ -201,24 +476,9 @@ phd_field |>
   scale_x_continuous(labels = scales::comma_format()) +
   labs(x = "Number of PhD",
        y = "Department",
-       title = "Total Number of PhDs Awarded by Departments from 2008 to 2017")
+       title = "Total Number of PhDs Awarded by Departments from 2008 to 2017",
+        caption = "Data: NSF • Viz: Ifeoma Egbogah")
 
-  geom_lollipop(horizontal = TRUE, point.size = 2) +
-  geom_lollipop(data = wal_train |> 
-                  mutate(year = year(date)) |>
-                  group_by(store_nbr, year) |>
-                  summarise(total = sum(units), .groups = "drop") |>
-                  filter(store_nbr == 16) |> 
-                  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)), 
-                aes(total, store_nbr), horizontal = TRUE, colour = "#88398A", fill = "#88398A", point.colour = "#88398A", point.size = 3, size = 1.4) +
-  scale_y_reordered() +
-  scale_x_continuous(labels = scales::comma_format()) +
-  facet_wrap(~year, scales = "free") +
-  labs(title = "Walmart Store Sales Faceted by Year",
-       subtitle = str_wrap("This visualization breaks down total units sold by store for each year (2012, 2013, 2014) separately. Faceting shows how demand patterns shifted year-to-year, revealing trends or anomalies over time.", width = 150),
-       x = "Total Units Sold",
-       y = "Walmart Store",
-       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
 
 ```
 
@@ -233,14 +493,18 @@ depart_total
 ### Code 3
 ```{r}
 
-phd_field |> 
+phd_by_year <- phd_field |> 
  # filter(year %in% seq(2008, 2010, 1)) |> 
   group_by(major_field, year) |> 
   summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
   mutate(major_field = fct_reorder(major_field, phd_total)) |> 
   ggplot(aes(phd_total, major_field)) +
-  geom_lollipop(horizontal = TRUE) +
-  facet_wrap(~year, nrow = 2)
+  geom_lollipop(horizontal = TRUE, point.size = 2) +
+  facet_wrap(~year, nrow = 2) +
+  labs(x = "Award Total",
+       y = "Department",
+       title = "PhD Departmental Awards by Year",
+       caption = "Data: NSF • Viz: Ifeoma Egbogah")
   
 
 
@@ -257,7 +521,7 @@ phd_by_year
 :::
 
 
-## Visualising numerical variables
+## Visualising Distributions
 
 We frequently encounter situations where we want to understand how a particular variable is distributed within a dataset. For example, in a sales dataset, we might be interested in examining the distribution of monthly revenue, the number of units sold per product, or the average transaction value. Understanding these distributions helps us identify patterns, spot outliers, and make data-driven decisions for improving business performance.
 
@@ -265,33 +529,33 @@ We frequently encounter situations where we want to understand how a particular 
 ::: {.column width="100%"}
 
 <div style="text-align: center;">
-  <img src="images/single-distributions-1.png" width="70%">
+  <img src="images/single-distributions-1.png" width="100%">
 </div>
 
 :::
 ::::
 
-###  Walmart Distribution of Sales
+###  Penguins Distribution
 
 ::: panel-tabset
 
 ### Code 1
 ```{r}
 #| echo: true
-item_stat <- wal_train |> 
-  ggplot(aes(units)) +
+
+penguins |> 
+  ggplot(aes(bill_length_mm)) +
   geom_histogram() +
-  guides(x = guide_axis(angle = 90)) +
-  labs(title = "Distribution of Items Sold",
-       y = "Item Number",
-       x = "Units Sold",
-       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
+  labs(title = "Distribution of the Bills Of Penguins",
+       y = "Count",
+       x = "Bill Length (mm)",
+       caption = "Data: Palmer Penguins • Viz: Ifeoma Egbogah")
 
 ```
 
 ### Plot:Item
 ```{r}
-item_stat
+#item_stat
 ```
 
 :::
@@ -344,6 +608,7 @@ Walmart used historical sales data to anticipate what people would need most.
 ### Code 1
 ```{r}
 #| echo: true
+#| eval: false
 item_stat <- wal_train |> 
   filter(units > 0 & units <2000) |>  
   mutate(store = glue::glue("Store {store_nbr}")) |> 
@@ -361,12 +626,13 @@ item_stat <- wal_train |>
 
 ### Plot:Item
 ```{r}
-item_stat
+#item_stat
 ```
 
 ### Code 2
 ```{r}
 #| echo: true
+#| eval: false
 store <- wal_train |> 
   filter(units > 0) |>  
   filter(store_nbr %in% seq(1, 5, 1)) |> 
@@ -387,12 +653,14 @@ store <- wal_train |>
 
 ### Plot:Store 1-5
 ```{r}
-store
+#store
 ```
 
 ### Code 3
 ```{r}
 #| echo: true
+#| eval: false
+#| 
 store_by_year <- wal_train |> 
   mutate(year = year(date)) |>
   filter(units > 0) |> 
@@ -415,7 +683,7 @@ store_by_year <- wal_train |>
 
 ### Plot: By_year
 ```{r}
-store_by_year
+#store_by_year
 ```
 
 :::
