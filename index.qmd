@@ -38,11 +38,11 @@ Lead Data Scientist
 
 ------------------------------------------------------------------------
 
-[📆  July 26, 2025]{.code}\
+[📆  July 26, 2025]
 
-[⏰  0CAT]{.code} [See in your time zone](https://dateful.com/convert/utc?t=1430)
+[⏰  10:00AM]
 
-[🏨  Google Meet]{.code}\
+[🏨  Google Meet] (https:/meet.google.com/jyn-ftyj-cdz)
 
 ------------------------------------------------------------------------
 
@@ -66,4 +66,4 @@ This webinar is ideal for you if you:
 <a href="https://ifeoma-egbogah.netlify.app/blog/"><img src="https://assets.dryicons.com/uploads/icon/svg/4926/home.svg" alt="Blog" border="0" width="35" height="35"/></a>  <a href="mailto:negbogah@gmail.com"><img src="https://assets.dryicons.com/uploads/icon/svg/8009/02dc3a5c-6504-4347-85fb-3f510cfecc45.svg" alt="Email" border="0" width="35" height="35"/></a>  <a href="https://twitter.com/negbogah"><img src="https://assets.dryicons.com/uploads/icon/svg/8385/c23f7ffc-ca8d-4246-8978-ce9f6d5bcc99.svg" alt="Twitter" border="0" width="35" height="35"/></a>  <a href="https://www.instagram.com/ifyegbogah/"><img src="https://assets.dryicons.com/uploads/icon/svg/8330/62263227-bb78-4b42-a9a9-e222e0cc7b97.svg" alt="Instagram" border="0" width="35" height="35"/></a>  <a href="https://www.linkedin.com/in/ifeoma-egbogah-a88527110/"><img src="https://assets.dryicons.com/uploads/icon/svg/8337/a347cd89-1662-4421-be90-58e5e8004eae.svg" alt="LinkedIn" border="0" width="35" height="35"/></a>   <a href="https://www.buymeacoffee.com/z3tt" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Buy Me A Coffee" style="height: 35px !important;width: 122px !important;"/></a>
 :::
 
-::::::
+

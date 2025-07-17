@@ -35,6 +35,7 @@ library(gameofthrones)
 library(ggtext)
 library(patchwork)
 library(ggalt)
+library(gt)
 
 theme_set(theme_light())
 
@@ -246,7 +247,8 @@ logistics_data |>
   scale_colour_got_d(option = "greyjoy") +
   labs(title = "",
        y = "Region",
-       x ="Returns") +
+       x ="Returns",
+       fill = "Months") +
   theme(axis.title.y = element_text(hjust = 0.9))
 
 ```
@@ -422,15 +424,14 @@ To illustrate, the figure below appeared in an April 2014 report by the Pew Rese
 
 ## Simple Text
 
-<div style = "font-size: 0.75em;">
 In this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below.
-</div>
+
 
 :::: columns
 ::: {.column width="100%"}
 
 <div style="text-align: center;">
-  <img src="images/stay.jpg" width="50%">
+  <img src="images/stay.jpg" width="40%">
 </div>
 
 :::
@@ -438,11 +439,26 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 
 ## Tables
 
+<div style = "font-size: 0.75em;">
 * Engage our **verbal system** — we read them like text.
 * Ideal for **scanning rows and columns** to compare specific values.
 * Best for **mixed audiences** — each person can locate their row or column of interest.
 * Handle **multiple units of measure** better than graphs (e.g., percentages, currency, counts).
 * Preserve **exact figures** for precision-focused communication.
+</div>
+
+```{r}
+
+
+logistics_data |> 
+  select(region, month2, average_delivery_delay_days) |> 
+  pivot_wider(names_from = month2, values_from = average_delivery_delay_days) |> 
+  gt(rowname_col = "region") |> 
+  tab_stubhead(label = "") |> 
+  tab_header(title = md("**Regional Breakdown of Average Delivery Delays**")) 
+  
+```
+
 
 ## Tables That Talk: Making Your Data Shine
 
@@ -460,7 +476,7 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 ::: {.column width="100%"}
 
 <div style="text-align: center;">
-  <img src="images/table.jpg" width="70%">
+  <img src="images/table.jpg" width="90%">
 </div>
 
 :::
@@ -469,23 +485,76 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 
 ## Heatmaps
 
+<div style = "font-size: 0.75em;">
+A heatmap transforms a table of numbers into a visual experience by using color to represent the size or intensity of values. Instead of relying solely on digits, it fills each cell with varying shades—making patterns, trends, and outliers instantly easier to spot.
+</div>
 
 ```{r}
 #| echo: false
 
+logistics_data |> 
+  ggplot() +
+  geom_tile(aes(month2, region, fill = average_delivery_delay_days), show.legend = FALSE) +
+  geom_text(aes(month2, region, label = average_delivery_delay_days), colour = "white", fontface = "bold", size = 7) +
+  scale_fill_got(option = "greyjoy", direction = -1) +
+  theme_minimal() +
+  labs(x = "Month",
+       y = " ",
+       fill = "Delay Days",
+       title = "Regional Breakdown of Average Delivery Delays",
+       subtitle = "<b><span style = 'color:#ECB939FF;'>LOW</span></b>-<b><span style = 'color:#000000FF;'>HIGH</span></b>") +
+  theme(plot.subtitle = element_textbox_simple(),
+        plot.title = element_text(size = 18),
+        axis.title = element_text(size = 16),
+        axis.text = element_text(size = 13))
 
-#phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
 
-
-phd_field <- read_csv("data/phd_field.csv")
 
 ```
+
+## Colouring Your Way to Clarity
+
+* Reduces cognitive load by turning numbers into visual cues.
+
+* Color intensity helps the eye quickly identify patterns and outliers.
+
+* In a heatmap, darker (more saturated) colors indicate higher values.
+
+* Makes it faster and easier to spot key data points—like the lowest (5) and highest (24) values.
+
+* Unlike plain tables, visual cues guide attention to areas of interest without extra mental effort.
+
+## Graphs
+
+<div style = "font-size: 0.75em;">
+Unlike tables, graphs tap into our visual perception, allowing us to grasp patterns and insights much faster. A thoughtfully crafted graph often communicates key messages more quickly than even the best-designed table.
+
+There are countless types of graphs. They are 
+typically grouped into four main categories: 
+
+* points 
+
+* lines 
+
+* bars 
+
+* area charts. 
+
+These core graph styles cover a wide range of everyday data visualization needs.
+</div>
+
+## Points
+### Scatterplot
+
 
 ## PhDs Awarded by Field
 The US gov collects data on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
 
 ```{r}
+#phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
 
+
+phd_field <- read_csv("data/phd_field.csv")
 phd_field |> 
   mutate(year = factor(year)) |> 
   group_by(major_field, year) |> 
