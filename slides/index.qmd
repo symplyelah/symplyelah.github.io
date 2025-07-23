@@ -30,6 +30,7 @@ Until one day, she decided to stop sending spreadsheets and start telling storie
 
 ```{r}
 #| echo: false
+#| 
 library(tidyverse)
 library(gameofthrones)
 library(ggtext)
@@ -37,7 +38,7 @@ library(patchwork)
 library(ggalt)
 library(gt)
 
-theme_set(theme_light())
+theme_set(theme_minimal())
 
 logistics_data <- read_csv("data/logistics_data.csv") |> 
   janitor::clean_names() |> 
@@ -54,7 +55,15 @@ customer_survey <- customer_survey |>
                                   
 customer_survey_score >= 7 & customer_survey_score <= 8 ~ "Satisfied",
 customer_survey_score >= 9 & customer_survey_score <= 10 ~ "Very Satisfied"))
-  
+
+emissions <- read_csv("data/emissions.csv")  
+
+phd_field <- read_csv("data/phd_field.csv")
+
+medal <- read_csv("data/summer_olympic_medals.csv") |> 
+  janitor::clean_names()
+
+
 ```
 
 
@@ -287,7 +296,9 @@ customer_survey |>
 ```
 :::
 
-## Why Data Visualization Matters
+# Why Data Visualization Matters {.inverse}
+
+## No Longer Drowning
 
 -   Humans process visuals 60,000x faster than text
 
@@ -546,52 +557,370 @@ These core graph styles cover a wide range of everyday data visualization needs.
 ## Points
 ### Scatterplot
 
+<div style = "font-size: 0.75em;">
+A scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables. 
 
-## PhDs Awarded by Field
-The US gov collects data on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
+#### Why Scatterplots Matter in Storytelling:
+
+* Reveal relationships: Scatterplots help uncover patterns, trends, and correlations that might otherwise remain hidden in raw data.
+
+* Spot outliers: Unusual points stand out visually, making it easy to identify exceptions or anomalies worth further investigation.
+
+* Show clusters: When data points form groups, it may hint at sub-categories or behaviors within the data.
+
+* Support evidence: In data-driven storytelling, scatterplots visually reinforce claims like “as X increases, Y decreases.”
+</div>
+
+## Carbon Majors
+
+<div style = "font-size: 0.75em;">
+To better understand scatterplot we will explore the historical emissions data from [Carbon Majors](https://carbonmajors.org/).
+
+> Carbon Majors is a database of historical production data from 122 of the world’s largest oil, gas, coal, and cement producers. This data is used to quantify the direct operational emissions and emissions from the combustion of marketed products that can be attributed to these entities. These entities include:
+
+> 75 Investor-owned Companies, 36 State-owned Companies, 11 Nation States, 82 Oil Producing Entities, 81 Gas Entities, 49 Coal Entities, 6 Cement Entities
+
+> The data spans back to 1854 and contains over 1.42 trillion tonnes of CO2 emissions covering 72% of global fossil fuel and cement emissions since the start of the Industrial Revolution in 1751.
+
+</div>
 
 ```{r}
-#phd_field <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv")
+
+emissions <- read_csv('data/emissions.csv')
+
+```
+
+## Scatterplots
+
+:::: panel-tabset
+
+### Oil & Gas
+
+```{r}
+
+emissions |> 
+ filter(commodity %in% c("Oil & NGL", "Natural Gas")) |> 
+  mutate(decade = (year %/% 10) * 10) |> 
+  ggplot(aes(production_value, total_emissions_MtCO2e)) +
+  geom_jitter(position = position_jitter(width = 150, height = 100), alpha = 0.5, size = 3) +
+  facet_wrap(~commodity, scales = "free_x") +
+  theme_minimal() +
+  labs(x = "Production Value",
+       y = "CO<sub>2</sub> Emission",
+       title = "Emissions Rise in Lockstep with Production—A Tale of Two Fossil Fuels") +
+  theme(axis.title.y = element_markdown(hjust = 0.9))
+  
+```
 
 
-phd_field <- read_csv("data/phd_field.csv")
-phd_field |> 
-  mutate(year = factor(year)) |> 
-  group_by(major_field, year) |> 
-  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
-  ggplot() +
-  geom_tile(aes(year, major_field, fill = total)) +
-  geom_text(aes(year, major_field, label = total), colour = "white") +
-  scale_fill_got(option = "greyjoy") 
+### By Decade
 
+```{r}
 
-phd_field |> 
-  mutate(year = factor(year)) |> 
-  group_by(broad_field, year) |> 
-  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
-  ggplot() +
-  geom_tile(aes(year, broad_field, fill = total)) +
-  geom_text(aes(year, broad_field, label = total), colour = "white") +
-  scale_fill_got(option = "tully") 
+emissions |> 
+ filter(commodity %in% c("Oil & NGL", "Natural Gas")) |> 
+  mutate(decade = (year %/% 10) * 10) |> 
+  ggplot(aes(production_value, total_emissions_MtCO2e, colour = decade)) +
+  geom_jitter(position = position_jitter(width = 150, height = 100), alpha = 0.5, size = 3) +
+  scale_color_got(option = "greyjoy", breaks = seq(1850, 2020, 20)) +
+  facet_wrap(~commodity, scales = "free_x") +
+  labs(x = "Production Value",
+       y = "CO<sub>2</sub> Emission",
+       colour = "Year",
+       title = "Emissions Rise in Lockstep with Production—A Tale of Two Fossil Fuels",
+       subtitle = "Mid-20th century: Breakthroughs in exploration tech led to massive oil field discoveries (Ghawar, Burgan, Cantarell). This drove a steady increase in global oil and natural gas production. Since the 2000s, fewer 'elephant' oil fields have been found. But production didn’t fall immediately—why? We’re no longer discovering more oil—we’re just getting better at extracting what’s left.") +
+  theme(axis.title.y = element_markdown(hjust = 0.9),
+        plot.subtitle = element_textbox_simple(margin = margin(2, 0, 8, 0, unit = "mm")))
+  
+```
+
+### State vs Private
+
+```{r}
+
+```
+
+### NNPC
+
+```{r}
+
+emissions |> 
+ filter(commodity %in% c("Oil & NGL", "Natural Gas"),
+        parent_entity == "Nigerian National Petroleum Corp.") |> 
+  mutate(decade = (year %/% 10) * 10) |> 
+  ggplot(aes(production_value, total_emissions_MtCO2e, colour = decade)) +
+  geom_jitter(position = position_jitter(width = 5, height = 5), alpha = 0.5, size = 3) +
+  scale_color_got(option = "greyjoy", breaks = seq(1960, 2020, 10)) +
+  facet_wrap(~commodity, scales = "free_x") +
+  labs(x = "Production Value",
+       y = "CO<sub>2</sub> Emission",
+       colour = "Year",
+       title = "Boom Years and Carbon Cost",
+       subtitle = "CO<sub>2</sub> emissions have climbed alongside fossil fuel production in Nigeria—especially in recent decades—with natural gas showing the steepest rise.") +
+    theme(axis.title.y = element_markdown(hjust = 0.9),
+          plot.subtitle = element_textbox_simple())
+
 
 ```
 
 
-::: panel-tabset
+::::
+
+
+
+## Lines
+### Line Graph
+
+## Olympic Medals
+
+:::: columns
+::: {.column width="100%"}
+
+<div style="text-align: center;">
+  <img src="images/ireland.png" width="50%">
+</div>
+
+:::
+::::
+
+## Ireland's Olympic Medals
+
+:::: columns
+::: {.column width="100%"}
+
+```{r}
+
+medal2 <- medal |> 
+  group_by(year, country_name) |> 
+  rowwise() |> 
+  mutate(medals = sum(c_across(gold:bronze))) 
+
+ireland <- medal2 |> 
+  group_by(year) |> 
+  arrange(desc(gold), desc(silver), desc(bronze)) |> 
+  mutate(rank = min_rank(-gold * 1e6 - silver * 1e3 - bronze)) |>
+  filter(country_name == "Ireland" & year >= 2000) |> 
+  unite("host", host_city, year, sep = "\n", remove = FALSE) 
+
+ire_2024 <- tibble(host = c("Athens\n2004", "Paris\n2024"),
+                   year = c(2004, 2024),
+                   host_country = c("Greece", "France"),
+                   host_city = c("Athens", "Paris"),
+                   country_name = c("Ireland","Ireland"),
+                   country_code = c("IRL", "IRL"),
+                   gold = c(0, 4),
+                   silver = c(0, 0),
+                   bronze = c(0, 3),
+                   medals = c(0, 7),
+                   rank = c(NA, 19))
+
+ireland <- bind_rows(ireland, ire_2024)
+
+
+add_suffix <- function(x) {
+  if(is.na(x)) {
+    return(NA)
+  } else if(x %% 10 == 1){
+    return(paste0(x, "st"))
+  } else if(x %% 10 == 2){
+    return(paste0(x, "nd"))
+  } else if(x %% 10 == 3){
+    return(paste0(x, "rd"))
+  } else if(x %% 100 >= 11 && x %% 100 <= 13){
+    return(paste0(x, "th"))
+  } else {
+    return(paste0(x, "th"))
+  }
+}
+
+x_axis <- ireland |> 
+  arrange(year) |> 
+  select(host)
+  
+
+ireland |> 
+  ggplot(aes(year, rank)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  geom_text(aes(label = sapply(rank, add_suffix)), nudge_y = 5) +
+  geom_text(data = ireland |> 
+              filter(year == 2004),
+            aes(2004, 60, label = "No\nMedal")) +
+  scale_y_reverse(limits = c(70,0)) +
+  scale_x_continuous(breaks = seq(2000, 2025, 4), labels = x_axis$host) +
+  labs(x = "Year",
+       y = "Rank",
+       title = "Ireland's Olympic Success Story") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        axis.title.x = element_text(hjust = 0.5))
+  
+
+```
+
+
+:::
+::::
+
+
+## PhDs Awards
+
+<div style = "font-size: 0.75em;">
+Line graph can show a single series of data, two series of data, or multiple series. To illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
+</div>
+
+:::: panel-tabset
+
+### Single
+
+```{r}
+
+phd_field |> 
+  filter(broad_field == "Life sciences") |> 
+  group_by(year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
+  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
+  scale_x_continuous(breaks = seq(2008, 2017, 1)) +
+  scale_y_continuous(limits = c(0, 22500)) +
+  labs(x = "Year",
+       y = "Total PhD Awards",
+       title = "Total PhD Awards in Life Sciences (2008–2017)")
+    
+
+```
+
+### Two
+
+```{r}
+
+
+phd_field |> 
+  filter(broad_field %in% c("Life sciences", "Engineering")) |> 
+  group_by(year, broad_field) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_line(aes(year, total, colour = broad_field), size = 1.2) +
+  geom_point(aes(year, total, colour = broad_field), size = 2) +
+  scale_x_continuous(breaks = seq(2008, 2017, 1)) +
+  scale_y_continuous(limits = c(0, 22500)) +
+  scale_colour_got_d(option = "greyjoy") +
+  labs(x = "Year",
+       y = "Total PhD Awards",
+       colour = "Faculty",
+       title = "Total PhD Awards in Life Sciences and Engineering (2008–2017)") +
+  theme(axis.title.y = element_text(hjust = 0.9))
+
+    
+```
+
+### Multiple
+
+```{r}
+
+
+phd_field |> 
+  group_by(year, broad_field) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_line(data = phd_field |>
+              filter(broad_field == "Life sciences") |> 
+              group_by(year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(year, total), colour = "#ECB939FF", size = 1.2) +
+  
+   geom_point(data = phd_field |>
+              filter(broad_field == "Life sciences") |> 
+              group_by(year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(year, total), colour = "#ECB939FF", size = 2) +
+  
+   geom_text(data = phd_field |>
+              filter(broad_field == "Life sciences", year == 2017) |> 
+              group_by(year, broad_field) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(year, total, label = broad_field), colour = "#ECB939FF", nudge_y = 350) +
+  
+  geom_line(data = phd_field |>
+              filter(broad_field != "Life sciences") |> 
+              group_by(year, broad_field) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(year, total, group = broad_field), colour = "#372E29FF", size = 1.2, show.legend = FALSE) +
+
+  geom_point(data = phd_field |>
+              filter(broad_field != "Life sciences") |> 
+              group_by(year, broad_field) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(year, total, group = broad_field), colour = "#372E29FF", size = 2, show.legend = FALSE) +
+
+  geom_text(data = phd_field |> 
+              filter(year == 2017, broad_field != "Life sciences") |> 
+              group_by(year, broad_field) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)), 
+            aes(year, total, label = broad_field), nudge_y = 450, nudge_x = 0.2) +
+  
+  scale_x_continuous(breaks = seq(2008, 2022, 1)) +
+  scale_y_continuous(limits = c(0, 22500), labels = scales::comma_format()) +
+  theme_minimal() +
+  labs(x = "Year",
+       y = "Total PhD Awards",
+       colour = "Faculty",
+       title = "Total PhD Awards from 2008 to 2017)") +
+  theme(axis.title.y = element_text(hjust = 0.9))
+
+
+```
+
+::::
+
+## Caution: Small differences appear more dramatic
+
+```{r}
+
+phd_field |> 
+  filter(broad_field == "Life sciences") |> 
+  group_by(year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_line(aes(year, total), size = 1.8, colour = "#372E29FF") +
+  scale_x_continuous(breaks = seq(2008, 2017, 1)) +
+  labs(x = "Year",
+       y = "Total PhD Awards",
+       title = "Total PhD Awards in Life Sciences (2008–2017)")
+
+```
+
+
+## Slopegraph
+
+<div style = "font-size = 0.75em;">
+Slopegraphs can be useful when you have two time periods or points of comparison and want to quickly show relative increases and decreases or differences across various categories between the two data points.
+</div>
+
+:::: panel-tabset
 
 ### Code 1
 
 
 ```{r}
-#| echo: true
- 
-phd_total <-   phd_field |>
-    group_by(broad_field) |> 
-    summarise(phd_total = sum(n_phds, na.rm = TRUE)) |>
-    mutate(broad_field = fct_reorder(broad_field, phd_total)) |> 
-    ggplot(aes(phd_total, broad_field)) +
-    geom_col() +
-    scale_x_continuous(labels = scales::comma_format()) +
+
+phd_field |>
+  filter(year %in% c(2008, 2017)) |> 
+  group_by(broad_field, year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot(aes(year, total, group = broad_field)) +
+  geom_line() +
+  geom_text(data = phd_field |>
+              filter(year %in% c(2008)) |> 
+              group_by(broad_field, year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(label = total)) +
+  geom_text(data = phd_field |>
+              filter(year %in% c(2017)) |> 
+              group_by(broad_field, year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)),
+            aes(label = total)) +
+  scale_x_continuous(breaks = c(2008, 2017)) 
     labs(title = "PhD Awarded from 2008 to 2017 in the USA",
        x = "Number of PhD",
        y = "Field/Faulty",
@@ -604,7 +933,7 @@ phd_total <-   phd_field |>
 
 ```{r}
 
-phd_total
+
 
 ```
 
@@ -667,21 +996,7 @@ phd_by_year
 
 :::
 
-
-## Visualising Distributions
-
-We frequently encounter situations where we want to understand how a particular variable is distributed within a dataset. For example, in a sales dataset, we might be interested in examining the distribution of monthly revenue, the number of units sold per product, or the average transaction value. Understanding these distributions helps us identify patterns, spot outliers, and make data-driven decisions for improving business performance.
-
-:::: columns
-::: {.column width="100%"}
-
-<div style="text-align: center;">
-  <img src="images/single-distributions-1.png" width="100%">
-</div>
-
-:::
-::::
-
+## Type
 
 
 | Chart Type   | Best For                     |
@@ -694,148 +1009,6 @@ We frequently encounter situations where we want to understand how a particular 
 
 *Tip:* Choose simplicity and clarity over complexity.
 
-# Real World Scenario: Walmart and Weather {.inverse}
-
-:::: columns
-::: {.column width="100%"}
-
-<div style="text-align: center;">
-  <img src="images/poptarts.png" width="50%">
-</div>
-:::
-::::
-
-## Walmart  
-
-<div style="font-size: 0.75em;">
-
-**Context:** We can’t control the weather, yet it affects everything we do. Most days are calm, but when Mother Nature shows her power, normal life is turned upside down.
-
-In these moments, how can businesses keep operating and support communities?
-
-In 2004 as Hurricane Frances roared through the Caribbean toward Florida, Walmart’s team asked themselves — how can we prepare smarter? Which products will people desperately need?
-
-Walmart used historical sales data to anticipate what people would need most.
-
-**Insight:** While obvious necessities like bottled water, flashlights, and batteries were expected, the data revealed a surprising pattern: strawberry Pop‑Tarts sales increased sevenfold, and beer became the top-selling item
-
-**Action Taken:** Walmart stocked these items in bulk at regional distribution centers in the hurricane path.
-
-</div>
-
-
-## Walmart: Summary statistics of active inventory performance
-
-
-::: panel-tabset
-
-### Code 1
-```{r}
-#| echo: true
-#| eval: false
-item_stat <- wal_train |> 
-  filter(units > 0 & units <2000) |>  
-  mutate(store = glue::glue("Store {store_nbr}")) |> 
-  group_by(store) |> 
-  ggplot(aes(units, factor(item_nbr))) +
-  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
-  coord_flip() +
-  guides(x = guide_axis(angle = 90)) +
-  labs(title = "Distribution of Items Sold",
-       y = "Item Number",
-       x = "Units Sold",
-       caption = "Data: Kaggle • Viz: Ifeoma Egbogah")
-
-```
-
-### Plot:Item
-```{r}
-#item_stat
-```
-
-### Code 2
-```{r}
-#| echo: true
-#| eval: false
-store <- wal_train |> 
-  filter(units > 0) |>  
-  filter(store_nbr %in% seq(1, 5, 1)) |> 
-  mutate(store = glue::glue("Store {store_nbr}")) |> 
-  group_by(store) |> 
-  ggplot(aes(units, factor(item_nbr))) +
-  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
-  facet_wrap(~store,  scales = "free", nrow = 1) +
-  labs(title = "Distribution of Units Sold by Item across Stores 1 to 5",
-       y = "Item Number",
-       x = "Units Sold",
-       caption = "Data: Kaggle • Viz: Ifeoma Egbogah") +
-  theme_minimal() + 
-  theme(plot.title = element_text(colour = "#562457", face = "bold", hjust = 0.5),
-        strip.text = element_text(face = "bold"), 
-        axis.text.y = element_text(size = 6))
-```
-
-### Plot:Store 1-5
-```{r}
-#store
-```
-
-### Code 3
-```{r}
-#| echo: true
-#| eval: false
-#| 
-store_by_year <- wal_train |> 
-  mutate(year = year(date)) |>
-  filter(units > 0) |> 
-  filter(store_nbr %in% seq(1, 5, 1)) |> 
-  group_by(store_nbr, year) |> 
-  ggplot(aes(units, factor(item_nbr))) +
- geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = "#f8f8f8", color = "#88398A") +
-  facet_grid(rows = vars(year), cols = vars(store_nbr), scales = "free_y") +
-  labs(title = "Distribution of Units Sold by Item across Stores 1 to 5",
-       y = "Item Number",
-       x = "Units Sold",
-       caption = "Data: Kaggle • Viz: Ifeoma Egbogah") +
-  #theme_minimal() + 
-  theme(plot.title = element_text(colour = "#562457", face = "bold", hjust = 0.5),
-        strip.text = element_text(face = "bold"), 
-        axis.text.y = element_text(size = 6))
-  
-
-```
-
-### Plot: By_year
-```{r}
-#store_by_year
-```
-
-:::
-
-
-
-# Real World Scenario: Nigerian Brewries {.inverse}
-
-:::: columns
-::: {.column width="100%"}
-
-<div style="text-align: center;">
-  <img src="images/nig_brew_logo.png" width="60%", height="70%">
-</div>
-:::
-::::
-
-
-
-## COVID-19
-
-COVID-19 dashboards helped governments track and respond to infection spikes and vaccinations.
-
-:::: columns
-::: {.column width="50%"}
-![](images/maryland_covid.png)
-:::
-::::
 
 # Bridging the Gap Between Data and Decisions {.inverse}
 
@@ -876,13 +1049,3 @@ COVID-19 dashboards helped governments track and respond to infection spikes and
 ::::
 
 
-
-# Case Study {.inverse}
-
-## Academic Use Case – Education Access
-
-**Dataset:** World Bank (Literacy vs Internet Access)
-
-**Visualization:** Scatter plot showing socio-economic development.
-
-**Insight:** Nigeria lags behind Kenya and Egypt in internet penetration despite comparable literacy rates.
