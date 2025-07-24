@@ -333,7 +333,7 @@
     "href": "slides/index.html#xyz-logistics",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "XYZ Logistics",
-    "text": "XYZ Logistics\n\nCustomer CompliantMonthly Trend"
+    "text": "XYZ Logistics\n\nCustomer CompliantMonthly TrendReturnsCustomer Survey"
   },
   {
     "objectID": "slides/index.html#xyz-logistics-1",
@@ -431,7 +431,7 @@
     "href": "slides/index.html#line-graph",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Line Graph",
-    "text": "Line Graph\n\nLine graph can show a single series of data, two series of data, or multiple series.\nTo illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the NSF."
+    "text": "Line Graph\n\nLine graph can show:\n\na single series of data,\ntwo series of data, or\nmultiple series.\n\nTo illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the NSF."
   },
   {
     "objectID": "slides/index.html#type",
@@ -565,5 +565,40 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "PhD Awards: Decline, Stability, and Surge",
     "text": "PhD Awards: Decline, Stability, and Surge\n\nDecade of transition\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# A tibble: 40 × 7\n   field                      reference today field_today field_ref change trend\n   &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;\n 1 Anatomy                         20.9     9 Anatomy     Anatomy   -11.9  Stab…\n 2 Bacteriology                    22.7    13 Bacteriolo… Bacterio…  -9.67 Stab…\n 3 Biochemistry (biological …     840     815 Biochemist… Biochemi… -25    &lt;NA&gt; \n 4 Bioinformatics                 161.    183 Bioinforma… Bioinfor…  22.2  Smal…\n 5 Biological and biomedical…     270.    391 Biological… Biologic… 121.   Smal…\n 6 Biological and biomedical…      85.1   112 Biological… Biologic…  26.9  Smal…\n 7 Biomedical sciences            346.    341 Biomedical… Biomedic…  -5.44 Stab…\n 8 Biometrics and biostatist…     150.    216 Biometrics… Biometri…  65.6  Smal…\n 9 Biophysics (biological sc…     181     208 Biophysics… Biophysi…  27    Smal…\n10 Biotechnology                   36.1    33 Biotechnol… Biotechn…  -3.11 Stab…\n# ℹ 30 more rows"
+  },
+  {
+    "objectID": "slides/index.html#bars",
+    "href": "slides/index.html#bars",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Bars",
+    "text": "Bars\n\nBar graphs are among the most familiar and versatile tools in data visualization. They excel at showing comparisons across categories, making them ideal for answering questions like “Which is the highest?”, “Which is the lowest?”, or “How do these groups stack up against each other?”\nThis makes it easy for the viewer to scan and compare values visually—especially when the bars are arranged in a logical or meaningful order, such as descending size or alphabetical sequence."
+  },
+  {
+    "objectID": "slides/index.html#bush-tax-cuts",
+    "href": "slides/index.html#bush-tax-cuts",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Bush Tax Cuts",
+    "text": "Bush Tax Cuts\n\nBack in the fall of 2012, there was growing uncertainty about the future of the Bush-era tax cuts. A key concern was what would happen if they were allowed to expire. At that time, the top marginal tax rate stood at 35%. However, if the cuts were not extended, it was set to rise to 39.6% starting January 1."
+  },
+  {
+    "objectID": "slides/index.html#section-2",
+    "href": "slides/index.html#section-2",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "They also lend themselves well to variations like:\n\nStacked bar charts, which show part-to-whole relationships.\nGrouped bar charts, which allow side-by-side comparisons across multiple dimensions.\nHorizontal bar charts, which can be easier to read when category names are long or numerous."
+  },
+  {
+    "objectID": "slides/index.html#bars-why-zero-matters",
+    "href": "slides/index.html#bars-why-zero-matters",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Bars: Why Zero Matters",
+    "text": "Bars: Why Zero Matters\n\nIn fact, the way this is graphed, the visual increase is 460% (the heights of the bars are 35 – 34 = 1 and 39.6 – 34 = 5.6, so (5.6 – 1) / 1 = 460%). If we graph the bars with a zero baseline so that the heights are accurately represented (35 and 39.6), we get an actual visual increase of 13% ((39.6 – 35) / 35)."
+  },
+  {
+    "objectID": "slides/index.html#the-bar-graph-family",
+    "href": "slides/index.html#the-bar-graph-family",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "The Bar Graph Family",
+    "text": "The Bar Graph Family\n\nBar graph also lend themselves well to variations like:\n\nVertical bar chart\nStacked vertical bar chart\nWaterfall\nHorizontal bar charts\nStacked horizontal bar charts"
   }
 ]
