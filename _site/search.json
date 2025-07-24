@@ -4,21 +4,21 @@
     "href": "index.html",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "",
-    "text": "Register on Zoom"
+    "text": "Google Meet"
   },
   {
     "objectID": "index.html#join",
     "href": "index.html#join",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "",
-    "text": "Register on Zoom"
+    "text": "Google Meet"
   },
   {
     "objectID": "index.html#instructor",
     "href": "index.html#instructor",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Instructor",
-    "text": "Instructor\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist Zelah Ltd\n negbogah@gmail.com\n\n\n📆  June , 2025\n⏰  0CAT See in your time zone🏨  Zoom\n\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this course for me?\nThis course is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+    "text": "Instructor\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n📆  June , 2025\n⏰  0CAT See in your time zone🏨  Zoom\n\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this course for me?\nThis course is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
   },
   {
     "objectID": "index.html#is-this-course-for-me",
@@ -46,14 +46,14 @@
     "href": "slides/index.html",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "",
-    "text": "Numerical\n\n\n\n\n\n\n\n\nCategorical\n\n\n\n\n\n\n\n\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions\n\n\n\n\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
+    "text": "Let me tell you about Amina.\nShe worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns…\nAll of it collected diligently by the operations team.\nBut something was wrong.\nDespite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.\nUntil one day, she decided to stop sending spreadsheets and start telling stories with the data.\n\n\n\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nWarning: package 'ggalt' was built under R version 4.4.3\n\n\nRegistered S3 methods overwritten by 'ggalt':\n  method                  from   \n  grid.draw.absoluteGrob  ggplot2\n  grobHeight.absoluteGrob ggplot2\n  grobWidth.absoluteGrob  ggplot2\n  grobX.absoluteGrob      ggplot2\n  grobY.absoluteGrob      ggplot2\nRows: 24 Columns: 6── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): Month, Region\ndbl (4): Customer_Complaints, Average_Delivery_Delay_Days, Returns, Average_...\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.Rows: 100 Columns: 3── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): Customer_ID, Region\ndbl (1): Customer_Survey_Score\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\n\nXYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28\n\n\n\n\n\n\n\n\n\n\n\nCustomer CompliantMonthly Trend\n\n\n\n#| echo: false\n\n\nld \n\n\n\n\n\n\n\n\n\n\n\n#| echo: false\n\n\n\nld1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReturnsCustomer Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions"
   },
   {
     "objectID": "slides/index.html#data-types",
     "href": "slides/index.html#data-types",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types",
-    "text": "Data Types\nNumerical or Quantitative Data\nNumerical (or Quantitative) Data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers."
+    "text": "Data Types\nNumerical or Quantitative Data\n\nNumerical (or Quantitative) data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers."
   },
   {
     "objectID": "slides/index.html#data-types-contd",
@@ -144,7 +144,7 @@
     "href": "slides/index.html#what-is-data",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "What is Data?",
-    "text": "What is Data?\nData refers to raw facts, figures, and statistics that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.\nKey Characteristics of Data:\n\nRaw: Unprocessed and unorganized\nFactual: Based on real-world events, measurements, or records"
+    "text": "What is Data?\n\nData refers to raw facts, figures, and statistics that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.\n\nKey Characteristics of Data:\n\n\nRaw: Unprocessed and unorganized\nFactual: Based on real-world events, measurements, or records"
   },
   {
     "objectID": "slides/index.html#data-types-contd.",
@@ -158,21 +158,21 @@
     "href": "slides/index.html#data-types-contd.-1",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types Contd.",
-    "text": "Data Types Contd.\nKey Features of Numerical Data:\n\nCan be compared, ordered, added, or averaged\nSuitable for mathematical and statistical analysis\nOften visualized using bar charts, histograms, line graphs, or scatter plots"
+    "text": "Data Types Contd.\nKey Features of Numerical Data:\n\n\nCan be compared, ordered, added, or averaged\nSuitable for mathematical and statistical analysis\nOften visualized using bar charts, histograms, line graphs, or scatter plots"
   },
   {
     "objectID": "slides/index.html#data-types-contd.-2",
     "href": "slides/index.html#data-types-contd.-2",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types Contd.",
-    "text": "Data Types Contd.\nCategorical or Qualitative Data\nCategorical (or Qualitative) Data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information."
+    "text": "Data Types Contd.\nCategorical or Qualitative Data\n\nCategorical (or Qualitative) data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information."
   },
   {
     "objectID": "slides/index.html#data-types-contd.-3",
     "href": "slides/index.html#data-types-contd.-3",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types Contd.",
-    "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, pie charts, or tables"
+    "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, pie charts, or tables"
   },
   {
     "objectID": "slides/index.html#mind-the-gap",
@@ -187,5 +187,383 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "COVID-19",
     "text": "COVID-19\nCOVID-19 dashboards helped governments track and respond to infection spikes and vaccinations."
+  },
+  {
+    "objectID": "slides/index.html#walmart-hurricane-forecasting",
+    "href": "slides/index.html#walmart-hurricane-forecasting",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Walmart Hurricane Forecasting",
+    "text": "Walmart Hurricane Forecasting\n\nContext: We can’t control the weather, yet it affects everything we do. Most days are calm, but when Mother Nature shows her power, normal life is turned upside down.\nIn these moments, how can businesses keep operating and support communities?\nIn 2004 as Hurricane Frances roared through the Caribbean toward Florida, Walmart’s team asked themselves — how can we prepare smarter? Which products will people desperately need?\nWalmart used historical sales data to anticipate what people would need most.\nInsight: While obvious necessities like bottled water, flashlights, and batteries were expected, the data revealed a surprising pattern: strawberry Pop‑Tarts sales increased sevenfold, and beer became the top-selling item\nAction Taken: Walmart stocked these items in bulk at regional distribution centers in the hurricane path."
+  },
+  {
+    "objectID": "slides/index.html#demo",
+    "href": "slides/index.html#demo",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Demo",
+    "text": "Demo"
+  },
+  {
+    "objectID": "slides/index.html#section",
+    "href": "slides/index.html#section",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "XYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28"
+  },
+  {
+    "objectID": "slides/index.html#walmart-store-sales-from-2012-to-2014",
+    "href": "slides/index.html#walmart-store-sales-from-2012-to-2014",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Walmart Store Sales from 2012 to 2014",
+    "text": "Walmart Store Sales from 2012 to 2014\n\nCode 1Plot: Single-YearCode 2Plot: Faceted Yearly\n\n\n\nstore &lt;- \n  wal_train |&gt;\n  group_by(store_nbr) |&gt;\n  summarise(total = sum(units)) |&gt;\n  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_lollipop(horizontal = TRUE) +\n  scale_x_continuous(labels = scales::comma_format()) +\n  labs(title = \"Total Units Sold by Walmart Store (All Years)\",\n       subtitle = str_wrap(\"Here we analyze total units sold per Walmart store, aggregated across all years, to identify the top-performing locations. This helps us understand where demand was highest overall.\n\"),\n       x = \"Total Units Sold\",\n       y = \"Walmart Store\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstore_year &lt;- \n  wal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  group_by(store_nbr, year) |&gt;\n  summarise(total = sum(units), .groups = \"drop\") |&gt;\n  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_lollipop(horizontal = TRUE, point.size = 2) +\n  geom_lollipop(data = wal_train |&gt; \n                  mutate(year = year(date)) |&gt;\n                  group_by(store_nbr, year) |&gt;\n                  summarise(total = sum(units), .groups = \"drop\") |&gt;\n                  filter(store_nbr == 16) |&gt; \n                  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)), \n                aes(total, store_nbr), horizontal = TRUE, colour = \"#88398A\", fill = \"#88398A\", point.colour = \"#88398A\", point.size = 3, size = 1.4) +\n  scale_y_reordered() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  facet_wrap(~year, scales = \"free\") +\n  labs(title = \"Walmart Store Sales Faceted by Year\",\n       subtitle = str_wrap(\"This visualization breaks down total units sold by store for each year (2012, 2013, 2014) separately. Faceting shows how demand patterns shifted year-to-year, revealing trends or anomalies over time.\", width = 150),\n       x = \"Total Units Sold\",\n       y = \"Walmart Store\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\")"
+  },
+  {
+    "objectID": "slides/index.html#insights",
+    "href": "slides/index.html#insights",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Insights",
+    "text": "Insights\nThe year-over-year analysis shows that while many stores maintained or improved sales, Store 16 — a consistent top performer — experienced a noticeable decline in 2014. This highlights how even successful locations can face unexpected dips, emphasizing the need for continuous monitoring and agile decision-making powered by data visualization."
+  },
+  {
+    "objectID": "slides/index.html#walmart-item-sold",
+    "href": "slides/index.html#walmart-item-sold",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Walmart: Item Sold",
+    "text": "Walmart: Item Sold\nSummary statistics of active inventory performance\n\nItem StatsPlot:ItemStore 1-5Plot:Store 1-5By YearPlot: By_year"
+  },
+  {
+    "objectID": "slides/index.html#walmart-summary-statistics-of-active-inventory-performance",
+    "href": "slides/index.html#walmart-summary-statistics-of-active-inventory-performance",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Walmart: Summary statistics of active inventory performance",
+    "text": "Walmart: Summary statistics of active inventory performance\n\nCode 1Plot:ItemCode 2Plot:Store 1-5Code 3Plot: By_year\n\n\n\nitem_stat &lt;- wal_train |&gt; \n  filter(units &gt; 0 & units &lt;2000) |&gt;  \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  coord_flip() +\n  guides(x = guide_axis(angle = 90)) +\n  labs(title = \"Distribution of Items Sold\",\n       y = \"Item Number\",\n       x = \"Units Sold\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\nstore &lt;- wal_train |&gt; \n  filter(units &gt; 0) |&gt;  \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_wrap(~store,  scales = \"free\", nrow = 1) +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\") +\n  theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))\n\n\n\n\n\n\n\nstore_by_year &lt;- wal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0) |&gt; \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  group_by(store_nbr, year) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_grid(rows = vars(year), cols = vars(store_nbr), scales = \"free_y\") +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\") +\n  #theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))"
+  },
+  {
+    "objectID": "index.html#speaker",
+    "href": "index.html#speaker",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Speaker",
+    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM][🏨  Google Meet] (https:/meet.google.com/jyn-ftyj-cdz)\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "index.html#is-this-webinar-for-me",
+    "href": "index.html#is-this-webinar-for-me",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Is this webinar for me?",
+    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "walmart.html",
+    "href": "walmart.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(tidytext)\n\ntheme_set(theme_light())\n\nwal_train &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/train/train.csv\")\n\nRows: 4617600 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (3): store_nbr, item_nbr, units\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nkey &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/key/key.csv\")\n\nRows: 45 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): store_nbr, station_nbr\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nweather &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/weather/weather.csv\")\n\nRows: 20517 Columns: 20\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (18): tmax, tmin, tavg, depart, dewpoint, wetbulb, heat, cool, sunrise,...\ndbl   (1): station_nbr\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nwal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  count(year)\n\n# A tibble: 3 × 2\n   year       n\n  &lt;dbl&gt;   &lt;int&gt;\n1  2012 1806303\n2  2013 1559439\n3  2014 1251858\n\nwal_2012 &lt;- wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(year == 2012)\n\nwal_2012 |&gt;\n  group_by(store_nbr) |&gt;\n  summarise(total = sum(units)) |&gt;\n  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train |&gt;\n  group_by(store_nbr) |&gt;\n  summarise(total = sum(units)) |&gt;\n  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  group_by(store_nbr, year) |&gt;\n  summarise(total = sum(units), .groups = \"drop\") |&gt;\n  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  facet_wrap(~year, scales = \"free\")\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date),\n         month = month(date, label = TRUE)) |&gt;\n  group_by(store_nbr, year, month) |&gt;\n  summarise(total = sum(units), .groups = \"drop\") |&gt;\n  mutate(store_nbr = reorder_within(factor(store_nbr), total, month)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  facet_wrap(~month, scales = \"free_y\", nrow = 2)\n\n\n\n\n\n\n\n\n\nitems\n\nwal_train2 &lt;- wal_train |&gt; \n  mutate(store_nbr = factor(store_nbr),\n         item_nbr = factor(item_nbr),\n         year = year(date),\n         month = month(date, label = TRUE))\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units)) |&gt;\n  mutate(item_nbr = fct_reorder(item_nbr, total_item)) |&gt; \n  ggplot(aes(total_item, item_nbr)) +\n  geom_col() +\n  scale_x_log10() \n\n`summarise()` has grouped output by 'item_nbr'. You can override using the\n`.groups` argument.\n\n\nWarning in scale_x_log10(): log-10 transformation introduced infinite values.\n\n\nWarning: Removed 30 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt;\n  mutate(item_nbr = reorder_within(item_nbr, total_item, year)) |&gt; \n  ggplot(aes(total_item, item_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_log10() +\n  facet_wrap(~year, scales = \"free\")\n\nWarning in scale_x_log10(): log-10 transformation introduced infinite values.\nRemoved 30 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt;\n  ggplot() +\n  geom_line(aes(year, total_item, colour = item_nbr), show.legend = F) +\n  scale_x_continuous(labels = seq(2012, 2014, 1), breaks = seq(2012, 2014, 1)) +\n  scale_y_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, month, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt; \n  ggplot() +\n  geom_line(aes(month, total_item, colour = item_nbr, group = item_nbr), show.legend = F) +\n  scale_y_continuous(labels = scales::comma_format()) +\n  facet_wrap(~year)\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  unite(col = \"date2\", month:year,  sep = \"-\", remove = FALSE) |&gt; \n  mutate(date2 = as.Date(paste0(\"01-\", date2), format = \"%d-%b-%Y\")) |&gt; \n  group_by(item_nbr, date2) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt; \n  ggplot() +\n  geom_line(aes(date2, total_item, colour = item_nbr, group = item_nbr), show.legend = F) +\n  scale_x_date(guide = guide_axis(angle = 30), date_labels = \"%b-%Y\", date_breaks = \"1 month\") +\n  scale_y_continuous(labels = scales::comma_format()) \n\n\n\n\n\n\n\n\n\n# 2012 data\n\nweather_store &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/weather_store.csv\")\n\nRows: 1806303 Columns: 24\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (18): tmax, tmin, tavg, depart, dewpoint, wetbulb, heat, cool, sunrise,...\ndbl   (5): store_nbr, item_nbr, units, year, station_nbr\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nwalmart &lt;-\n  wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0)|&gt; \n  left_join(key) |&gt; \n  left_join(weather) |&gt; \n  mutate(tavg2 = suppressWarnings(as.numeric(tavg)),\n         preciptotal = suppressWarnings(as.numeric(preciptotal))) |&gt;\n  filter(!is.na(tavg2))|&gt; \n  filter(!is.na(preciptotal))\n\nJoining with `by = join_by(store_nbr)`\nJoining with `by = join_by(date, station_nbr)`\n\nwalmart2 &lt;-\n  wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0)|&gt; \n  left_join(key) |&gt; \n  left_join(weather) |&gt; \n  mutate(tavg2 = suppressWarnings(as.numeric(tavg)),\n         preciptotal = suppressWarnings(as.numeric(preciptotal))) |&gt;\n  filter(!is.na(tavg2))|&gt; \n  filter(!is.na(preciptotal)) |&gt; \n  filter(!is.na(codesum)) |&gt;\n  separate_longer_delim(codesum, delim = \" \") |&gt; \n  mutate(codesum = str_extract_all(codesum, \".{2}\")) |&gt;\n  unnest(codesum)\n\nJoining with `by = join_by(store_nbr)`\nJoining with `by = join_by(date, station_nbr)`\n\nwalmart2 |&gt; \n  filter(units &lt; 2000) |&gt;\n  ggplot(aes(units)) +\n  geom_histogram() \n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n  scale_x_log10()\n\n&lt;ScaleContinuousPosition&gt;\n Range:  \n Limits:    0 --    1\n\nwalmart |&gt;  \n  filter(units &lt; 2000) |&gt; \n  group_by(store_nbr) |&gt; \n  ggplot(aes(tavg2, units)) +\n  geom_point() +\n  facet_wrap(~store_nbr,  scales = \"free_y\")\n\n\n\n\n\n\n\nwalmart |&gt; \n  filter(units &lt; 2000) |&gt; \n  group_by(store_nbr) |&gt; \n  ggplot(aes(preciptotal, units)) +\n  geom_point() +\n  facet_wrap(~store_nbr,  scales = \"free_y\")\n\n\n\n\n\n\n\n\n\n\nsummary statistics of active inventory performance.\n\nwal_train |&gt; \n  filter(units &gt; 0 & units &lt;2000) |&gt;  \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  coord_flip() +\n  guides(x = guide_axis(angle = 90))\n\n\n\n\n\n\n\nwal_train |&gt; \n  filter(units &gt; 0) |&gt;  \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_wrap(~store,  scales = \"free\", nrow = 1) +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\") +\n  theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0) |&gt; \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  group_by(store_nbr, year) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_grid(rows = vars(year), cols = vars(store_nbr), scales = \"free_y\") +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\") +\n  #theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))"
+  },
+  {
+    "objectID": "slides/index.html#walmart",
+    "href": "slides/index.html#walmart",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Walmart",
+    "text": "Walmart\n\nContext: We can’t control the weather, yet it affects everything we do. Most days are calm, but when Mother Nature shows her power, normal life is turned upside down.\nIn these moments, how can businesses keep operating and support communities?\nIn 2004 as Hurricane Frances roared through the Caribbean toward Florida, Walmart’s team asked themselves — how can we prepare smarter? Which products will people desperately need?\nWalmart used historical sales data to anticipate what people would need most.\nInsight: While obvious necessities like bottled water, flashlights, and batteries were expected, the data revealed a surprising pattern: strawberry Pop‑Tarts sales increased sevenfold, and beer became the top-selling item\nAction Taken: Walmart stocked these items in bulk at regional distribution centers in the hurricane path."
+  },
+  {
+    "objectID": "slides/index.html#choosing-the-appropriate-graphs-for-the-data",
+    "href": "slides/index.html#choosing-the-appropriate-graphs-for-the-data",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Choosing the appropriate graph(s) for the data",
+    "text": "Choosing the appropriate graph(s) for the data\n\nSo before any visualisation always consider:\n\nDiscrete & continuous quantities\nCategories"
+  },
+  {
+    "objectID": "slides/index.html#visualising-numerical-variables",
+    "href": "slides/index.html#visualising-numerical-variables",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Visualising numerical variables",
+    "text": "Visualising numerical variables\nSometimes you are interested in the magnitude of some set of numbers."
+  },
+  {
+    "objectID": "slides/index.html#visualising-numerical-variables-1",
+    "href": "slides/index.html#visualising-numerical-variables-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Visualising numerical variables",
+    "text": "Visualising numerical variables\nWe frequently encounter situations where we want to understand how a particular variable is distributed within a dataset. For example, in a sales dataset, we might be interested in examining the distribution of monthly revenue, the number of units sold per product, or the average transaction value. Understanding these distributions helps us identify patterns, spot outliers, and make data-driven decisions for improving business performance.\n\n\n\n\n\n\nWalmart Distribution of Sales\n\nCode 1Plot:Item\n\n\n\nitem_stat &lt;- wal_train |&gt; \n  ggplot(aes(units)) +\n  geom_histogram() +\n  guides(x = guide_axis(angle = 90)) +\n  labs(title = \"Distribution of Items Sold\",\n       y = \"Item Number\",\n       x = \"Units Sold\",\n       caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
+  },
+  {
+    "objectID": "slides/index.html#phd",
+    "href": "slides/index.html#phd",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "PhD",
+    "text": "PhD\n\nCode 1PhD AwardsCode 2Depart. TotalCode 3By year\n\n\n\nphd_total &lt;-   phd_field |&gt;\n    group_by(broad_field) |&gt; \n    summarise(phd_total = sum(n_phds, na.rm = TRUE)) |&gt;\n    mutate(broad_field = fct_reorder(broad_field, phd_total)) |&gt; \n    ggplot(aes(phd_total, broad_field)) +\n    geom_col() +\n    scale_x_continuous(labels = scales::comma_format()) +\n    labs(title = \"PhD Awarded from 2008 to 2017 in the USA\",\n       x = \"Number of PhD\",\n       y = \"Field/Faulty\",\n       caption = \"Data: Dr Ellie • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndepart_total &lt;- phd_field |&gt; \n  group_by(broad_field, major_field) |&gt; \n  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = \"drop\") |&gt;\n  mutate(major_field = fct_reorder(major_field, phd_total)) |&gt; \n  ggplot(aes(phd_total, major_field)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  labs(x = \"Number of PhD\",\n       y = \"Department\",\n       title = \"Total Number of PhDs Awarded by Departments from 2008 to 2017\",\n        caption = \"Data: Kaggle • Viz: Ifeoma Egbogah\")"
+  },
+  {
+    "objectID": "slides/index.html#story-too-many-reports-not-enough-direction",
+    "href": "slides/index.html#story-too-many-reports-not-enough-direction",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Story: “Too Many Reports, Not Enough Direction”",
+    "text": "Story: “Too Many Reports, Not Enough Direction”\n\nLet me tell you about Amina.\nShe worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns…\nAll of it collected diligently by the operations team.\nBut something was wrong.\nDespite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.\nUntil one day, she decided to stop sending spreadsheets and start telling stories with the data."
+  },
+  {
+    "objectID": "slides/index.html#phds-awarded-by-field",
+    "href": "slides/index.html#phds-awarded-by-field",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "PhDs Awarded by Field",
+    "text": "PhDs Awarded by Field\n\nThe US gov collects data on all doctoral degree graduates every year. The data comes from the NSF.\nThe line graph can show a single series of data, two series of data, or multiple series, as illustrated.\n\n\nSingleTwoMultiple"
+  },
+  {
+    "objectID": "slides/index.html#visualising-distributions",
+    "href": "slides/index.html#visualising-distributions",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Visualising Distributions",
+    "text": "Visualising Distributions\nWe frequently encounter situations where we want to understand how a particular variable is distributed within a dataset. For example, in a sales dataset, we might be interested in examining the distribution of monthly revenue, the number of units sold per product, or the average transaction value. Understanding these distributions helps us identify patterns, spot outliers, and make data-driven decisions for improving business performance.\n\n\n\n\n\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
+  },
+  {
+    "objectID": "slides/index.html#insight",
+    "href": "slides/index.html#insight",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Insight",
+    "text": "Insight\n\n\n\nld + ld1"
+  },
+  {
+    "objectID": "slides/index.html#section-1",
+    "href": "slides/index.html#section-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "The line graph can show a single series of data, two series of data, or multiple series, as illustrated\n\nSingleTwo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode 1PhD AwardsCode 2Depart. TotalCode 3By year\n\n\n\nphd_total &lt;-   phd_field |&gt;\n    group_by(broad_field) |&gt; \n    summarise(phd_total = sum(n_phds, na.rm = TRUE)) |&gt;\n    mutate(broad_field = fct_reorder(broad_field, phd_total)) |&gt; \n    ggplot(aes(phd_total, broad_field)) +\n    geom_col() +\n    scale_x_continuous(labels = scales::comma_format()) +\n    labs(title = \"PhD Awarded from 2008 to 2017 in the USA\",\n       x = \"Number of PhD\",\n       y = \"Field/Faulty\",\n       caption = \"Data: NSF • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndepart_total &lt;- phd_field |&gt; \n  group_by(broad_field, major_field) |&gt; \n  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = \"drop\") |&gt;\n  mutate(major_field = fct_reorder(major_field, phd_total)) |&gt; \n  ggplot(aes(phd_total, major_field)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  labs(x = \"Number of PhD\",\n       y = \"Department\",\n       title = \"Total Number of PhDs Awarded by Departments from 2008 to 2017\",\n        caption = \"Data: NSF • Viz: Ifeoma Egbogah\")"
+  },
+  {
+    "objectID": "slides/index.html#xyz-logistics",
+    "href": "slides/index.html#xyz-logistics",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "XYZ Logistics",
+    "text": "XYZ Logistics\n\nCustomer CompliantMonthly Trend"
+  },
+  {
+    "objectID": "slides/index.html#xyz-logistics-1",
+    "href": "slides/index.html#xyz-logistics-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "XYZ Logistics",
+    "text": "XYZ Logistics\n\nReturnsCustomer Survey"
+  },
+  {
+    "objectID": "slides/index.html#simple-text",
+    "href": "slides/index.html#simple-text",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Simple Text",
+    "text": "Simple Text\n\nWhen you’re dealing with just one or two figures, using plain text can often be the most effective way to share them.\nTo illustrate, the figure below appeared in an April 2014 report by the Pew Research Center focusing on stay-at-home mothers."
+  },
+  {
+    "objectID": "slides/index.html#simple-text-1",
+    "href": "slides/index.html#simple-text-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Simple Text",
+    "text": "Simple Text\n\nIn this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below."
+  },
+  {
+    "objectID": "slides/index.html#tables",
+    "href": "slides/index.html#tables",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Tables",
+    "text": "Tables\n\n\nEngage our verbal system — we read them like text.\nIdeal for scanning rows and columns to compare specific values.\nBest for mixed audiences — each person can locate their row or column of interest.\nHandle multiple units of measure better than graphs (e.g., percentages, currency, counts).\nPreserve exact figures for precision-focused communication.\n\n\n\n\n\n\n\n\n\n\nRegional Breakdown of Average Delivery Delays\n\n\n\nJan\nFeb\nMar\nApr\nMay\nJun\n\n\n\n\nNorth\n19\n23\n8\n6\n6\n16\n\n\nSouth-East\n20\n9\n22\n22\n24\n16\n\n\nSouth-West\n8\n22\n8\n12\n20\n17\n\n\nNorth-Central\n11\n15\n5\n11\n5\n7"
+  },
+  {
+    "objectID": "slides/index.html#designing-clear-effective-tables",
+    "href": "slides/index.html#designing-clear-effective-tables",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Designing Clear, Effective Tables",
+    "text": "Designing Clear, Effective Tables\nTables That Talk: Making Your Data Shine\n\n\nThe table design should be subtle—don’t let it distract.\nUse light borders or white space to separate rows and columns.\nAvoid heavy gridlines, bold shading, or intense colours.\nKeep fonts clean and consistent; emphasize only what matters (e.g., bold totals or key values).\nThe goal: data takes center stage, not the formatting."
+  },
+  {
+    "objectID": "slides/index.html#tables-that-talk-making-your-data-shine",
+    "href": "slides/index.html#tables-that-talk-making-your-data-shine",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Tables That Talk: Making Your Data Shine",
+    "text": "Tables That Talk: Making Your Data Shine\n\n\nThe table design should be subtle—don’t let it distract.\nUse light borders or white space to separate rows and columns.\nAvoid heavy gridlines, bold shading, or intense colours.\nKeep fonts clean and consistent; emphasize only what matters (e.g., bold totals or key values).\nThe goal: data takes center stage, not the formatting."
+  },
+  {
+    "objectID": "slides/index.html#heatmaps",
+    "href": "slides/index.html#heatmaps",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Heatmaps",
+    "text": "Heatmaps\n\nA heatmap transforms a table of numbers into a visual experience by using color to represent the size or intensity of values. Instead of relying solely on digits, it fills each cell with varying shades—making patterns, trends, and outliers instantly easier to spot."
+  },
+  {
+    "objectID": "slides/index.html#heatmaps-coloring-your-way-to-clarity",
+    "href": "slides/index.html#heatmaps-coloring-your-way-to-clarity",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Heatmaps: Coloring Your Way to Clarity",
+    "text": "Heatmaps: Coloring Your Way to Clarity\nA heatmap transforms a table of numbers into a visual experience by using color to represent the size or intensity of values. Instead of relying solely on digits, it fills each cell with varying shades—making patterns, trends, and outliers instantly easier to spot."
+  },
+  {
+    "objectID": "slides/index.html#coloring-your-way-to-clarity",
+    "href": "slides/index.html#coloring-your-way-to-clarity",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Coloring Your Way to Clarity",
+    "text": "Coloring Your Way to Clarity\n\nReduces cognitive load by turning numbers into visual cues.\nColor intensity helps the eye quickly identify patterns and outliers.\nIn a heatmap, darker (more saturated) colors indicate higher values.\nMakes it faster and easier to spot key data points—like the lowest (5) and highest (24) values.\nUnlike plain tables, visual cues guide attention to areas of interest without extra mental effort."
+  },
+  {
+    "objectID": "slides/index.html#graphs",
+    "href": "slides/index.html#graphs",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Graphs",
+    "text": "Graphs\n\nUnlike tables, graphs tap into our visual perception, allowing us to grasp patterns and insights much faster. A thoughtfully crafted graph often communicates key messages more quickly than even the best-designed table.\nThere are countless types of graphs. They are typically grouped into four main categories:\n\npoints\nlines\nbars\narea charts.\n\nThese core graph styles cover a wide range of everyday data visualization needs."
+  },
+  {
+    "objectID": "slides/index.html#points",
+    "href": "slides/index.html#points",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Points",
+    "text": "Points\nScatterplot\n\nA scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables.\nWhy Scatterplots Matter in Storytelling:\n\nReveal relationships: Scatterplots help uncover patterns, trends, and correlations that might otherwise remain hidden in raw data.\nSpot outliers: Unusual points stand out visually, making it easy to identify exceptions or anomalies worth further investigation.\nShow clusters: When data points form groups, it may hint at sub-categories or behaviors within the data.\nSupport evidence: In data-driven storytelling, scatterplots visually reinforce claims like “as X increases, Y decreases.”"
+  },
+  {
+    "objectID": "slides/index.html#colouring-your-way-to-clarity",
+    "href": "slides/index.html#colouring-your-way-to-clarity",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Colouring Your Way to Clarity",
+    "text": "Colouring Your Way to Clarity\n\n\nReduces cognitive load by turning numbers into visual cues.\nColor intensity helps the eye quickly identify patterns and outliers.\nIn a heatmap, darker (more saturated) colors indicate higher values.\nMakes it faster and easier to spot key data points—like the lowest (5) and highest (24) values.\nUnlike plain tables, visual cues guide attention to areas of interest without extra mental effort."
+  },
+  {
+    "objectID": "slides/index.html#carbon-majors",
+    "href": "slides/index.html#carbon-majors",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Carbon Majors",
+    "text": "Carbon Majors\n\nTo better understand scatterplot we will explore the historical emissions data from Carbon Majors.\n\nCarbon Majors is a database of historical production data from 122 of the world’s largest oil, gas, coal, and cement producers. This data is used to quantify the direct operational emissions and emissions from the combustion of marketed products that can be attributed to these entities. These entities include:\n\n\n75 Investor-owned Companies, 36 State-owned Companies, 11 Nation States, 82 Oil Producing Entities, 81 Gas Entities, 49 Coal Entities, 6 Cement Entities\n\n\nThe data spans back to 1854 and contains over 1.42 trillion tonnes of CO2 emissions covering 72% of global fossil fuel and cement emissions since the start of the Industrial Revolution in 1751."
+  },
+  {
+    "objectID": "slides/index.html#line-graph",
+    "href": "slides/index.html#line-graph",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Line Graph",
+    "text": "Line Graph\n\nLine graph can show a single series of data, two series of data, or multiple series.\nTo illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the NSF."
+  },
+  {
+    "objectID": "slides/index.html#type",
+    "href": "slides/index.html#type",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Type",
+    "text": "Type\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
+  },
+  {
+    "objectID": "slides/index.html#scatterplots",
+    "href": "slides/index.html#scatterplots",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nOil & GasBy DecadeState vs PrivateNNPC"
+  },
+  {
+    "objectID": "slides/index.html#no-longer-drowning",
+    "href": "slides/index.html#no-longer-drowning",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "No Longer Drowning",
+    "text": "No Longer Drowning\n\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions"
+  },
+  {
+    "objectID": "slides/index.html#line-graph-1",
+    "href": "slides/index.html#line-graph-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Line Graph",
+    "text": "Line Graph\nThe line graph can show a single series of data, two series of data, or multiple series, as illustrated\n\nSingleTwoMultiple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode 1PhD AwardsCode 2Depart. TotalCode 3By year\n\n\n\nphd_total &lt;-   phd_field |&gt;\n    group_by(broad_field) |&gt; \n    summarise(phd_total = sum(n_phds, na.rm = TRUE)) |&gt;\n    mutate(broad_field = fct_reorder(broad_field, phd_total)) |&gt; \n    ggplot(aes(phd_total, broad_field)) +\n    geom_col() +\n    scale_x_continuous(labels = scales::comma_format()) +\n    labs(title = \"PhD Awarded from 2008 to 2017 in the USA\",\n       x = \"Number of PhD\",\n       y = \"Field/Faulty\",\n       caption = \"Data: NSF • Viz: Ifeoma Egbogah\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndepart_total &lt;- phd_field |&gt; \n  group_by(broad_field, major_field) |&gt; \n  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = \"drop\") |&gt;\n  mutate(major_field = fct_reorder(major_field, phd_total)) |&gt; \n  ggplot(aes(phd_total, major_field)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  labs(x = \"Number of PhD\",\n       y = \"Department\",\n       title = \"Total Number of PhDs Awarded by Departments from 2008 to 2017\",\n        caption = \"Data: NSF • Viz: Ifeoma Egbogah\")"
+  },
+  {
+    "objectID": "slides/index.html#phds-awards",
+    "href": "slides/index.html#phds-awards",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "PhDs Awards",
+    "text": "PhDs Awards\n\nLine graph can show a single series of data, two series of data, or multiple series. To illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the NSF.\n\n\nSingleTwoMultiple"
+  },
+  {
+    "objectID": "slides/index.html#lines",
+    "href": "slides/index.html#lines",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Lines",
+    "text": "Lines\nLine Graph"
+  },
+  {
+    "objectID": "slides/index.html#olympic-medals",
+    "href": "slides/index.html#olympic-medals",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Olympic Medals",
+    "text": "Olympic Medals"
+  },
+  {
+    "objectID": "slides/index.html#irelands-olympic-medals",
+    "href": "slides/index.html#irelands-olympic-medals",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Ireland’s Olympic Medals",
+    "text": "Ireland’s Olympic Medals"
+  },
+  {
+    "objectID": "slides/index.html#slopegraph",
+    "href": "slides/index.html#slopegraph",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Slopegraph",
+    "text": "Slopegraph\n\nSlopegraph is a hybrid of a line graph and a time series as it only compares two values, connected by a line, with a continuous date axis.\nSlopegraphs are powerful visual tools that convey a wealth of information at a glance. Not only do the points show actual values, but the connecting lines instantly reveal upward or downward trends—visually communicating changes over time. Without needing to define concepts like “rate of change,” the slope naturally tells the story, making the data intuitive and easy to interpret."
+  },
+  {
+    "objectID": "slides/index.html#caution-small-differences-appear-more-dramatic",
+    "href": "slides/index.html#caution-small-differences-appear-more-dramatic",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Caution: Small differences appear more dramatic",
+    "text": "Caution: Small differences appear more dramatic\n\nMisleadingCorrected"
+  },
+  {
+    "objectID": "slides/index.html#what-line-graphs-show",
+    "href": "slides/index.html#what-line-graphs-show",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "What Line Graphs Show:",
+    "text": "What Line Graphs Show:\n\nTrends – Are values increasing, decreasing, or remaining stable?\nFluctuations – Are there spikes or dips over time?\nComparisons – How do different categories or groups evolve across time?"
+  },
+  {
+    "objectID": "slides/index.html#points-small-dots-big-insights",
+    "href": "slides/index.html#points-small-dots-big-insights",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Points: Small Dots, Big Insights",
+    "text": "Points: Small Dots, Big Insights\n\nPoint plots use individual dots to represent data values. Simple but powerful, they are excellent for highlighting individual observations or comparing values across categories with precision.\nWhy Use Point Plots?\n\nShow exact values clearly: Each dot represents a data point, making it easy to compare and spot differences.\nReduce clutter: Point plots can present data more cleanly than bar charts, especially when working with many categories or limited space.\nHighlight outliers: Unusual or extreme values stand out visually."
+  },
+  {
+    "objectID": "slides/index.html#scatterplot",
+    "href": "slides/index.html#scatterplot",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Scatterplot",
+    "text": "Scatterplot\n\nA scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables.\nWhy Scatterplots Matter in Storytelling:\n\nReveal relationships: Scatterplots help uncover patterns, trends, and correlations that might otherwise remain hidden in raw data.\nSpot outliers: Unusual points stand out visually, making it easy to identify exceptions or anomalies worth further investigation.\nShow clusters: When data points form groups, it may hint at sub-categories or behaviors within the data.\nSupport evidence: In data-driven storytelling, scatterplots visually reinforce claims like “as X increases, Y decreases.”"
+  },
+  {
+    "objectID": "slides/index.html#carbon-majors-1",
+    "href": "slides/index.html#carbon-majors-1",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Carbon Majors",
+    "text": "Carbon Majors\n\nOil & GasBy DecadeState vs PrivateNNPC"
+  },
+  {
+    "objectID": "slides/index.html#lines-connecting-the-dots-of-change",
+    "href": "slides/index.html#lines-connecting-the-dots-of-change",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Lines: Connecting the Dots of Change",
+    "text": "Lines: Connecting the Dots of Change\n\nA line graph is one of the most effective tools for visualizing how something changes over time. It connects individual data points with a line, allowing us to quickly see trends, shifts, and patterns.\nWhat Line Graphs Show:\n\nTrends – Are values increasing, decreasing, or remaining stable?\nFluctuations – Are there spikes or dips over time?\nComparisons – How do different categories or groups evolve across time?"
+  },
+  {
+    "objectID": "slides/index.html#irelands-oympic-success-story",
+    "href": "slides/index.html#irelands-oympic-success-story",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Ireland’s Oympic Success Story",
+    "text": "Ireland’s Oympic Success Story"
+  },
+  {
+    "objectID": "slides/index.html#irelands-olympic-success-story",
+    "href": "slides/index.html#irelands-olympic-success-story",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Ireland’s Olympic Success Story",
+    "text": "Ireland’s Olympic Success Story"
+  },
+  {
+    "objectID": "slides/index.html#phd-awards",
+    "href": "slides/index.html#phd-awards",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "PhD Awards",
+    "text": "PhD Awards\n\nSingle SeriesDouble SeriesMultiple Series"
+  },
+  {
+    "objectID": "slides/index.html#phd-awards-decline-stability-and-surge",
+    "href": "slides/index.html#phd-awards-decline-stability-and-surge",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "PhD Awards: Decline, Stability, and Surge",
+    "text": "PhD Awards: Decline, Stability, and Surge\n\nDecade of transition\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# A tibble: 40 × 7\n   field                      reference today field_today field_ref change trend\n   &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;\n 1 Anatomy                         20.9     9 Anatomy     Anatomy   -11.9  Stab…\n 2 Bacteriology                    22.7    13 Bacteriolo… Bacterio…  -9.67 Stab…\n 3 Biochemistry (biological …     840     815 Biochemist… Biochemi… -25    &lt;NA&gt; \n 4 Bioinformatics                 161.    183 Bioinforma… Bioinfor…  22.2  Smal…\n 5 Biological and biomedical…     270.    391 Biological… Biologic… 121.   Smal…\n 6 Biological and biomedical…      85.1   112 Biological… Biologic…  26.9  Smal…\n 7 Biomedical sciences            346.    341 Biomedical… Biomedic…  -5.44 Stab…\n 8 Biometrics and biostatist…     150.    216 Biometrics… Biometri…  65.6  Smal…\n 9 Biophysics (biological sc…     181     208 Biophysics… Biophysi…  27    Smal…\n10 Biotechnology                   36.1    33 Biotechnol… Biotechn…  -3.11 Stab…\n# ℹ 30 more rows"
   }
 ]

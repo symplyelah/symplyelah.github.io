@@ -14,6 +14,8 @@ editor_options:
 
 ## Story: “Too Many Reports, Not Enough Direction”
 
+<div style = "font-size:0.75em;">
+
 Let me tell you about Amina.
 
 She worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns… 
@@ -25,7 +27,7 @@ But something was wrong.
 Despite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.
 
 Until one day, she decided to stop sending spreadsheets and start telling stories with the data.
-
+</div>
 ## 
 
 ```{r}
@@ -37,6 +39,7 @@ library(ggtext)
 library(patchwork)
 library(ggalt)
 library(gt)
+library(ggrepel)
 
 theme_set(theme_minimal())
 
@@ -300,6 +303,7 @@ customer_survey |>
 
 ## No Longer Drowning
 
+<div style = "font-size:0.75em;">
 -   Humans process visuals 60,000x faster than text
 
 -   Visuals simplify complex data
@@ -307,25 +311,31 @@ customer_survey |>
 -   Helps identify trends, outliers, and patterns
 
 -   Supports data-driven decisions
+</div>
 
 # Data {.inverse}
 
 ## What is Data?
 
+<div style = "font-size:0.75em;">
 Data refers to **raw facts, figures,** and **statistics** that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.
-
+</div>
 
 ### Key Characteristics of Data:
 
+<div style = "font-size:0.75em;">
 -   **Raw**: Unprocessed and unorganized
 
 -   **Factual:** Based on real-world events, measurements, or records
+</div>
 
 ## Data Types
 
 ### **Numerical** or **Quantitative Data**
 
+<div style = "font-size:0.75em;">
 Numerical (or Quantitative) data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.
+</div>
 
 :::: columns
 ::: {.column width="100%"} 
@@ -368,20 +378,23 @@ Numerical (or Quantitative) data refers to data that represents measurable quant
 ## Data Types Contd.
 
 ### Key Features of Numerical Data:
+
+<div style = "font-size:0.75em;">
 - Can be compared, ordered, added, or averaged
 
 - Suitable for mathematical and statistical analysis
 
 - Often visualized using bar charts, histograms, line graphs, or scatter plots
-
+</div>
 
 
 ## Data Types Contd.
 
 ### **Categorical** or **Qualitative Data**
 
+<div style = "font-size:0.75em;">
 Categorical (or Qualitative) data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.
-
+</div>
 
 :::: columns
 ::: {.column width="100%"}
@@ -395,6 +408,8 @@ Categorical (or Qualitative) data refers to data that describes qualities or cha
 ## Data Types Contd.
 
 ### Key Feature of Categorical Data:
+
+<div style = "font-size:0.75em;">
 - Descriptive rather than numerical
 
 - Used to classify or group data
@@ -404,13 +419,17 @@ Categorical (or Qualitative) data refers to data that describes qualities or cha
 - Can be visualized using bar charts, pie charts, or tables
 
 
+</div>
 
 ## Choosing the appropriate graph(s) for the data
 
+<div style = "font-size:0.75em;">
 So before any visualisation always consider:
 
 - Discrete & continuous quantities
-- Categeories
+- Categories
+
+</div>
 
 # Effective Visualization Techniques {.inverse}
 
@@ -435,8 +454,9 @@ To illustrate, the figure below appeared in an April 2014 report by the Pew Rese
 
 ## Simple Text
 
+<div style = "font-size:0.75em;">
 In this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below.
-
+</div>
 
 :::: columns
 ::: {.column width="100%"}
@@ -525,6 +545,7 @@ logistics_data |>
 
 ## Colouring Your Way to Clarity
 
+<div style = "font-size:0.75em;">
 * Reduces cognitive load by turning numbers into visual cues.
 
 * Color intensity helps the eye quickly identify patterns and outliers.
@@ -534,6 +555,7 @@ logistics_data |>
 * Makes it faster and easier to spot key data points—like the lowest (5) and highest (24) values.
 
 * Unlike plain tables, visual cues guide attention to areas of interest without extra mental effort.
+</div>
 
 ## Graphs
 
@@ -554,13 +576,25 @@ typically grouped into four main categories:
 These core graph styles cover a wide range of everyday data visualization needs.
 </div>
 
-## Points
-### Scatterplot
+## Points: Small Dots, Big Insights
+
+<div style = "font-size: 0.75em;">
+Point plots use individual dots to represent data values. Simple but powerful, they are excellent for highlighting individual observations or comparing values across categories with precision.
+
+### Why Use Point Plots?
+* Show exact values clearly: Each dot represents a data point, making it easy to compare and spot differences.
+
+* Reduce clutter: Point plots can present data more cleanly than bar charts, especially when working with many categories or limited space. 
+
+* Highlight outliers: Unusual or extreme values stand out visually.
+</div>
+
+## Scatterplot
 
 <div style = "font-size: 0.75em;">
 A scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables. 
 
-#### Why Scatterplots Matter in Storytelling:
+### Why Scatterplots Matter in Storytelling:
 
 * Reveal relationships: Scatterplots help uncover patterns, trends, and correlations that might otherwise remain hidden in raw data.
 
@@ -590,7 +624,7 @@ emissions <- read_csv('data/emissions.csv')
 
 ```
 
-## Scatterplots
+## Carbon Majors
 
 :::: panel-tabset
 
@@ -668,22 +702,33 @@ emissions |>
 
 
 
-## Lines
-### Line Graph
+## Lines: Connecting the Dots of Change
 
-## Olympic Medals
+<div style = "font-size:0.75em;">
+A line graph is one of the most effective tools for visualizing how something changes over time. It connects individual data points with a line, allowing us to quickly see trends, shifts, and patterns.
+
+### What Line Graphs Show:
+* Trends – Are values increasing, decreasing, or remaining stable?
+
+* Fluctuations – Are there spikes or dips over time?
+
+* Comparisons – How do different categories or groups evolve across time?
+
+</div>
+
+## Ireland's Oympic Success Story
 
 :::: columns
 ::: {.column width="100%"}
 
 <div style="text-align: center;">
-  <img src="images/ireland.png" width="50%">
+  <img src="images/ireland.png" width="65%">
 </div>
 
 :::
 ::::
 
-## Ireland's Olympic Medals
+## Ireland's Olympic Success Story
 
 :::: columns
 ::: {.column width="100%"}
@@ -751,8 +796,10 @@ ireland |>
   labs(x = "Year",
        y = "Rank",
        title = "Ireland's Olympic Success Story") +
-  theme(axis.title.y = element_text(hjust = 0.9),
-        axis.title.x = element_text(hjust = 0.5))
+  theme(axis.title.y = element_text(hjust = 0.9, size = 13),
+        axis.title.x = element_text(hjust = 0.5, size = 13),
+        axis.text = element_text(size = 13),
+        plot.title = element_text(size = 16))
   
 
 ```
@@ -761,16 +808,19 @@ ireland |>
 :::
 ::::
 
-
-## PhDs Awards
+## Line Graph
 
 <div style = "font-size: 0.75em;">
-Line graph can show a single series of data, two series of data, or multiple series. To illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
+Line graph can show a single series of data, two series of data, or multiple series. 
+
+To illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
 </div>
+
+## PhD Awards
 
 :::: panel-tabset
 
-### Single
+### Single Series
 
 ```{r}
 
@@ -779,7 +829,7 @@ phd_field |>
   group_by(year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
+  geom_line(aes(year, total), size = 1.2, colour = "#ECB939FF") +
   geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
   scale_y_continuous(limits = c(0, 22500)) +
@@ -790,7 +840,7 @@ phd_field |>
 
 ```
 
-### Two
+### Double Series
 
 ```{r}
 
@@ -800,73 +850,80 @@ phd_field |>
   group_by(year, broad_field) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_line(aes(year, total, colour = broad_field), size = 1.2) +
-  geom_point(aes(year, total, colour = broad_field), size = 2) +
+  geom_line(aes(year, total, colour = broad_field), size = 1.2, show.legend = FALSE) +
+  geom_point(aes(year, total, colour = broad_field), size = 2, show.legend = FALSE) +
+  geom_text(data = phd_field |> 
+              filter(year == 2017,broad_field %in% c("Life sciences", "Engineering")) |> 
+              group_by(year, broad_field) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)), 
+            aes(year, total, label = broad_field, colour = broad_field), nudge_y = 450, nudge_x = 0.2, show.legend = FALSE) +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
-  scale_y_continuous(limits = c(0, 22500)) +
+  scale_y_continuous(limits = c(0, 23000), labels = scales::comma_format()) +
   scale_colour_got_d(option = "greyjoy") +
   labs(x = "Year",
-       y = "Total PhD Awards",
+       y = "PhD Awards",
        colour = "Faculty",
-       title = "Total PhD Awards in Life Sciences and Engineering (2008–2017)") +
-  theme(axis.title.y = element_text(hjust = 0.9))
+       title = "PhD Awards in <span style = 'color:#ECB939FF;'>Life Sciences</span> and  <span style = 'color:#372E29FF;'>Engineering</span> (2008–2017)") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        plot.title = element_textbox())
 
-    
 ```
 
-### Multiple
+### Multiple Series
 
 ```{r}
 
-
 phd_field |> 
-  group_by(year, broad_field) |> 
+  filter(broad_field == "Life sciences") |> 
+  group_by(major_field, year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
-  ggplot() +
-  geom_line(data = phd_field |>
-              filter(broad_field == "Life sciences") |> 
-              group_by(year) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(year, total), colour = "#ECB939FF", size = 1.2) +
+  ggplot(aes(year, total, group = major_field)) +
+  geom_line(linewidth = 1.2, colour = "#372E29FF") +
+  geom_point(size = 2, colour = "#372E29FF") +
   
-   geom_point(data = phd_field |>
-              filter(broad_field == "Life sciences") |> 
-              group_by(year) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(year, total), colour = "#ECB939FF", size = 2) +
-  
-   geom_text(data = phd_field |>
-              filter(broad_field == "Life sciences", year == 2017) |> 
-              group_by(year, broad_field) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(year, total, label = broad_field), colour = "#ECB939FF", nudge_y = 350) +
-  
-  geom_line(data = phd_field |>
-              filter(broad_field != "Life sciences") |> 
-              group_by(year, broad_field) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(year, total, group = broad_field), colour = "#372E29FF", size = 1.2, show.legend = FALSE) +
-
-  geom_point(data = phd_field |>
-              filter(broad_field != "Life sciences") |> 
-              group_by(year, broad_field) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(year, total, group = broad_field), colour = "#372E29FF", size = 2, show.legend = FALSE) +
-
-  geom_text(data = phd_field |> 
-              filter(year == 2017, broad_field != "Life sciences") |> 
-              group_by(year, broad_field) |> 
+  geom_text_repel(data = phd_field |> 
+              filter(year == 2017, broad_field == "Life sciences", major_field != "Health sciences") |> 
+              group_by(year, major_field) |> 
               summarise(total = sum(n_phds, na.rm = TRUE)), 
-            aes(year, total, label = broad_field), nudge_y = 450, nudge_x = 0.2) +
+            aes(2017, total, label = str_wrap(major_field, width = 20)), size = 3, hjust = 0,  xlim = c(2017.5, NA), direction = "y", max.overlaps = 20,  segment.size = .3, segment.alpha = .33,     segment.curvature = .05, segment.ncp = 3, segment.angle = 10, box.padding = .2,) +
   
-  scale_x_continuous(breaks = seq(2008, 2022, 1)) +
-  scale_y_continuous(limits = c(0, 22500), labels = scales::comma_format()) +
+  geom_line(data = phd_field |> 
+              filter(broad_field == "Life sciences") |> 
+              group_by(major_field, year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)) |>
+              filter(major_field == "Health sciences"),
+            linewidth = 1.2, colour = "#ECB939FF") +
+  
+  geom_point(data = phd_field |> 
+              filter(broad_field == "Life sciences") |> 
+              group_by(major_field, year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)) |>
+              filter(major_field == "Health sciences"),
+              colour = "#ECB939FF", size = 2) +
+  
+  geom_text_repel(data = phd_field |> 
+              filter(year == 2017, broad_field == "Life sciences") |> 
+              group_by(major_field, year) |> 
+              summarise(total = sum(n_phds, na.rm = TRUE)) |>
+              filter(major_field == "Health sciences"),
+            aes(label = major_field),
+              colour = "#ECB939FF", size = 3, hjust = -0.55,  xlim = c(2017.5, NA), direction = "y", segment.size = .5, segment.alpha = .33,  segment.curvature = .10, segment.ncp = 3, segment.angle = 10, box.padding = .2,  nudge_y = 655) +
+  
+  
+  scale_x_continuous(breaks = seq(2008, 2017, 1), expand = expansion(mult = c(0, 0.2))) +
+  scale_y_continuous(limits = c(0, 10000), labels = scales::comma_format()) +
+  coord_cartesian(clip = "off") +
   theme_minimal() +
   labs(x = "Year",
-       y = "Total PhD Awards",
+       y = "# of PhD Awards",
        colour = "Faculty",
-       title = "Total PhD Awards from 2008 to 2017)") +
-  theme(axis.title.y = element_text(hjust = 0.9))
+       title = "Tracking PhD Awards Across Life Sciences (2008–2017)",
+       subtitle = "Between 2008 and 2017, PhD awards in the life sciences showed an overall upward trend, though growth varied across disciplines. Biological and biomedical sciences consistently produced the highest number of PhDs, maintaining their lead throughout the decade. However, <span style = 'color:#ECB939FF;'>health sciences</span> experienced the most significant growth, with numbers rising sharply from 2012 and nearly surpassing chemistry and geosciences by 2017. Meanwhile, fields like physics, chemistry, and geosciences saw steady but moderate increases in PhD awards. Agricultural sciences remained the least awarded field, growing slowly but consistently. Overall, the data suggests a gradual shift toward health-focused research within the life sciences, alongside enduring strength in traditional core fields.") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        plot.subtitle = element_textbox_simple(size = 8))
+
+
+
 
 
 ```
@@ -875,6 +932,9 @@ phd_field |>
 
 ## Caution: Small differences appear more dramatic
 
+::: panel-tabset
+
+## Misleading
 ```{r}
 
 phd_field |> 
@@ -882,7 +942,8 @@ phd_field |>
   group_by(year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_line(aes(year, total), size = 1.8, colour = "#372E29FF") +
+  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
+  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
   labs(x = "Year",
        y = "Total PhD Awards",
@@ -891,114 +952,230 @@ phd_field |>
 ```
 
 
+## Corrected
+```{r}
+
+phd_field |> 
+  filter(broad_field == "Life sciences") |> 
+  group_by(year) |> 
+  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
+  ggplot() +
+  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
+  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
+  
+  scale_x_continuous(breaks = seq(2008, 2017, 1)) +
+  scale_y_continuous(limits = c(0, 22500), labels = scales::comma_format()) +
+  labs(x = "Year",
+       y = "Total PhD Awards",
+       title = "PhD Awards in Life Sciences (2008–2017)")
+
+
+
+```
+
+:::
+
 ## Slopegraph
 
-<div style = "font-size = 0.75em;">
-Slopegraphs can be useful when you have two time periods or points of comparison and want to quickly show relative increases and decreases or differences across various categories between the two data points.
+<div style = "font-size:0.75em;">
+Slopegraph is a hybrid of a line graph and a time series as it only compares two values, connected by a line, with a continuous date axis.
+
+Slopegraphs are powerful visual tools that convey a wealth of information at a glance. Not only do the points show actual values, but the connecting lines instantly reveal upward or downward trends—visually communicating changes over time. Without needing to define concepts like “rate of change,” the slope naturally tells the story, making the data intuitive and easy to interpret.
 </div>
+
+## PhD Awards: Decline, Stability, and Surge
 
 :::: panel-tabset
 
-### Code 1
+### Decade of transition
 
+
+```{r  fig.height=14, fig.width=10}
+
+top_10 <- phd_field |> 
+  filter(major_field == "Biological and biomedical sciences", year == 2017) |> 
+  arrange(desc(n_phds)) |> 
+  slice_max(n_phds, n = 10) |> 
+  pull(field)
+
+
+
+phd_gap <- phd_field |>
+  filter(major_field == "Biological and biomedical sciences") |> 
+  filter(year == 2017 | year == min(year)) |> 
+  pivot_wider(id_cols = c(field),
+              names_from = year,
+              values_from = n_phds,
+              names_prefix = "gap_") |>
+  drop_na() |> 
+   pivot_longer(cols = -c(field, gap_2017),
+               names_to = "year_ref",
+               values_to = "gap_ref",
+               names_prefix = "gap_") |> 
+   mutate( year_ref = as.numeric(year_ref),
+           change = gap_2017 - gap_ref,
+           trend = case_when(
+           change < -20 ~ "Smaller Award Gap",
+           change > 20 ~ "Larger Award Gap",
+           TRUE ~ "Stable Award Gap"),
+          trend = factor(trend, levels = c("Larger Award Gap", "Stable Award Gap", "Smaller Award Gap")),
+          field_lab = glue::glue("{field} ({change})")) |> 
+   filter(field %in% top_10)
+
+phd_gap |> 
+  ggplot(aes(year_ref, gap_ref, colour = trend)) +
+  geom_point(size = 2) +
+  geom_point(aes(2017, gap_2017, colour = trend, size = change), shape = 1, stroke = .6, show.legend = FALSE) +
+  geom_segment(
+    data = filter(phd_gap, trend == "Smaller Award Gap"),
+    aes(xend = 2016.8, yend = gap_2017), size = .8,
+    arrow = arrow(type = "closed", length = unit(1.3, "mm"))
+  ) +
+  
+  geom_segment(
+     data = filter(phd_gap, trend %in% c("Larger Award Gap", "Stable Award Gap")),
+    aes(xend = 2016.8, yend = gap_2017), size = .8, 
+    arrow = arrow(type = "closed", length = unit(1.3, "mm"))
+  ) +
+  
+    geom_text_repel(data = phd_gap |> 
+                      filter(!field %in% c("Biological and biomedical sciences, general", "Genetics, genomics, human and animal")),
+                    aes(x = 2017.02, 
+                        y = gap_2017, 
+                        colour = trend, 
+                        label = field_lab), 
+                    size = 3, hjust = -0.35, xlim = c(2017.2, NA), 
+                    direction = "y", max.overlaps = 20,
+                    segment.size = .3, segment.alpha = .33,
+                    segment.curvature = .05, segment.ncp = 3, 
+                    segment.angle = 10, box.padding = .2, 
+                    show.legend = FALSE) +
+  
+  geom_text_repel(data = phd_gap |> 
+                      filter(field == "Genetics, genomics, human and animal"),
+                    aes(x = 2017, 
+                        y = gap_2017, 
+                        colour = trend, 
+                        label = field_lab), 
+                    size = 3, hjust = -0.15, xlim = c(2017, NA),                     direction = "y", max.overlaps = 20,
+                    segment.size = .3, segment.alpha = .33,
+                    segment.curvature = .05, segment.ncp = 3, 
+                    segment.angle = 10, box.padding = .2, 
+                  nudge_y = -50, show.legend = FALSE) +
+  
+   geom_text_repel(data = phd_gap |> 
+                      filter(field == "Biological and biomedical sciences, general"),
+                    aes(x = 2017.02, 
+                        y = gap_2017, 
+                        colour = trend, 
+                        label = field_lab), 
+                    size = 3, hjust = -0.15, xlim = c(2017.2, NA),                     direction = "y", max.overlaps = 20,
+                    segment.size = .3, segment.alpha = .33,
+                    segment.curvature = .05, segment.ncp = 3, 
+                    segment.angle = 10, box.padding = .2, 
+                  nudge_y = -20, show.legend = FALSE) +
+  
+   annotate(geom = "segment",
+            x = 2007.5, 
+            xend = 2017.5,
+            y = 1:1000*250, 
+            yend = 1:1000*250,
+            color = "grey80", 
+            linetype = "42", 
+            size = .3
+  ) +
+  
+  annotate(geom = "segment",
+           x = 2007.5, 
+           xend = 2017.5, 
+           y = 0, 
+           yend = 0,
+           color = "grey80", 
+           size = .6
+  ) +
+  
+  annotate(geom = "segment",
+           x = 2007.5, 
+           xend = 2017.5, 
+           y = 1000, 
+           yend = 1000,
+           color = "grey80", 
+           size = .6
+  ) +
+  
+   annotate(geom = "text",
+            x = 2007.5, 
+            y = 1:1000*250,
+            label = 1:1000*250,
+            hjust = 0, 
+            vjust = 1.2, 
+            color = "grey30", 
+            size = 4) +
+  
+   coord_cartesian(clip = "off") +
+   scale_x_continuous(expand = expansion(mult = c(0, 0.5)), breaks = c(2008, 2017), position = "top")+
+   scale_y_continuous(limits = c(0, 1000)) +
+   scale_color_got_d(option = "tully") +
+   scale_size_area(max_size = 7.5) +
+  labs(title = "A Decade of Transition: How the Top Biological Science Fields Are Shifting",
+       subtitle = "Even within the most popular subfields of biological sciences, the landscape is shifting. Fields that once dominated in PhD production are now declining, while others like neuroscience are gaining momentum. This may reflect changes in research funding, perceived career prospects, technological advancement, or the relevance of these fields to societal challenges.",
+       y= " ",
+       x = " ",
+       colour = " ") +
+   theme(legend.position.inside = c(0.73, 0.15),
+         legend.position = "inside",
+         plot.subtitle = element_textbox_simple(),
+         plot.title = element_text(size = 16),
+          panel.grid = element_blank(),
+         axis.ticks.length.x = unit(.4, "lines"),
+         axis.ticks.x.top = element_line(color = "grey80", size = .6),
+         axis.text.y = element_blank(),
+         axis.text.x.top = element_text(color = "grey30"))
+
+
+ 
+      
+  
+  # caption = "Data: NSF • Viz: Ifeoma Egbogah")
+
+```
+
+
+###
 
 ```{r}
 
 phd_field |>
-  filter(year %in% c(2008, 2017)) |> 
-  group_by(broad_field, year) |> 
-  summarise(total = sum(n_phds, na.rm = TRUE)) |> 
-  ggplot(aes(year, total, group = broad_field)) +
-  geom_line() +
-  geom_text(data = phd_field |>
-              filter(year %in% c(2008)) |> 
-              group_by(broad_field, year) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(label = total)) +
-  geom_text(data = phd_field |>
-              filter(year %in% c(2017)) |> 
-              group_by(broad_field, year) |> 
-              summarise(total = sum(n_phds, na.rm = TRUE)),
-            aes(label = total)) +
-  scale_x_continuous(breaks = c(2008, 2017)) 
-    labs(title = "PhD Awarded from 2008 to 2017 in the USA",
-       x = "Number of PhD",
-       y = "Field/Faulty",
-       caption = "Data: NSF • Viz: Ifeoma Egbogah")
-
-```
-
-### PhD Awards
-
-
-```{r}
-
+  filter(major_field == "Biological and biomedical sciences") |> 
+  filter(year == 2017 | year <= 2016) %>%
+  mutate(period = if_else(year == 2017, "today", "reference"),
+         gap = n_phds) |> 
+  group_by(field, period) |> 
+  summarise(gap = mean(gap, na.rm = TRUE), .groups = "drop") |> 
+  pivot_wider(id_cols = c(field),
+              names_from = period,
+              values_from = gap) |>  
+  mutate(field_today = fct_reorder(field, today),
+         field_ref = fct_reorder(field, reference),
+         change = today - reference,
+         trend = case_when(
+           change < -20 ~ "Larger Award Gap",
+           change > 20 ~ "Smaller Award gap",
+           TRUE ~ "Stable Award gap"),
+          trend = factor(trend, levels = c("Larger Award gap", "Stable Award gap", "Smaller Award gap"))) 
 
 
 ```
-
-
-### Code 2
-
-```{r}
-#| echo: true
-
-depart_total <- phd_field |> 
-  group_by(broad_field, major_field) |> 
-  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
-  mutate(major_field = fct_reorder(major_field, phd_total)) |> 
-  ggplot(aes(phd_total, major_field)) +
-  geom_col() +
-  scale_x_continuous(labels = scales::comma_format()) +
-  labs(x = "Number of PhD",
-       y = "Department",
-       title = "Total Number of PhDs Awarded by Departments from 2008 to 2017",
-        caption = "Data: NSF • Viz: Ifeoma Egbogah")
-
-
-```
-
-### Depart. Total
-
-```{r}
-
-depart_total
-
-```
-
-### Code 3
-```{r}
-
-phd_by_year <- phd_field |> 
- # filter(year %in% seq(2008, 2010, 1)) |> 
-  group_by(major_field, year) |> 
-  summarise(phd_total = sum(n_phds, na.rm = TRUE), .groups = "drop") |>
-  mutate(major_field = fct_reorder(major_field, phd_total)) |> 
-  ggplot(aes(phd_total, major_field)) +
-  geom_lollipop(horizontal = TRUE, point.size = 2) +
-  facet_wrap(~year, nrow = 2) +
-  labs(x = "Award Total",
-       y = "Department",
-       title = "PhD Departmental Awards by Year",
-       caption = "Data: NSF • Viz: Ifeoma Egbogah")
-  
-
-
-```
-
-
-### By year
-
-```{r}
-phd_by_year
-```
-
 
 :::
 
+
+## Bars
+
+
 ## Type
 
-
+<div style = "font-size:0.75em;">
 | Chart Type   | Best For                     |
 |--------------|------------------------------|
 | Line Chart   | Trends over time             |
@@ -1008,6 +1185,8 @@ phd_by_year
 | Dashboard    | Monitoring KPIs in real-time |
 
 *Tip:* Choose simplicity and clarity over complexity.
+
+</div>
 
 
 # Bridging the Gap Between Data and Decisions {.inverse}
