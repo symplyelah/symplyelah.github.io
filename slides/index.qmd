@@ -135,10 +135,14 @@ logistics_data |>
 
 ```
 
+## XYZ Logistics
 
-```{r}
-#| echo: false
-ld <- logistics_data |> 
+::: panel-tabset
+
+### Customer Compliant
+```{r  fig.height=5, fig.width=10}
+
+logistics_data |> 
   mutate(region = str_replace(region, "-", " "),
          region = fct_reorder(region, customer_complaints)) |> 
   group_by(region) |> 
@@ -165,10 +169,11 @@ ld <- logistics_data |>
 ```
 
 
+### Monthly Trend
 
-``` {r}
-#| echo: false
-ld1 <- logistics_data |> 
+``` {r  fig.height=6.5, fig.width=13}
+
+logistics_data |> 
   mutate(region = str_replace(region, "-", " "),
          region = fct_reorder(region, customer_complaints)) |> 
   ggplot(aes(date, customer_complaints, group = region)) +
@@ -211,41 +216,10 @@ ld1 <- logistics_data |>
 ```
 
 
-## XYZ Logistics
-
-::: panel-tabset
-
-### Customer Compliant
-```{r}
-
-#| echo: false
-
-
-ld 
-
-```
-
-
-### Monthly Trend
-
-```{r fig.width=10}
-
-#| echo: false
-
-
-
-ld1
-
-```
-:::
-
-## XYZ Logistics
-
-::: panel-tabset
-
 ### Returns
-```{r}
-#| echo: false
+
+```{r fig.height=5.7, fig.width=10}
+
 
 logistics_data |> 
   mutate(region = str_replace(region, "-", " "),
@@ -268,9 +242,8 @@ logistics_data |>
 
 
 ### Customer Survey
-```{r}
-#| echo: false
 
+```{r}
 
 customer_survey |> 
   mutate(likert_scale = factor(likert_scale, levels = c("Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"))) |> 
@@ -297,6 +270,7 @@ customer_survey |>
   
 
 ```
+
 :::
 
 # Why Data Visualization Matters {.inverse}
@@ -811,7 +785,13 @@ ireland |>
 ## Line Graph
 
 <div style = "font-size: 0.75em;">
-Line graph can show a single series of data, two series of data, or multiple series. 
+Line graph can show:
+
+* a single series of data,
+
+* two series of data, or 
+
+* multiple series. 
 
 To illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the [NSF](https://ncses.nsf.gov/pubs/nsf19301/data). 
 </div>
@@ -983,14 +963,15 @@ Slopegraph is a hybrid of a line graph and a time series as it only compares two
 Slopegraphs are powerful visual tools that convey a wealth of information at a glance. Not only do the points show actual values, but the connecting lines instantly reveal upward or downward trends—visually communicating changes over time. Without needing to define concepts like “rate of change,” the slope naturally tells the story, making the data intuitive and easy to interpret.
 </div>
 
+
 ## PhD Awards: Decline, Stability, and Surge
 
-:::: panel-tabset
+::: panel-tabset
 
 ### Decade of transition
 
 
-```{r  fig.height=14, fig.width=10}
+```{r  fig.height=5, fig.width=10}
 
 top_10 <- phd_field |> 
   filter(major_field == "Biological and biomedical sciences", year == 2017) |> 
@@ -1172,6 +1153,88 @@ phd_field |>
 
 ## Bars
 
+<div style = "font-size:0.75em;">
+Bar graphs are among the most familiar and versatile tools in data visualization. They excel at showing comparisons across categories, making them ideal for answering questions like **“Which is the highest?”**, **“Which is the lowest?”**, or **“How do these groups stack up against each other?”**
+
+This makes it easy for the viewer to scan and compare values visually—especially when the bars are arranged in a logical or meaningful order, such as descending size or alphabetical sequence.
+
+</div>
+
+## Bush Tax Cuts
+
+<div style = "font-size:0.75em;">
+Back in the fall of 2012, there was growing uncertainty about the future of the Bush-era tax cuts. A key concern was what would happen if they were allowed to expire. At that time, the top marginal tax rate stood at 35%. However, if the cuts were not extended, it was set to rise to 39.6% starting January 1.
+
+</div>
+
+:::: columns
+::: {.column width="100%"}
+<div style="text-align: center;">
+  <img src="images/usa.jpg" width="60%">
+</div>
+:::
+::::
+
+## Bars: Why Zero Matters
+
+<div style = "font-size:0.75em;">
+In fact, the way this is graphed, the visual increase is 460% (the heights of the bars are 35 – 34 = 1 and 39.6 – 34 = 5.6, so (5.6 – 1) / 1 = 460%). If we graph the bars with a zero baseline so that the heights are accurately represented (35 and 39.6), we get an actual visual increase of 13% ((39.6 – 35) / 35). 
+
+</div>
+
+```{r}
+
+tax <- tibble(year = c("Now", "Jan 1, 2013"),
+       tax_cut = c(0.35, 0.396))
+
+t1 <- tax |> 
+  mutate(year = factor(year, levels = c("Now", "Jan 1, 2013"))) |> 
+  ggplot(aes(year, tax_cut)) +
+  geom_col() +
+  geom_text(aes(label = glue::glue("{tax_cut*100}%")), fontface = "bold", nudge_y = 0.005, colour = "grey30") +
+  coord_cartesian(ylim = c(0.34, 0.40)) +
+  scale_y_continuous(position = "right", labels = scales::percent_format()) +
+  labs(x = " ",
+       y = " ",
+       title = "Non-zero Baseline",
+       subtitle = "If Bush Tax Cut Expires")
+
+
+t2 <- tax |> 
+  mutate(year = factor(year, levels = c("Now", "Jan 1, 2013"))) |> 
+  ggplot(aes(year, tax_cut)) +
+  geom_col() +
+  geom_text(aes(label = glue::glue("{tax_cut*100}%")), nudge_y = -0.05, colour = "white", fontface = "bold") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = " ",
+       y = " ",
+       title = "Zero Baseline",
+       subtitle = "If Bush Tax Cut Expires")
+
+
+t1 + t2
+
+```
+
+
+# Rule #1 {.inverse} 
+Bar charts must have a zero baseline. Misleading by inaccurately visualizing data is not OK. 
+
+## The Bar Graph Family
+
+<div style = "font-size:0.75em;">
+Bar graph also lend themselves well to variations like:
+
+* Vertical bar chart
+
+* Stacked vertical bar chart
+
+* Waterfall
+
+* Horizontal bar charts
+
+* Stacked horizontal bar charts
+</div>
 
 ## Type
 
