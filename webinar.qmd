@@ -6,4 +6,4 @@ title: Webinar
 
 Click on the links below for details on how to join, the schedule, and the instructors.
 
-- [Summer 2025, Zoom](webinar/index.qmd)
+- [Summer 2025, Zoom](webinar/summer-2025.qmd)
