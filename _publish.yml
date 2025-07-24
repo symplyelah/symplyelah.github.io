@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 03bea7b8-7aef-43e0-bd3e-427d3d026c63
+      url: https://jade-churros-23a8d7.netlify.app

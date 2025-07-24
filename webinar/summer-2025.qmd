@@ -7,7 +7,7 @@ author: Ifeoma Egbogah
 
 # Slides
 
-Here's a link to the [slides](slides/index.qmd){target="_blank"} in a new window.
+Here's a link to the [slides](slides/index.html){target="_blank"} in a new window.
 
 Here are the slides embedded:
 
