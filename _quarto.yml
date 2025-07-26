@@ -5,7 +5,7 @@ execute:
   freeze: auto
 
 website:
-  title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
+  title: "IfyE Data Talks"
   navbar:
     right:
       - text: "Webinar"
