@@ -40,18 +40,11 @@ Florence Nightingale rose to prominence during the Crimean War (1853–1856), wh
 Nightingale was also a skilled statistician. She used data and pioneering infographics—such as the coxcomb diagram (a type of pie chart)—to demonstrate the impact of sanitation on health. Her visual presentation of data helped persuade the British government and public of the need for healthcare reform.
 </div>
 :::: columns
-::: {.column width="50%"} 
+::: {.column width="100%"} 
 
-<div style="text-align: left;">
+<div style="text-align: center;">
   <img src="images/night.jpg" width="60%">
 </div>
-
-::: {.column width="50%"}
-
-<div style="text-align: right;">
-  <img src="images/mortality.jpg" width="60%">
-</div>
-
 
 :::
 ::::
