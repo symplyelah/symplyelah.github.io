@@ -14,6 +14,20 @@
     "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom\nR ladies Abuja, Zoom"
   },
   {
+    "objectID": "webinar/rladiesabuja.html",
+    "href": "webinar/rladiesabuja.html",
+    "title": "Topic Modeling:Turning Conversations into Strategy",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "webinar/rladiesabuja.html#r-packages",
+    "href": "webinar/rladiesabuja.html#r-packages",
+    "title": "Topic Modeling:Turning Conversations into Strategy",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\n‘tidytext’:Silge, Julia, and David Robinson. 2016. “tidytext: Text Mining and Analysis Using Tidy Data Principles in r.” JOSS 1 (3). https://doi.org/10.21105/joss.00037."
+  },
+  {
     "objectID": "slides/index.html#story-too-many-reports-not-enough-direction",
     "href": "slides/index.html#story-too-many-reports-not-enough-direction",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
@@ -296,9 +310,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "title": "Ify’s Data Talk",
     "section": "",
-    "text": "Google Meet"
+    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
   },
   {
     "objectID": "index.html#join",
@@ -341,62 +355,6 @@
     "title": "Prerequisites",
     "section": "R and RStudio",
     "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
-  },
-  {
-    "objectID": "webinar/summer-2025.html",
-    "href": "webinar/summer-2025.html",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Google Meet"
-  },
-  {
-    "objectID": "webinar/summer-2025.html#r-packages",
-    "href": "webinar/summer-2025.html#r-packages",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "R packages",
-    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "webinar/summer-2025.html#join",
-    "href": "webinar/summer-2025.html#join",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Google Meet"
-  },
-  {
-    "objectID": "webinar/summer-2025.html#speaker",
-    "href": "webinar/summer-2025.html#speaker",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Speaker",
-    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM]🏨  Google Meet\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message.\n\n\n\nSlides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:\n\n\n\nCitations and data\n\nR packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "webinar/summer-2025.html#is-this-webinar-for-me",
-    "href": "webinar/summer-2025.html#is-this-webinar-for-me",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Is this webinar for me?",
-    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html",
-    "href": "slides/rladiesabuja.html",
-    "title": "Topic Modelling",
-    "section": "",
-    "text": "Topic Modeling"
-  },
-  {
-    "objectID": "webinar/rladiesabuja.html",
-    "href": "webinar/rladiesabuja.html",
-    "title": "Topic Modeling",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "webinar/rladiesabuja.html#r-packages",
-    "href": "webinar/rladiesabuja.html#r-packages",
-    "title": "Topic Modeling",
-    "section": "R packages",
-    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\n‘tidytext’:Julie Slige"
   },
   {
     "objectID": "slides/rladiesabuja.html#from-numbers-to-words",
@@ -462,6 +420,13 @@
     "text": "Step 5\nInterprete and Visualise the Result\n\n\nExtract top keywords per topic.\nLabel the topics manually (e.g., “Customer Service Issues” or “Product Features”).\nVisualize using tools like:ggplot2` package"
   },
   {
+    "objectID": "slides/rladiesabuja.html#step-6",
+    "href": "slides/rladiesabuja.html#step-6",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 6",
+    "text": "Step 6\nApply Result\n\nSummarize the result, identify customer pain points, track emerging trends etc"
+  },
+  {
     "objectID": "slides/rladiesabuja.html#packages-1",
     "href": "slides/rladiesabuja.html#packages-1",
     "title": "Topic Modeling: Turning Conversations into Strategy",
@@ -469,17 +434,45 @@
     "text": "Packages\n\nWe will make use of the following packages\ntidyverse tidytext topicmodels tm"
   },
   {
-    "objectID": "slides/rladiesabuja.html#apply-result",
-    "href": "slides/rladiesabuja.html#apply-result",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Apply Result",
-    "text": "Apply Result\n\nSummarize the result, identify customer pain points, track emerging trends etc\n\nPackages\n\n\n\nPackages\n\nWe will make use of the following packages\ntidyverse tidytext topicmodels tm\n\n\n\n\nDemo"
+    "objectID": "webinar/summer-2025.html",
+    "href": "webinar/summer-2025.html",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Google Meet"
   },
   {
-    "objectID": "slides/rladiesabuja.html#step-6",
-    "href": "slides/rladiesabuja.html#step-6",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 6",
-    "text": "Step 6\nApply Result\n\nSummarize the result, identify customer pain points, track emerging trends etc"
+    "objectID": "webinar/summer-2025.html#join",
+    "href": "webinar/summer-2025.html#join",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Google Meet"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#speaker",
+    "href": "webinar/summer-2025.html#speaker",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Speaker",
+    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n📆  July 26, 2025⏰ 10:00AM🏨  Google Meet\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message.\n\n\n\nSlides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:\n\n\n\nCitations and data\n\nR packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#is-this-webinar-for-me",
+    "href": "webinar/summer-2025.html#is-this-webinar-for-me",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Is this webinar for me?",
+    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "webinar/summer-2025.html#r-packages",
+    "href": "webinar/summer-2025.html#r-packages",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Ify’s Data Talk",
+    "section": "",
+    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
   }
 ]

@@ -1,6 +1,6 @@
 ---
-title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
-subtitle: "IEEE Nigeria Southeast Subsection"
+title: "Ify's Data Corner"
+author: Ifeoma Egbogah
 format:
   html:
     include-in-header: 
@@ -14,57 +14,39 @@ format:
     link-external-newwindow: true
 ---
 
-
-## Join
-
-[Google Meet](https:/meet.google.com/jyn-ftyj-cdz){.btn .btn-primary target="_blank"}
-
-## Speaker
-
 :::: columns
-::: {.column width="85%"}
-![](./images/ifeoma.jpg){width="30%"} 
+::: {.column width="40%"}
 
-#### [Ifeoma Egbogah](https://ifeoma-egbogah.netlify.app/) 
+<div style="text-align: left;">
+![](./images/ifeoma.jpg){width="90%"} 
+</div>
+:::
+::: {.column width="60%"}
 
-:::{.smaller80}
-Lead Data Scientist
+<div style="text-align: right; font-size:0.95em;">
 
-[Zelah Ltd](https://www.zelahexports.com/)
+## 👋 Welcome!
 
-<i class="fa fa-envelope"></i> [negbogah@gmail.com](mailto:negbogah@gmail.com)
+I'm **Ifeoma Egbogah** — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.
+
+This site is a hub for my **data-focused talks, workshops, and presentations**. Whether you're a student, professional, or simply curious about data, you'll find practical insights, downloadable slides, and real-world examples to support your journey.
+
+I believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.
+
+Take a look around, explore my latest sessions, and feel free to reach out if you'd like to connect or collaborate!
+</div>
+
 :::
 
 ::::
 
-------------------------------------------------------------------------
 
-[📆  July 26, 2025]
-
-[⏰  10:00AM]
-
-[🏨  Google Meet](https:/meet.google.com/jyn-ftyj-cdz)
-
-------------------------------------------------------------------------
-
-# Webinar Overview
-
-In today’s world, data is everywhere—but data alone doesn’t drive decisions. It's
-
-Communicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you're a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.
-
-## Is this webinar for me?
-
-This webinar is ideal for you if you:
-
--   want to master the art of presenting data through clear, impactful visualizations;
-
--   are looking to enhance your design skills to create visuals that are both effective and informative; and
-
--   are ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message.
 
 ::: {align="center"}
+<div style="text-align: center;">
 <a href="https://ifeoma-egbogah.netlify.app/blog/"><img src="https://assets.dryicons.com/uploads/icon/svg/4926/home.svg" alt="Blog" border="0" width="35" height="35"/></a>  <a href="mailto:negbogah@gmail.com"><img src="https://assets.dryicons.com/uploads/icon/svg/8009/02dc3a5c-6504-4347-85fb-3f510cfecc45.svg" alt="Email" border="0" width="35" height="35"/></a>  <a href="https://twitter.com/negbogah"><img src="https://assets.dryicons.com/uploads/icon/svg/8385/c23f7ffc-ca8d-4246-8978-ce9f6d5bcc99.svg" alt="Twitter" border="0" width="35" height="35"/></a>  <a href="https://www.instagram.com/ifyegbogah/"><img src="https://assets.dryicons.com/uploads/icon/svg/8330/62263227-bb78-4b42-a9a9-e222e0cc7b97.svg" alt="Instagram" border="0" width="35" height="35"/></a>  <a href="https://www.linkedin.com/in/ifeoma-egbogah-a88527110/"><img src="https://assets.dryicons.com/uploads/icon/svg/8337/a347cd89-1662-4421-be90-58e5e8004eae.svg" alt="LinkedIn" border="0" width="35" height="35"/></a>   <a href="https://www.buymeacoffee.com/z3tt" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Buy Me A Coffee" style="height: 35px !important;width: 122px !important;"/></a>
+
+</div>
 :::
 
 
