@@ -1,0 +1,163 @@
+---
+title: "Topic Modeling: Turning Conversations into Strategy"
+subtitle: "R Ladies Abuja"
+author: Ifeoma Egbogah
+format: 
+  rladies-revealjs
+incremental: false
+embed-resources: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# The Rise of Unstructured Data {.inverse}
+
+## From Numbers to Words
+
+<div style = "font-size:0.85em;">
+If you're in the field of analytics or data science, you're likely well aware that data is being produced continuously—and at an increasingly rapid pace. (You might even be tired of hearing this repeated!) While analysts are typically trained to work with structured, numeric data in table formats, a significant portion of today’s data boom involves unstructured, text-based information.
+
+>Unstructured data represents 80-90% of all new enterprise data, according to Gartner.
+
+Furthermore, it’s growing three times faster than structured data. 
+
+</div>
+
+# Behind the Words {.inverse}
+## Overview
+
+In this webinar, we will look at:
+
+* Understanding Topic Modeling
+* Importance of Topi Modeling
+* Topic Modeling Techniques
+* Implementation of Topic Modeling
+* Demo
+
+# Understanding Topic Modeling {.inverse}
+## What is Topic Modeling?
+
+<div style = "font-size:0.85em;">
+Topic modeling is way to identify themes/semantic patterns in a corpus (complete document).
+
+Topic modeling finds the relationships between words in the text, thereby identifying clusters of words that represent topics. 
+
+It is a like an amplified reading, a way to discover themes you may not see yourself.
+
+### Glossary:
+
+*Corpus:* Group of documents
+*Documents:* Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc.
+</div>
+
+# Importance of Topic Modeling {.inverse}
+##
+
+# Topic Modeling Techniques {.inverse}
+## Latent Dirichlet Allocation (LDA)
+
+:::: columns
+::: {.column width=100%}
+
+<div style="text-align: center;">
+![](./images/lda.png){width="90%"}
+ <p style="font-size:0.35em;">Source: Introduction to Probabilistic Topic Models paper by Blei et. al</p>
+</div>
+
+:::
+::::
+
+<div style = "font-size:0.70em;">
+Latent Dirichlet allocation is one of the most common algorithms for topic modeling. It is guided by two principles, that:
+
+* Every document is a mixture of topics
+* Every topic is a mixture of words
+</div>
+
+# Implementation of Topic Modeling {.inverse}
+## Step 1
+### Data  Preparation
+<div style = "font-size:0.85em;">
+Collect the text data
+</div>
+
+## Step 2
+### Preprocessing
+<div style = "font-size:0.85em;">
+Before modeling, we preprocess the data to put in it in a tidy format by:
+
+* Tokenization (splitting sentences into words)
+
+* Removing punctuation, numbers 
+
+* Removing stop words (like the, and, is)
+
+* Find document-word counts
+</div>
+
+## Step 3
+### Create Document-term Matrix
+
+<div style = "font-size:0.85em;">
+A matrix that represents the frequency of each word (term) across all documents.
+
+We can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext’s `cast_dtm()`.
+
+*Rows = documents; Columns = terms/words.*
+
+</div>
+
+## Step 4
+### Model Fitting
+
+<div style = "font-size:0.85em;">
+We can then use the `LDA()` function from the `topicmodels` package to create a topic model.
+</div>
+
+## Step 5
+### Interprete and Visualise the Result
+
+<div style = "font-size:0.85em;">
+* Extract top keywords per topic.
+
+* Label the topics manually (e.g., “Customer Service Issues” or “Product Features”).
+
+* Visualize using `tools like: `ggplot2` package
+
+</div>
+
+## Step 6
+### Apply Result
+
+<div style = "font-size:0.85em;">
+Summarize the result, identify customer pain points, track emerging trends etc
+
+</div>
+
+# Packages {.inverse}
+
+## Packages
+<div style = "font-size:0.85em;">
+We will make use of the following packages
+
+`tidyverse`
+`tidytext`
+`topicmodels`
+`tm`
+
+</div>
+
+
+
+# Demo {.inverse}
+
+```{r}
+
+library(tidyverse)
+library(tidytext)
+library(topicmodels)
+library(tm)
+
+
+```
+

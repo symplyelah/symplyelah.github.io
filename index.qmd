@@ -14,6 +14,7 @@ format:
     link-external-newwindow: true
 ---
 
+
 ## Join
 
 [Google Meet](https:/meet.google.com/jyn-ftyj-cdz){.btn .btn-primary target="_blank"}
@@ -42,7 +43,7 @@ Lead Data Scientist
 
 [⏰  10:00AM]
 
-[🏨  Google Meet] (https:/meet.google.com/jyn-ftyj-cdz)
+[🏨  Google Meet](https:/meet.google.com/jyn-ftyj-cdz)
 
 ------------------------------------------------------------------------
 

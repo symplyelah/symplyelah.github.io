@@ -4,70 +4,14 @@
     "href": "webinar.html",
     "title": "Webinar",
     "section": "",
-    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom"
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom\nR ladies Abuja, Zoom"
   },
   {
     "objectID": "webinar.html#upcoming-workshops",
     "href": "webinar.html#upcoming-workshops",
     "title": "Webinar",
     "section": "",
-    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom"
-  },
-  {
-    "objectID": "walmart.html",
-    "href": "walmart.html",
-    "title": "Untitled",
-    "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(tidytext)\n\ntheme_set(theme_light())\n\nwal_train &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/train/train.csv\")\n\nRows: 4617600 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (3): store_nbr, item_nbr, units\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nkey &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/key/key.csv\")\n\nRows: 45 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): store_nbr, station_nbr\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nweather &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/weather/weather.csv\")\n\nRows: 20517 Columns: 20\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (18): tmax, tmin, tavg, depart, dewpoint, wetbulb, heat, cool, sunrise,...\ndbl   (1): station_nbr\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nwal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  count(year)\n\n# A tibble: 3 × 2\n   year       n\n  &lt;dbl&gt;   &lt;int&gt;\n1  2012 1806303\n2  2013 1559439\n3  2014 1251858\n\nwal_2012 &lt;- wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(year == 2012)\n\nwal_2012 |&gt;\n  group_by(store_nbr) |&gt;\n  summarise(total = sum(units)) |&gt;\n  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train |&gt;\n  group_by(store_nbr) |&gt;\n  summarise(total = sum(units)) |&gt;\n  mutate(store_nbr = fct_reorder(factor(store_nbr), total)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_x_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  group_by(store_nbr, year) |&gt;\n  summarise(total = sum(units), .groups = \"drop\") |&gt;\n  mutate(store_nbr = reorder_within(factor(store_nbr), total, year)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  facet_wrap(~year, scales = \"free\")\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date),\n         month = month(date, label = TRUE)) |&gt;\n  group_by(store_nbr, year, month) |&gt;\n  summarise(total = sum(units), .groups = \"drop\") |&gt;\n  mutate(store_nbr = reorder_within(factor(store_nbr), total, month)) |&gt; \n  ggplot(aes(total, store_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_continuous(labels = scales::comma_format()) +\n  facet_wrap(~month, scales = \"free_y\", nrow = 2)\n\n\n\n\n\n\n\n\n\nitems\n\nwal_train2 &lt;- wal_train |&gt; \n  mutate(store_nbr = factor(store_nbr),\n         item_nbr = factor(item_nbr),\n         year = year(date),\n         month = month(date, label = TRUE))\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units)) |&gt;\n  mutate(item_nbr = fct_reorder(item_nbr, total_item)) |&gt; \n  ggplot(aes(total_item, item_nbr)) +\n  geom_col() +\n  scale_x_log10() \n\n`summarise()` has grouped output by 'item_nbr'. You can override using the\n`.groups` argument.\n\n\nWarning in scale_x_log10(): log-10 transformation introduced infinite values.\n\n\nWarning: Removed 30 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt;\n  mutate(item_nbr = reorder_within(item_nbr, total_item, year)) |&gt; \n  ggplot(aes(total_item, item_nbr)) +\n  geom_col() +\n  scale_y_reordered() +\n  scale_x_log10() +\n  facet_wrap(~year, scales = \"free\")\n\nWarning in scale_x_log10(): log-10 transformation introduced infinite values.\nRemoved 30 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt;\n  ggplot() +\n  geom_line(aes(year, total_item, colour = item_nbr), show.legend = F) +\n  scale_x_continuous(labels = seq(2012, 2014, 1), breaks = seq(2012, 2014, 1)) +\n  scale_y_continuous(labels = scales::comma_format())\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  group_by(item_nbr, month, year) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt; \n  ggplot() +\n  geom_line(aes(month, total_item, colour = item_nbr, group = item_nbr), show.legend = F) +\n  scale_y_continuous(labels = scales::comma_format()) +\n  facet_wrap(~year)\n\n\n\n\n\n\n\nwal_train2 |&gt; \n  unite(col = \"date2\", month:year,  sep = \"-\", remove = FALSE) |&gt; \n  mutate(date2 = as.Date(paste0(\"01-\", date2), format = \"%d-%b-%Y\")) |&gt; \n  group_by(item_nbr, date2) |&gt; \n  summarise(total_item = sum(units), .groups = \"drop\") |&gt; \n  ggplot() +\n  geom_line(aes(date2, total_item, colour = item_nbr, group = item_nbr), show.legend = F) +\n  scale_x_date(guide = guide_axis(angle = 30), date_labels = \"%b-%Y\", date_breaks = \"1 month\") +\n  scale_y_continuous(labels = scales::comma_format()) \n\n\n\n\n\n\n\n\n\n# 2012 data\n\nweather_store &lt;- read_csv(\"C:/Users/dell/Desktop/walmart/weather_store.csv\")\n\nRows: 1806303 Columns: 24\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (18): tmax, tmin, tavg, depart, dewpoint, wetbulb, heat, cool, sunrise,...\ndbl   (5): store_nbr, item_nbr, units, year, station_nbr\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nwalmart &lt;-\n  wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0)|&gt; \n  left_join(key) |&gt; \n  left_join(weather) |&gt; \n  mutate(tavg2 = suppressWarnings(as.numeric(tavg)),\n         preciptotal = suppressWarnings(as.numeric(preciptotal))) |&gt;\n  filter(!is.na(tavg2))|&gt; \n  filter(!is.na(preciptotal))\n\nJoining with `by = join_by(store_nbr)`\nJoining with `by = join_by(date, station_nbr)`\n\nwalmart2 &lt;-\n  wal_train |&gt;\n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0)|&gt; \n  left_join(key) |&gt; \n  left_join(weather) |&gt; \n  mutate(tavg2 = suppressWarnings(as.numeric(tavg)),\n         preciptotal = suppressWarnings(as.numeric(preciptotal))) |&gt;\n  filter(!is.na(tavg2))|&gt; \n  filter(!is.na(preciptotal)) |&gt; \n  filter(!is.na(codesum)) |&gt;\n  separate_longer_delim(codesum, delim = \" \") |&gt; \n  mutate(codesum = str_extract_all(codesum, \".{2}\")) |&gt;\n  unnest(codesum)\n\nJoining with `by = join_by(store_nbr)`\nJoining with `by = join_by(date, station_nbr)`\n\nwalmart2 |&gt; \n  filter(units &lt; 2000) |&gt;\n  ggplot(aes(units)) +\n  geom_histogram() \n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n  scale_x_log10()\n\n&lt;ScaleContinuousPosition&gt;\n Range:  \n Limits:    0 --    1\n\nwalmart |&gt;  \n  filter(units &lt; 2000) |&gt; \n  group_by(store_nbr) |&gt; \n  ggplot(aes(tavg2, units)) +\n  geom_point() +\n  facet_wrap(~store_nbr,  scales = \"free_y\")\n\n\n\n\n\n\n\nwalmart |&gt; \n  filter(units &lt; 2000) |&gt; \n  group_by(store_nbr) |&gt; \n  ggplot(aes(preciptotal, units)) +\n  geom_point() +\n  facet_wrap(~store_nbr,  scales = \"free_y\")\n\n\n\n\n\n\n\n\n\n\nsummary statistics of active inventory performance.\n\nwal_train |&gt; \n  filter(units &gt; 0 & units &lt;2000) |&gt;  \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  coord_flip() +\n  guides(x = guide_axis(angle = 90))\n\n\n\n\n\n\n\nwal_train |&gt; \n  filter(units &gt; 0) |&gt;  \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  mutate(store = glue::glue(\"Store {store_nbr}\")) |&gt; \n  group_by(store) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_wrap(~store,  scales = \"free\", nrow = 1) +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\") +\n  theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))\n\n\n\n\n\n\n\nwal_train |&gt; \n  mutate(year = year(date)) |&gt;\n  filter(units &gt; 0) |&gt; \n  filter(store_nbr %in% seq(1, 5, 1)) |&gt; \n  group_by(store_nbr, year) |&gt; \n  ggplot(aes(units, factor(item_nbr))) +\n geom_boxplot(outlier.shape = 16, outlier.size = 1.5, fill = \"#f8f8f8\", color = \"#88398A\") +\n  facet_grid(rows = vars(year), cols = vars(store_nbr), scales = \"free_y\") +\n  labs(title = \"Distribution of Units Sold by Item across Stores 1 to 5\",\n       y = \"Item Number\",\n       x = \"Units Sold\") +\n  #theme_minimal() + \n  theme(plot.title = element_text(colour = \"#562457\", face = \"bold\", hjust = 0.5),\n        strip.text = element_text(face = \"bold\"), \n        axis.text.y = element_text(size = 6))"
-  },
-  {
-    "objectID": "prerequisites.html",
-    "href": "prerequisites.html",
-    "title": "Prerequisites",
-    "section": "",
-    "text": "Last updated: May 16th, 2025"
-  },
-  {
-    "objectID": "prerequisites.html#prior-knowledge",
-    "href": "prerequisites.html#prior-knowledge",
-    "title": "Prerequisites",
-    "section": "Prior knowledge",
-    "text": "Prior knowledge\nWe do not assume any prior knowledge of R pacakge development, but basic knowledge of R is expected. In particular, participants should be confident writing functions. Some experience with RStudio is beneficial."
-  },
-  {
-    "objectID": "prerequisites.html#r-and-rstudio",
-    "href": "prerequisites.html#r-and-rstudio",
-    "title": "Prerequisites",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Google Meet"
-  },
-  {
-    "objectID": "index.html#join",
-    "href": "index.html#join",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Google Meet"
-  },
-  {
-    "objectID": "index.html#speaker",
-    "href": "index.html#speaker",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Speaker",
-    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM][🏨  Google Meet] (https:/meet.google.com/jyn-ftyj-cdz)\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
-  },
-  {
-    "objectID": "index.html#is-this-webinar-for-me",
-    "href": "index.html#is-this-webinar-for-me",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Is this webinar for me?",
-    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nSummer 2025, Zoom\nR ladies Abuja, Zoom"
   },
   {
     "objectID": "slides/index.html#story-too-many-reports-not-enough-direction",
@@ -77,18 +21,11 @@
     "text": "Story: “Too Many Reports, Not Enough Direction”\nThe Lady with the Lamp\n\n\n\nFlorence Nightingale was a pioneering English nurse, statistician, and social reformer, best known for transforming the field of nursing and laying the foundation for modern healthcare systems. Born on May 12, 1820, in Florence, Italy (hence her name), she grew up in a wealthy British family that valued education.\nFlorence Nightingale rose to prominence during the Crimean War (1853–1856), where she led a team of nurses to care for wounded British soldiers. She found military hospitals in horrifying conditions—unsanitary, overcrowded, and disease-ridden. Through meticulous organization, hygiene practices, and compassion, she drastically reduced the death rate from 42% to 2%."
   },
   {
-    "objectID": "slides/index.html#section",
-    "href": "slides/index.html#section",
+    "objectID": "slides/index.html#nightingales-rose-diagramcoxcomb",
+    "href": "slides/index.html#nightingales-rose-diagramcoxcomb",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Let me tell you about Amina.\nShe worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns…\nAll of it collected diligently by the operations team.\nBut something was wrong.\nDespite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.\nUntil one day, she decided to stop sending spreadsheets and start telling stories with the data."
-  },
-  {
-    "objectID": "slides/index.html#xyz-logistics",
-    "href": "slides/index.html#xyz-logistics",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "XYZ Logistics",
-    "text": "XYZ Logistics\n\n\n\nXYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28"
+    "section": "Nightingale’s Rose Diagram/Coxcomb",
+    "text": "Nightingale’s Rose Diagram/Coxcomb\n\nNightingale was also a skilled statistician. She used data and pioneering infographics—such as the coxcomb diagram (a type of pie chart)—to demonstrate the impact of sanitation on health. Her visual presentation of data helped persuade the British government and public of the need for healthcare reform.\n\n\n\n\n\n\n\n\n\n\n\nWhy Data Visualization Matters\n\n\n\nNo Longer Drowning\n\n\nHumans process visuals 60,000x faster than text\nVisuals simplify complex data\nHelps identify trends, outliers, and patterns\nSupports data-driven decisions\n\n\n\n\nData\n\n\n\nWhat is Data?\n\nData refers to raw facts, figures, and statistics that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.\n\nKey Characteristics of Data:\n\n\nRaw: Unprocessed and unorganized\nFactual: Based on real-world events, measurements, or records\n\n\n\n\nData Types\nNumerical or Quantitative Data\n\nNumerical (or Quantitative) data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.\n\n\n\n\n\n\nArt by Allison Horst\n\n\n\n\n\nData Types Contd.\nNumerical or Quantitative Data\n\n\n\n\n\n\n\n\n\n\nContinuous Data\nDiscrete Data\n\n\n\n\nData that can take any value within a range.\nData that can take only specific, separate values.\n\n\nUsually measured (can include decimals/fractions).\nUsually countable (no decimals)\n\n\nExamples:\n\nHeight of a person (e.g., 1.75 meters)\nTemperature (e.g., 36.6°C)\nSales revenue (e.g., ₦1,254,500.75)\n\nExamples:\n\nNumber of employees in a company (e.g., 15, 23, 50)\nNumber of students in a classroom\nNumber of cars sold in a day\n\n\n\n\n\n\n\n\nData Types Contd.\nKey Features of Numerical Data:\n\n\nCan be compared, ordered, added, or averaged\nSuitable for mathematical and statistical analysis\nOften visualized using bar charts, histograms, line graphs, or scatter plots\n\n\n\n\nData Types Contd.\nCategorical or Qualitative Data\n\nCategorical (or Qualitative) data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.\n\n\n\n\n\n\nArt by Allison Horst\n\n\n\n\n\nData Types Contd.\nKey Feature of Categorical Data:\n\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, or tables\n\n\n\n\nChoosing the appropriate graph(s) for the data\n\nSo before any visualisation always consider:\n\nDiscrete & continuous quantities\nCategories\n\n\n\n\nBridging the Gap Between Data and Decisions\n\n\n\nMind the Gap\nProblem: Data is abundant, but insights are scarce.\nSolution: Visualization bridges the gap between raw data and strategic action.\nOutcome: Simplifies storytelling and supports real-time decisions.\n\n\nWhat is R and Why Use It?\n\n\n\nR\n\nR was started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland.\nThe name of the language, R, comes from the shared first letter of the authors, Ross and Robert.\nR is a free and open-source statistical language.\n\nData Analysis: Summarizing and exploring data (e.g., averages, trends)\nData Visualization: Bar charts, line graphs, heatmaps, dashboards\nStatistical Modeling: Linear regression, ANOVA, clustering\nMachine Learning: Classification, prediction, and recommendation systems\nData Wrangling: Cleaning, reshaping, and merging data sets\nReporting: Reproducible reports with R Markdown or Quarto\n\nThe R community hosts many conferences and in-person meetups.\n\n\n\nTools That Use R\n\n\nRStudio: The most popular IDE (Integrated Development Environment) for writing and running R code.\nQuarto / R Markdown: For creating dynamic documents and presentations with embedded R code.\nShiny: For building interactive web applications in R.\n\nR = Data + Code + Visualization + Statistics, all in one.\n\n\n\nEffective Visualization Techniques\n\n\n\nSimple Text\n\nWhen you’re dealing with just one or two figures, using plain text can often be the most effective way to share them.\nTo illustrate, the figure below appeared in an April 2014 report by the Pew Research Center focusing on stay-at-home mothers.\n\n\n\n\n\n\nStorytelling with Data by Cole Knaflic\n\n\n\n\n\nSimple Text\n\nIn this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below.\n\n\n\n\n\n\nStorytelling with Data by Cole Knaflic\n\n\n\n\n\nTables\n\n\nEngage our verbal system — we read them like text.\nIdeal for scanning rows and columns to compare specific values.\nBest for mixed audiences — each person can locate their row or column of interest.\nHandle multiple units of measure better than graphs (e.g., percentages, currency, counts).\nPreserve exact figures for precision-focused communication.\n\n\n\n\n\n\n\n\n\n\nRegional Breakdown of Average Delivery Delays\n\n\n\nJan\nFeb\nMar\nApr\nMay\nJun\n\n\n\n\nNorth\n19\n23\n8\n6\n6\n16\n\n\nSouth-East\n20\n9\n22\n22\n24\n16\n\n\nSouth-West\n8\n22\n8\n12\n20\n17\n\n\nNorth-Central\n11\n15\n5\n11\n5\n7\n\n\n\n\n\n\n\n\n\nTables That Talk: Making Your Data Shine\n\n\nThe table design should be subtle—don’t let it distract.\nUse light borders or white space to separate rows and columns.\nAvoid heavy gridlines, bold shading, or intense colours.\nKeep fonts clean and consistent; emphasize only what matters (e.g., bold totals or key values).\nThe goal: data takes center stage, not the formatting.\n\n\n\n\n\n\n\n\n\n\nHeatmaps\n\nA heatmap transforms a table of numbers into a visual experience by using color to represent the size or intensity of values. Instead of relying solely on digits, it fills each cell with varying shades—making patterns, trends, and outliers instantly easier to spot.\n\n\n\n\nColouring Your Way to Clarity\n\n\nReduces cognitive load by turning numbers into visual cues.\nColor intensity helps the eye quickly identify patterns and outliers.\nIn a heatmap, darker (more saturated) colors indicate higher values.\nMakes it faster and easier to spot key data points—like the lowest (5) and highest (24) values.\nUnlike plain tables, visual cues guide attention to areas of interest without extra mental effort.\n\n\n\n\nGraphs\n\nUnlike tables, graphs tap into our visual perception, allowing us to grasp patterns and insights much faster. A thoughtfully crafted graph often communicates key messages more quickly than even the best-designed table.\nThere are countless types of graphs. They are typically grouped into four main categories:\n\npoints\nlines\nbars\narea charts.\n\nThese core graph styles cover a wide range of everyday data visualization needs.\n\n\n\nPoints: Small Dots, Big Insights\n\nPoint plots use individual dots to represent data values. Simple but powerful, they are excellent for highlighting individual observations or comparing values across categories with precision.\nWhy Use Point Plots?\n\nShow exact values clearly: Each dot represents a data point, making it easy to compare and spot differences.\nReduce clutter: Point plots can present data more cleanly than bar charts, especially when working with many categories or limited space.\nHighlight outliers: Unusual or extreme values stand out visually.\n\n\n\n\nScatterplot\n\nA scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables.\nWhy Scatterplots Matter in Storytelling:\n\nReveal relationships: Scatterplots help uncover patterns, trends, and correlations that might otherwise remain hidden in raw data.\nSpot outliers: Unusual points stand out visually, making it easy to identify exceptions or anomalies worth further investigation.\nShow clusters: When data points form groups, it may hint at sub-categories or behaviors within the data.\nSupport evidence: In data-driven storytelling, scatterplots visually reinforce claims like “as X increases, Y decreases.”\n\n\n\n\nCarbon Majors\n\nTo better understand scatterplot we will explore the historical emissions data from Carbon Majors.\n\nCarbon Majors is a database of historical production data from 122 of the world’s largest oil, gas, coal, and cement producers. This data is used to quantify the direct operational emissions and emissions from the combustion of marketed products that can be attributed to these entities. These entities include:\n\n\n75 Investor-owned Companies, 36 State-owned Companies, 11 Nation States, 82 Oil Producing Entities, 81 Gas Entities, 49 Coal Entities, 6 Cement Entities\n\n\nThe data spans back to 1854 and contains over 1.42 trillion tonnes of CO2 emissions covering 72% of global fossil fuel and cement emissions since the start of the Industrial Revolution in 1751.\n\n\n\n\nCarbon Majors\n\nOil & GasBy DecadeState vs PrivateNNPC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLines: Connecting the Dots of Change\n\nA line graph is one of the most effective tools for visualizing how something changes over time. It connects individual data points with a line, allowing us to quickly see trends, shifts, and patterns.\nWhat Line Graphs Show:\n\nTrends – Are values increasing, decreasing, or remaining stable?\nFluctuations – Are there spikes or dips over time?\nComparisons – How do different categories or groups evolve across time?\n\n\n\n\nIreland’s Oympic Success Story\n\n\n\n\n\n\n\n\nIreland’s Olympic Success Story\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLine Graph\n\nLine graph can show:\n\na single series of data,\ntwo series of data, or\nmultiple series.\n\nTo illustrate we will use data collected by the US gov on all doctoral degree graduates every year. The data comes from the NSF.\n\n\n\nPhD Awards\n\nSingle SeriesDouble SeriesMultiple Series\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaution: Small differences appear more dramatic\n\nMisleadingCorrected\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSlopegraph\n\nSlopegraph is a hybrid of a line graph and a time series as it only compares two values, connected by a line, with a continuous date axis.\nSlopegraphs are powerful visual tools that convey a wealth of information at a glance. Not only do the points show actual values, but the connecting lines instantly reveal upward or downward trends—visually communicating changes over time. Without needing to define concepts like “rate of change,” the slope naturally tells the story, making the data intuitive and easy to interpret.\n\n\n\nPhD Awards: Decline, Stability, and Surge\n\nDecade of transition\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# A tibble: 40 × 7\n   field                      reference today field_today field_ref change trend\n   &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;\n 1 Anatomy                         20.9     9 Anatomy     Anatomy   -11.9  Stab…\n 2 Bacteriology                    22.7    13 Bacteriolo… Bacterio…  -9.67 Stab…\n 3 Biochemistry (biological …     840     815 Biochemist… Biochemi… -25    &lt;NA&gt; \n 4 Bioinformatics                 161.    183 Bioinforma… Bioinfor…  22.2  Smal…\n 5 Biological and biomedical…     270.    391 Biological… Biologic… 121.   Smal…\n 6 Biological and biomedical…      85.1   112 Biological… Biologic…  26.9  Smal…\n 7 Biomedical sciences            346.    341 Biomedical… Biomedic…  -5.44 Stab…\n 8 Biometrics and biostatist…     150.    216 Biometrics… Biometri…  65.6  Smal…\n 9 Biophysics (biological sc…     181     208 Biophysics… Biophysi…  27    Smal…\n10 Biotechnology                   36.1    33 Biotechnol… Biotechn…  -3.11 Stab…\n# ℹ 30 more rows\n\n\n\n\n\n\n\nBars\n\nBar graphs are among the most familiar and versatile tools in data visualization. They excel at showing comparisons across categories, making them ideal for answering questions like “Which is the highest?”, “Which is the lowest?”, or “How do these groups stack up against each other?”\nThis makes it easy for the viewer to scan and compare values visually—especially when the bars are arranged in a logical or meaningful order, such as descending size or alphabetical sequence.\n\n\n\nBush Tax Cuts\n\nBack in the fall of 2012, there was growing uncertainty about the future of the Bush-era tax cuts. A key concern was what would happen if they were allowed to expire. At that time, the top marginal tax rate stood at 35%. However, if the cuts were not extended, it was set to rise to 39.6% starting January 1.\n\n\n\n\n\n\n\n\n\nBars: Why Zero Matters\n\nIn fact, the way this is graphed, the visual increase is 460% (the heights of the bars are 35 – 34 = 1 and 39.6 – 34 = 5.6, so (5.6 – 1) / 1 = 460%). If we graph the bars with a zero baseline so that the heights are accurately represented (35 and 39.6), we get an actual visual increase of 13% ((39.6 – 35) / 35).\n\n\n\n\nRule #1\nBar graphs must have a zero baseline. Misleading by inaccurately visualizing data is not OK.\n\n\nThe Bar Graph Family\n\nBar graph also lend themselves well to variations like:\n\nVertical bar graph\nStacked vertical bar graph\nWaterfall\nHorizontal bar graph\nStacked horizontal bar graph\n\nHaving a number of bar charts at your disposal gives you flexibility when facing different data visualization challenges.\n\n\n\nXYZ Logistics\n\n\n\nXYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28\n\n\n\n\n\n\n\n\n\nTypes of Bar Graph\n\nVert. BarStacked Vert. BarMultiple SeriesHort. BarStacked Hort. Bar\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArea\n\n\n\nIn Summary\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity.\n\n\n\nTHANK YOU"
   },
   {
     "objectID": "slides/index.html#no-longer-drowning",
@@ -137,7 +74,7 @@
     "href": "slides/index.html#data-types-contd.-3",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Data Types Contd.",
-    "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, pie charts, or tables"
+    "text": "Data Types Contd.\nKey Feature of Categorical Data:\n\n\nDescriptive rather than numerical\nUsed to classify or group data\nCannot be meaningfully added, subtracted, or averaged\nCan be visualized using bar charts, or tables"
   },
   {
     "objectID": "slides/index.html#choosing-the-appropriate-graphs-for-the-data",
@@ -145,6 +82,27 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Choosing the appropriate graph(s) for the data",
     "text": "Choosing the appropriate graph(s) for the data\n\nSo before any visualisation always consider:\n\nDiscrete & continuous quantities\nCategories"
+  },
+  {
+    "objectID": "slides/index.html#mind-the-gap",
+    "href": "slides/index.html#mind-the-gap",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Mind the Gap",
+    "text": "Mind the Gap\nProblem: Data is abundant, but insights are scarce.\nSolution: Visualization bridges the gap between raw data and strategic action.\nOutcome: Simplifies storytelling and supports real-time decisions."
+  },
+  {
+    "objectID": "slides/index.html#r",
+    "href": "slides/index.html#r",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "R",
+    "text": "R\n\nR was started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland.\nThe name of the language, R, comes from the shared first letter of the authors, Ross and Robert.\nR is a free and open-source statistical language.\n\nData Analysis: Summarizing and exploring data (e.g., averages, trends)\nData Visualization: Bar charts, line graphs, heatmaps, dashboards\nStatistical Modeling: Linear regression, ANOVA, clustering\nMachine Learning: Classification, prediction, and recommendation systems\nData Wrangling: Cleaning, reshaping, and merging data sets\nReporting: Reproducible reports with R Markdown or Quarto\n\nThe R community hosts many conferences and in-person meetups."
+  },
+  {
+    "objectID": "slides/index.html#tools-that-use-r",
+    "href": "slides/index.html#tools-that-use-r",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Tools That Use R",
+    "text": "Tools That Use R\n\n\nRStudio: The most popular IDE (Integrated Development Environment) for writing and running R code.\nQuarto / R Markdown: For creating dynamic documents and presentations with embedded R code.\nShiny: For building interactive web applications in R.\n\nR = Data + Code + Visualization + Statistics, all in one."
   },
   {
     "objectID": "slides/index.html#simple-text",
@@ -308,71 +266,8 @@
     "text": "The Bar Graph Family\n\nBar graph also lend themselves well to variations like:\n\nVertical bar graph\nStacked vertical bar graph\nWaterfall\nHorizontal bar graph\nStacked horizontal bar graph\n\nHaving a number of bar charts at your disposal gives you flexibility when facing different data visualization challenges."
   },
   {
-    "objectID": "slides/index.html#type",
-    "href": "slides/index.html#type",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Type",
-    "text": "Type\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
-  },
-  {
-    "objectID": "slides/index.html#mind-the-gap",
-    "href": "slides/index.html#mind-the-gap",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Mind the Gap",
-    "text": "Mind the Gap\nProblem: Data is abundant, but insights are scarce.\nSolution: Visualization bridges the gap between raw data and strategic action.\nOutcome: Simplifies storytelling and supports real-time decisions."
-  },
-  {
-    "objectID": "slides/index.html#r",
-    "href": "slides/index.html#r",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "R",
-    "text": "R\n\nR was started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland.\nThe name of the language, R, comes from the shared first letter of the authors, Ross and Robert.\nR is a free and open-source statistical language.\n\nData Analysis: Summarizing and exploring data (e.g., averages, trends)\nData Visualization: Bar charts, line graphs, heatmaps, dashboards\nStatistical Modeling: Linear regression, ANOVA, clustering\nMachine Learning: Classification, prediction, and recommendation systems\nData Wrangling: Cleaning, reshaping, and merging data sets\nReporting: Reproducible reports with R Markdown or Quarto\n\nThe R community hosts many conferences and in-person meetups."
-  },
-  {
-    "objectID": "slides/index.html#data-visualization",
-    "href": "slides/index.html#data-visualization",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Data Visualization",
-    "text": "Data Visualization"
-  },
-  {
-    "objectID": "webinar/summer-2025.html",
-    "href": "webinar/summer-2025.html",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "webinar/summer-2025.html#r-packages",
-    "href": "webinar/summer-2025.html#r-packages",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "R packages",
-    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\ngghighlight: Hiroaki Yutani (2020). gghighlight: Highlight Lines and Points in ‘ggplot2’. R package version 0.3.1. https://github.com/yutannihilation/gghighlight/\nR Markdown: Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide. Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.\nsf: Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009\npaletteer: See AUTHORS file. (2021). paletteer: Comprehensive Collection of Color Palettes. R package version 1.3.0. https://github.com/EmilHvitfeldt/paletteer\ngapminder: Jennifer Bryan (2017). gapminder: Data from Gapminder. https://github.com/jennybc/gapminder, http://www.gapminder.org/data/, https://doi.org/10.5281/zenodo.594018.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "slides/index.html#nightingales-rose-diagram.",
-    "href": "slides/index.html#nightingales-rose-diagram.",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Nightingale’s “Rose Diagram.",
-    "text": "Nightingale’s “Rose Diagram."
-  },
-  {
-    "objectID": "slides/index.html#section-1",
-    "href": "slides/index.html#section-1",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "",
-    "text": "XYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28"
-  },
-  {
-    "objectID": "slides/index.html#bar-graph",
-    "href": "slides/index.html#bar-graph",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Bar Graph",
-    "text": "Bar Graph\nVertical bar graph"
-  },
-  {
-    "objectID": "slides/index.html#xyz-logistics-1",
-    "href": "slides/index.html#xyz-logistics-1",
+    "objectID": "slides/index.html#xyz-logistics",
+    "href": "slides/index.html#xyz-logistics",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "XYZ Logistics",
     "text": "XYZ Logistics\n\n\n\nXYZ Logistics Customer Data\n\n\nMonth\nRegion\nCustomer Complaints\nAverage Delivery Delay Days\nReturns\nAverage Package Weight Kg\n\n\n\n\nJan-2024\nNorth\n119\n19\n27\n5.19\n\n\nFeb-2024\nNorth\n129\n23\n42\n2.76\n\n\nMar-2024\nNorth\n114\n8\n59\n5.69\n\n\nApr-2024\nNorth\n112\n6\n43\n6.25\n\n\nMay-2024\nNorth\n128\n6\n40\n5.28"
@@ -383,13 +278,6 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Types of Bar Graph",
     "text": "Types of Bar Graph\n\nVert. BarStacked Vert. BarMultiple SeriesHort. BarStacked Hort. Bar"
-  },
-  {
-    "objectID": "slides/index.html#nightingales-rose-diagramcoxcomb",
-    "href": "slides/index.html#nightingales-rose-diagramcoxcomb",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Nightingale’s Rose Diagram/Coxcomb",
-    "text": "Nightingale’s Rose Diagram/Coxcomb\n\nNightingale was also a skilled statistician. She used data and pioneering infographics—such as the coxcomb diagram (a type of pie chart)—to demonstrate the impact of sanitation on health. Her visual presentation of data helped persuade the British government and public of the need for healthcare reform."
   },
   {
     "objectID": "slides/index.html#area",
@@ -406,10 +294,192 @@
     "text": "In Summary\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
   },
   {
-    "objectID": "slides/index.html#tools-that-use-r",
-    "href": "slides/index.html#tools-that-use-r",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Tools That Use R",
-    "text": "Tools That Use R\n\n\nRStudio: The most popular IDE (Integrated Development Environment) for writing and running R code.\nQuarto / R Markdown: For creating dynamic documents and presentations with embedded R code.\nShiny: For building interactive web applications in R.\n\nR = Data + Code + Visualization + Statistics, all in one."
+    "section": "",
+    "text": "Google Meet"
+  },
+  {
+    "objectID": "index.html#join",
+    "href": "index.html#join",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Google Meet"
+  },
+  {
+    "objectID": "index.html#speaker",
+    "href": "index.html#speaker",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Speaker",
+    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM]🏨  Google Meet\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "index.html#is-this-webinar-for-me",
+    "href": "index.html#is-this-webinar-for-me",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Is this webinar for me?",
+    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "prerequisites.html",
+    "href": "prerequisites.html",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Last updated: May 16th, 2025"
+  },
+  {
+    "objectID": "prerequisites.html#prior-knowledge",
+    "href": "prerequisites.html#prior-knowledge",
+    "title": "Prerequisites",
+    "section": "Prior knowledge",
+    "text": "Prior knowledge\nWe do not assume any prior knowledge of R pacakge development, but basic knowledge of R is expected. In particular, participants should be confident writing functions. Some experience with RStudio is beneficial."
+  },
+  {
+    "objectID": "prerequisites.html#r-and-rstudio",
+    "href": "prerequisites.html#r-and-rstudio",
+    "title": "Prerequisites",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
+  },
+  {
+    "objectID": "webinar/summer-2025.html",
+    "href": "webinar/summer-2025.html",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Google Meet"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#r-packages",
+    "href": "webinar/summer-2025.html#r-packages",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#join",
+    "href": "webinar/summer-2025.html#join",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "",
+    "text": "Google Meet"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#speaker",
+    "href": "webinar/summer-2025.html#speaker",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Speaker",
+    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM]🏨  Google Meet\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message.\n\n\n\nSlides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:\n\n\n\nCitations and data\n\nR packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
+  },
+  {
+    "objectID": "webinar/summer-2025.html#is-this-webinar-for-me",
+    "href": "webinar/summer-2025.html#is-this-webinar-for-me",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Is this webinar for me?",
+    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html",
+    "href": "slides/rladiesabuja.html",
+    "title": "Topic Modelling",
+    "section": "",
+    "text": "Topic Modeling"
+  },
+  {
+    "objectID": "webinar/rladiesabuja.html",
+    "href": "webinar/rladiesabuja.html",
+    "title": "Topic Modeling",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "webinar/rladiesabuja.html#r-packages",
+    "href": "webinar/rladiesabuja.html#r-packages",
+    "title": "Topic Modeling",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\n‘tidytext’:Julie Slige"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#from-numbers-to-words",
+    "href": "slides/rladiesabuja.html#from-numbers-to-words",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "From Numbers to Words",
+    "text": "From Numbers to Words\n\nIf you’re in the field of analytics or data science, you’re likely well aware that data is being produced continuously—and at an increasingly rapid pace. (You might even be tired of hearing this repeated!) While analysts are typically trained to work with structured, numeric data in table formats, a significant portion of today’s data boom involves unstructured, text-based information.\n\nUnstructured data represents 80-90% of all new enterprise data, according to Gartner.\n\nFurthermore, it’s growing three times faster than structured data."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#overview",
+    "href": "slides/rladiesabuja.html#overview",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Overview",
+    "text": "Overview\nIn this webinar, we will look at:\n\nUnderstanding Topic Modeling\nImportance of Topi Modeling\nTopic Modeling Techniques\nImplementation of Topic Modeling\nDemo"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#what-is-topic-modeling",
+    "href": "slides/rladiesabuja.html#what-is-topic-modeling",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "What is Topic Modeling?",
+    "text": "What is Topic Modeling?\n\nTopic modeling is way to identify themes/semantic patterns in a corpus (complete document).\nTopic modeling finds the relationships between words in the text, thereby identifying clusters of words that represent topics.\nIt is a like an amplified reading, a way to discover themes you may not see yourself.\nGlossary:\nCorpus: Group of documents Documents: Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
+    "href": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Latent Dirichlet Allocation (LDA)",
+    "text": "Latent Dirichlet Allocation (LDA)\n\n\n\n\n\nSource: Introduction to Probabilistic Topic Models paper by Blei et. al\n\n\n\n\nLatent Dirichlet allocation is one of the most common algorithms for topic modeling. It is guided by two principles, that:\n\nEvery document is a mixture of topics\nEvery topic is a mixture of words"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-1",
+    "href": "slides/rladiesabuja.html#step-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 1",
+    "text": "Step 1\nData Preparation\n\nCollect the text data"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-2",
+    "href": "slides/rladiesabuja.html#step-2",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 2",
+    "text": "Step 2\nPreprocessing\n\nBefore modeling, we preprocess the data to put in it in a tidy format by:\n\nTokenization (splitting sentences into words)\nRemoving punctuation, numbers\nRemoving stop words (like the, and, is)\nFind document-word counts"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-3",
+    "href": "slides/rladiesabuja.html#step-3",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 3",
+    "text": "Step 3\nCreate Document-term Matrix\n\nA matrix that represents the frequency of each word (term) across all documents.\nWe can cast a one-token-per-row table into a DocumentTermMatrix with tidytext’s cast_dtm().\nRows = documents; Columns = terms/words."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-4",
+    "href": "slides/rladiesabuja.html#step-4",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 4",
+    "text": "Step 4\nModel Fitting\n\nWe can then use the LDA() function from the topicmodels package to create a topic model."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-5",
+    "href": "slides/rladiesabuja.html#step-5",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 5",
+    "text": "Step 5\nInterprete and Visualise the Result\n\n\nExtract top keywords per topic.\nLabel the topics manually (e.g., “Customer Service Issues” or “Product Features”).\nVisualize using tools like:ggplot2` package"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#packages-1",
+    "href": "slides/rladiesabuja.html#packages-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Packages",
+    "text": "Packages\n\nWe will make use of the following packages\ntidyverse tidytext topicmodels tm"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#apply-result",
+    "href": "slides/rladiesabuja.html#apply-result",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Apply Result",
+    "text": "Apply Result\n\nSummarize the result, identify customer pain points, track emerging trends etc\n\nPackages\n\n\n\nPackages\n\nWe will make use of the following packages\ntidyverse tidytext topicmodels tm\n\n\n\n\nDemo"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-6",
+    "href": "slides/rladiesabuja.html#step-6",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 6",
+    "text": "Step 6\nApply Result\n\nSummarize the result, identify customer pain points, track emerging trends etc"
   }
 ]

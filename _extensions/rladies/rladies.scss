@@ -93,3 +93,13 @@ section.has-dark-background a, section.has-dark-background a:hover {
   $h2-color: white !important;
   $h3-color: white !important;
 }
+
+.scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+

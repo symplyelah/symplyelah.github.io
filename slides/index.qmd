@@ -14,21 +14,48 @@ editor_options:
 
 ## Story: “Too Many Reports, Not Enough Direction”
 
-<div style = "font-size:0.75em;">
+### The Lady with the Lamp
 
-Let me tell you about Amina.
+:::: columns
+::: {.column width="60%"}
+<div style="text-align: left; font-size:0.75em;">
+Florence Nightingale was a pioneering English nurse, statistician, and social reformer, best known for transforming the field of nursing and laying the foundation for modern healthcare systems. Born on May 12, 1820, in Florence, Italy (hence her name), she grew up in a wealthy British family that valued education.
 
-She worked in customer retention at a mid-sized logistics company. Every Monday, her inbox was flooded with CSV files—customer complaints, delivery delays, package weights, region-wise returns… 
-
-All of it collected diligently by the operations team.
-
-But something was wrong.
-
-Despite the data, customer churn kept rising. Leadership was frustrated. Amina felt helpless.
-
-Until one day, she decided to stop sending spreadsheets and start telling stories with the data.
+Florence Nightingale rose to prominence during the Crimean War (1853–1856), where she led a team of nurses to care for wounded British soldiers. She found military hospitals in horrifying conditions—unsanitary, overcrowded, and disease-ridden. Through meticulous organization, hygiene practices, and compassion, she drastically reduced the death rate from 42% to 2%.
 </div>
-## 
+
+:::
+
+::: {.column width="40%"} 
+
+<div style="text-align: right;">
+  <img src="images/florence.jpg" width="90%">
+</div>
+
+:::
+::::
+
+## Nightingale's Rose Diagram/Coxcomb
+<div style="font-size:0.85em;">
+Nightingale was also a skilled statistician. She used data and pioneering infographics—such as the coxcomb diagram (a type of pie chart)—to demonstrate the impact of sanitation on health. Her visual presentation of data helped persuade the British government and public of the need for healthcare reform.
+</div>
+:::: columns
+::: {.column width="50%"} 
+
+<div style="text-align: left;">
+  <img src="images/night.jpg" width="60%">
+</div>
+
+::: {.column width="50%"}
+
+<div style="text-align: right;">
+  <img src="images/mortality.jpg" width="60%">
+</div>
+
+
+:::
+::::
+
 
 ```{r}
 #| echo: false
@@ -66,26 +93,6 @@ phd_field <- read_csv("data/phd_field.csv")
 medal <- read_csv("data/summer_olympic_medals.csv") |> 
   janitor::clean_names()
 
-
-```
-
-
-```{r}
-#| echo: false
-#| 
-
-data <- logistics_data |> 
-  select(-date, -month2) |> 
-  head(5) 
-
-clean_names <- names(data) |> 
-  (\(x) gsub("_", " ", x))() |>   # Replace underscores
-  (\(x) tolower(x))() |>      # Convert to lowercase
-  (\(x) tools::toTitleCase(x))() 
-
-data |> 
-  knitr::kable(col.names = clean_names, caption = "XYZ Logistics Customer Data") |> 
-  kableExtra::kable_paper("hover", full_width = F)
 
 ```
 
@@ -135,149 +142,12 @@ logistics_data |>
 
 ```
 
-## XYZ Logistics
-
-::: panel-tabset
-
-### Customer Compliant
-```{r  fig.height=5, fig.width=10}
-
-logistics_data |> 
-  mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, customer_complaints)) |> 
-  group_by(region) |> 
-  summarise(total = sum(customer_complaints)) |>
-  mutate(region = fct_reorder(region, total)) |> 
-  ggplot(aes(total, region)) +
-  geom_col(colour = "#4A3F37FF", fill = "#4A3F37FF") +
-  geom_col(data = logistics_data |> 
-             mutate(region = str_replace(region, "-", " "),
-                    region = fct_reorder(region, customer_complaints)) |> 
-             group_by(region) |> 
-             summarise(total = sum(customer_complaints)) |> 
-             filter(region == "North Central"), colour =  "#ECB939FF", fill = "#ECB939FF") +
-  geom_text(aes(label = total), nudge_x = -40, colour = "white", fontface = "bold") +
-  theme_minimal() +
-  labs(y = "Region",
-       x = "Total Compliants",
-       title = "<b><span style = 'color:#ECB939FF;'>North Central:</span></b> A Hot Spot for Customer Compliants") +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_blank(),
-         axis.title.y = element_text(hjust = 0.9),
-        plot.title = element_textbox_simple())
-
-```
-
-
-### Monthly Trend
-
-``` {r  fig.height=6.5, fig.width=13}
-
-logistics_data |> 
-  mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, customer_complaints)) |> 
-  ggplot(aes(date, customer_complaints, group = region)) +
-  geom_line(linewidth = 1, colour = "#4A3F37FF") +
-  
-  geom_line(data = logistics_data |> 
-              mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, customer_complaints)) |> 
-              filter(region == "North Central"),    
-             colour =  "#ECB939FF", linewidth = 1) +
-  
-  geom_text(data = logistics_data |> 
-              filter(month2 == "Jun") |> 
-               mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, customer_complaints)),    
-             aes(label = region), nudge_y = 1, nudge_x = 5) +
-  
-  geom_text(data = logistics_data |> 
-              mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, customer_complaints)) |> 
-           filter(month2 == "Jun" & region == "North Central"),    
-             aes(label = region), colour =  "#ECB939FF", nudge_y = 1, nudge_x = 5) +
-  
-  theme_minimal() +
-  coord_fixed(clip = "off") +
-  scale_y_continuous(limits = c(0, 160)) +
-#  scale_x_date(position = "top") +
-  labs(title = "Complaint Trend Watch: A Widening Gap Emerges After Q1",
-       subtitle = "With customer complaints rising steadily from March to June, the <b><span style = 'color:#ECB939FF;'>North Central</span></b> region consistently recorded the highest number across all months — signaling persistent service challenges.",
-       x = "Date",
-       y = "# of Compliants") +
-  theme(legend.position = "bottom",
-        legend.text.position = "bottom",
-        legend.title.position = "top",
-        legend.justification.top = "left",
-        legend.location = "plot",
-        axis.title.y = element_text(hjust = 0.9),
-        plot.subtitle = element_textbox_simple(margin = margin(18, 0, 0, 0)))
-
-```
-
-
-### Returns
-
-```{r fig.height=5.7, fig.width=10}
-
-
-logistics_data |> 
-  mutate(region = str_replace(region, "-", " "),
-         region = fct_reorder(region, returns),
-        month2 = factor(month2, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun")),
-         month2 = fct_rev(month2) 
-         ) |> 
-  ggplot(aes(returns, region)) +
-  geom_col(aes(colour = month2, fill = month2), position = position_dodge()) +
-  scale_fill_got_d(option = "greyjoy")+
-  scale_colour_got_d(option = "greyjoy") +
-  labs(title = "",
-       y = "Region",
-       x ="Returns",
-       fill = "Months") +
-  theme(axis.title.y = element_text(hjust = 0.9))
-
-```
-
-
-
-### Customer Survey
-
-```{r}
-
-customer_survey |> 
-  mutate(likert_scale = factor(likert_scale, levels = c("Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"))) |> 
-  group_by(region, likert_scale) |> 
-  summarise(survey = n(), .groups = "drop") |> 
-  group_by(region) |> 
-  mutate(total = sum(survey),
-         percent = survey/total) |> 
-  ggplot() +
-  geom_col(aes(percent, region, fill = fct_rev(likert_scale)), show.legend = FALSE) +
-  geom_col(aes(percent, region, fill = fct_rev(likert_scale)), colour ="white", show.legend = FALSE) +
-  scale_x_continuous(labels = scales::percent_format(), position = "top") +
-  scale_fill_got_d(option = "greyjoy", direction = -1,  guide = guide_legend(reverse = T)) +
-  labs(title = "Survey Results",
-       x = "% of Total",
-       y = "Region",
-       subtitle = "<b><span style = 'color:#000000FF;'>Very Dissatisfied</span></b> | <b><span style = 'color:#372E29FF;'>Dissatisfied</span></b> | <b><span style = 'color:#726255FF;'>Neutral</span></b> | <b><span style = 'color:#F0C75EFF;'>Satisfied</span></b> | <b><span style = 'color:#ECB939FF;'>Very Satisfied</span></b>",
-       fill = "") +
-  theme(legend.position = "top",
-        legend.text.position = "bottom",
-        plot.subtitle = element_textbox_simple(),
-        axis.title.y = element_text(hjust = 0.9))
-  
-  
-
-```
-
-:::
 
 # Why Data Visualization Matters {.inverse}
 
 ## No Longer Drowning
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 -   Humans process visuals 60,000x faster than text
 
 -   Visuals simplify complex data
@@ -291,13 +161,13 @@ customer_survey |>
 
 ## What is Data?
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Data refers to **raw facts, figures,** and **statistics** that are collected through observation, measurement, research, or experimentation. On their own, data have no meaning until they are organized, analyzed, and interpreted.
 </div>
 
 ### Key Characteristics of Data:
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 -   **Raw**: Unprocessed and unorganized
 
 -   **Factual:** Based on real-world events, measurements, or records
@@ -307,7 +177,7 @@ Data refers to **raw facts, figures,** and **statistics** that are collected thr
 
 ### **Numerical** or **Quantitative Data**
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Numerical (or Quantitative) data refers to data that represents measurable quantities—that is, values that can be counted or measured and expressed in numbers.
 </div>
 
@@ -316,6 +186,7 @@ Numerical (or Quantitative) data refers to data that represents measurable quant
 
 <div style="text-align: center;">
   <img src="images/numerical.png" width="50%">
+  <p style="font-size:0.35em;">Art by Allison Horst</p>
 </div>
 
 :::
@@ -329,7 +200,7 @@ Numerical (or Quantitative) data refers to data that represents measurable quant
 ::: columns
 ::: {.column width="100%"}
 
-<div style="text-align: center; font-size: 0.75em;">
+<div style="text-align: center; font-size: 0.85em;">
 +--------------------------------------------------------+----------------------------------------------------------+
 | Continuous Data                                        | Discrete Data                                            |
 +========================================================+==========================================================+
@@ -353,7 +224,7 @@ Numerical (or Quantitative) data refers to data that represents measurable quant
 
 ### Key Features of Numerical Data:
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 - Can be compared, ordered, added, or averaged
 
 - Suitable for mathematical and statistical analysis
@@ -366,7 +237,7 @@ Numerical (or Quantitative) data refers to data that represents measurable quant
 
 ### **Categorical** or **Qualitative Data**
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Categorical (or Qualitative) data refers to data that describes qualities or characteristics. Instead of numbers, it uses labels, names, or categories to represent information.
 </div>
 
@@ -375,6 +246,7 @@ Categorical (or Qualitative) data refers to data that describes qualities or cha
 
 <div style="text-align: center;">
   <img src="images/categorical.png" width="50%">
+  <p style="font-size:0.35em;">Art by Allison Horst</p>
 </div>
 :::
 ::::
@@ -383,21 +255,21 @@ Categorical (or Qualitative) data refers to data that describes qualities or cha
 
 ### Key Feature of Categorical Data:
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 - Descriptive rather than numerical
 
 - Used to classify or group data
 
 - Cannot be meaningfully added, subtracted, or averaged
 
-- Can be visualized using bar charts, pie charts, or tables
+- Can be visualized using bar charts, or tables
 
 
 </div>
 
 ## Choosing the appropriate graph(s) for the data
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 So before any visualisation always consider:
 
 - Discrete & continuous quantities
@@ -405,11 +277,57 @@ So before any visualisation always consider:
 
 </div>
 
+# Bridging the Gap Between Data and Decisions {.inverse}
+
+## Mind the Gap
+
+**Problem:** Data is abundant, but insights are scarce.
+
+**Solution:** Visualization bridges the gap between raw data and strategic action.
+
+**Outcome:** Simplifies storytelling and supports real-time decisions.
+
+# What is R and Why Use It? {.inverse}
+
+## R
+
+<div style="font-size: 0.85em;">
+R was started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland.
+
+The name of the language, R, comes from the shared first letter of the authors, Ross and Robert.
+
+R is a free and open-source statistical language. 
+
+* Data Analysis:	Summarizing and exploring data (e.g., averages, trends)
+* Data Visualization:	Bar charts, line graphs, heatmaps, dashboards
+* Statistical Modeling:	Linear regression, ANOVA, clustering
+* Machine Learning:	Classification, prediction, and recommendation systems
+* Data Wrangling:	Cleaning, reshaping, and merging data sets
+* Reporting: Reproducible reports with R Markdown or Quarto
+
+The R community hosts many conferences and in-person meetups.
+
+</div>
+
+## Tools That Use R
+
+<div style="font-size: 0.85em;">
+* RStudio: The most popular IDE (Integrated Development Environment) for writing and running R code.
+
+* Quarto / R Markdown: For creating dynamic documents and presentations with embedded R code.
+
+* Shiny: For building interactive web applications in R.
+
+
+*R = Data + Code + Visualization + Statistics, all in one.*
+
+</div>
+
 # Effective Visualization Techniques {.inverse}
 
 ## Simple Text
 
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 When you’re dealing with just one or two figures, using plain text can often be the most effective way to share them. 
 
 To illustrate, the figure below appeared in an April 2014 report by the Pew Research Center focusing on stay-at-home mothers.
@@ -420,6 +338,7 @@ To illustrate, the figure below appeared in an April 2014 report by the Pew Rese
 
 <div style="text-align: center;">
   <img src="images/pew.jpg" width="28%">
+  <p style="font-size:0.35em;">Storytelling with Data by Cole Knaflic</p>
 </div>
 
 :::
@@ -428,7 +347,7 @@ To illustrate, the figure below appeared in an April 2014 report by the Pew Rese
 
 ## Simple Text
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 In this instance, a straightforward sentence does the job: in 2012, 20% of children had a traditional stay-at-home mother, down from 41% in 1970 or present it visually as below.
 </div>
 
@@ -437,6 +356,7 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 
 <div style="text-align: center;">
   <img src="images/stay.jpg" width="40%">
+  <p style="font-size:0.35em;">Storytelling with Data by Cole Knaflic</p>
 </div>
 
 :::
@@ -444,7 +364,7 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 
 ## Tables
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 * Engage our **verbal system** — we read them like text.
 * Ideal for **scanning rows and columns** to compare specific values.
 * Best for **mixed audiences** — each person can locate their row or column of interest.
@@ -452,7 +372,7 @@ In this instance, a straightforward sentence does the job: in 2012, 20% of child
 * Preserve **exact figures** for precision-focused communication.
 </div>
 
-```{r}
+```{r fig.height=6, fig.width=7}
 
 
 logistics_data |> 
@@ -467,7 +387,7 @@ logistics_data |>
 
 ## Tables That Talk: Making Your Data Shine
 
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 
 * The **table design should be subtle**—don’t let it distract.
 * Use **light borders** or **white space** to separate rows and columns.
@@ -490,7 +410,7 @@ logistics_data |>
 
 ## Heatmaps
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 A heatmap transforms a table of numbers into a visual experience by using color to represent the size or intensity of values. Instead of relying solely on digits, it fills each cell with varying shades—making patterns, trends, and outliers instantly easier to spot.
 </div>
 
@@ -501,13 +421,13 @@ logistics_data |>
   ggplot() +
   geom_tile(aes(month2, region, fill = average_delivery_delay_days), show.legend = FALSE) +
   geom_text(aes(month2, region, label = average_delivery_delay_days), colour = "white", fontface = "bold", size = 7) +
-  scale_fill_got(option = "greyjoy", direction = -1) +
+  scale_fill_got(option = "tully", direction = 1) +
   theme_minimal() +
   labs(x = "Month",
        y = " ",
        fill = "Delay Days",
        title = "Regional Breakdown of Average Delivery Delays",
-       subtitle = "<b><span style = 'color:#ECB939FF;'>LOW</span></b>-<b><span style = 'color:#000000FF;'>HIGH</span></b>") +
+       subtitle = "<b><span style = 'color:#131142FF;'>LOW</span></b>-<b><span style = 'color:#C1000EFF;'>HIGH</span></b>") +
   theme(plot.subtitle = element_textbox_simple(),
         plot.title = element_text(size = 18),
         axis.title = element_text(size = 16),
@@ -519,7 +439,7 @@ logistics_data |>
 
 ## Colouring Your Way to Clarity
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 * Reduces cognitive load by turning numbers into visual cues.
 
 * Color intensity helps the eye quickly identify patterns and outliers.
@@ -533,7 +453,7 @@ logistics_data |>
 
 ## Graphs
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 Unlike tables, graphs tap into our visual perception, allowing us to grasp patterns and insights much faster. A thoughtfully crafted graph often communicates key messages more quickly than even the best-designed table.
 
 There are countless types of graphs. They are 
@@ -552,7 +472,7 @@ These core graph styles cover a wide range of everyday data visualization needs.
 
 ## Points: Small Dots, Big Insights
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 Point plots use individual dots to represent data values. Simple but powerful, they are excellent for highlighting individual observations or comparing values across categories with precision.
 
 ### Why Use Point Plots?
@@ -565,7 +485,7 @@ Point plots use individual dots to represent data values. Simple but powerful, t
 
 ## Scatterplot
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 A scatterplot is a simple yet powerful chart type used to show the relationship between two numerical variables. 
 
 ### Why Scatterplots Matter in Storytelling:
@@ -628,9 +548,10 @@ emissions |>
 emissions |> 
  filter(commodity %in% c("Oil & NGL", "Natural Gas")) |> 
   mutate(decade = (year %/% 10) * 10) |> 
+  arrange(desc(decade)) |> 
   ggplot(aes(production_value, total_emissions_MtCO2e, colour = decade)) +
   geom_jitter(position = position_jitter(width = 150, height = 100), alpha = 0.5, size = 3) +
-  scale_color_got(option = "greyjoy", breaks = seq(1850, 2020, 20)) +
+  scale_color_got(option = "tully", breaks = seq(1850, 2020, 20), direction = 1) +
   facet_wrap(~commodity, scales = "free_x") +
   labs(x = "Production Value",
        y = "CO<sub>2</sub> Emission",
@@ -639,6 +560,7 @@ emissions |>
        subtitle = "Mid-20th century: Breakthroughs in exploration tech led to massive oil field discoveries (Ghawar, Burgan, Cantarell). This drove a steady increase in global oil and natural gas production. Since the 2000s, fewer 'elephant' oil fields have been found. But production didn’t fall immediately—why? We’re no longer discovering more oil—we’re just getting better at extracting what’s left.") +
   theme(axis.title.y = element_markdown(hjust = 0.9),
         plot.subtitle = element_textbox_simple(margin = margin(2, 0, 8, 0, unit = "mm")))
+
   
 ```
 
@@ -658,7 +580,7 @@ emissions |>
   mutate(decade = (year %/% 10) * 10) |> 
   ggplot(aes(production_value, total_emissions_MtCO2e, colour = decade)) +
   geom_jitter(position = position_jitter(width = 5, height = 5), alpha = 0.5, size = 3) +
-  scale_color_got(option = "greyjoy", breaks = seq(1960, 2020, 10)) +
+  scale_color_got(option = "tully", breaks = seq(1960, 2020, 10), direction = -1) +
   facet_wrap(~commodity, scales = "free_x") +
   labs(x = "Production Value",
        y = "CO<sub>2</sub> Emission",
@@ -678,7 +600,7 @@ emissions |>
 
 ## Lines: Connecting the Dots of Change
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 A line graph is one of the most effective tools for visualizing how something changes over time. It connects individual data points with a line, allowing us to quickly see trends, shifts, and patterns.
 
 ### What Line Graphs Show:
@@ -784,7 +706,7 @@ ireland |>
 
 ## Line Graph
 
-<div style = "font-size: 0.75em;">
+<div style = "font-size: 0.85em;">
 Line graph can show:
 
 * a single series of data,
@@ -809,13 +731,13 @@ phd_field |>
   group_by(year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_line(aes(year, total), size = 1.2, colour = "#ECB939FF") +
-  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
+  geom_line(aes(year, total), size = 1.2, colour = "#131142FF") +
+  geom_point(aes(year, total), size = 2, colour = "#131142FF") +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
-  scale_y_continuous(limits = c(0, 22500)) +
+  scale_y_continuous(limits = c(0, 22500), labels = scales::comma_format()) +
   labs(x = "Year",
-       y = "Total PhD Awards",
-       title = "Total PhD Awards in Life Sciences (2008–2017)")
+       y = "# of PhD Awards",
+       title = "PhD Awards in Life Sciences (2008–2017)")
     
 
 ```
@@ -839,13 +761,15 @@ phd_field |>
             aes(year, total, label = broad_field, colour = broad_field), nudge_y = 450, nudge_x = 0.2, show.legend = FALSE) +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
   scale_y_continuous(limits = c(0, 23000), labels = scales::comma_format()) +
-  scale_colour_got_d(option = "greyjoy") +
+  scale_colour_manual(values = c("#C1000EFF", "#131142FF"))+
+ # scale_colour_got_d(option = "tully") +
   labs(x = "Year",
        y = "PhD Awards",
        colour = "Faculty",
-       title = "PhD Awards in <span style = 'color:#ECB939FF;'>Life Sciences</span> and  <span style = 'color:#372E29FF;'>Engineering</span> (2008–2017)") +
+       title = "PhD Awards in <span style = 'color:#131142FF;'>Life Sciences</span> and  <span style = 'color:#C1000EFF;'>Engineering</span> (2008–2017)") +
   theme(axis.title.y = element_text(hjust = 0.9),
         plot.title = element_textbox())
+
 
 ```
 
@@ -872,14 +796,14 @@ phd_field |>
               group_by(major_field, year) |> 
               summarise(total = sum(n_phds, na.rm = TRUE)) |>
               filter(major_field == "Health sciences"),
-            linewidth = 1.2, colour = "#ECB939FF") +
+            linewidth = 1.2, colour = "#C1000EFF") +
   
   geom_point(data = phd_field |> 
               filter(broad_field == "Life sciences") |> 
               group_by(major_field, year) |> 
               summarise(total = sum(n_phds, na.rm = TRUE)) |>
               filter(major_field == "Health sciences"),
-              colour = "#ECB939FF", size = 2) +
+              colour = "#C1000EFF", size = 2) +
   
   geom_text_repel(data = phd_field |> 
               filter(year == 2017, broad_field == "Life sciences") |> 
@@ -887,7 +811,7 @@ phd_field |>
               summarise(total = sum(n_phds, na.rm = TRUE)) |>
               filter(major_field == "Health sciences"),
             aes(label = major_field),
-              colour = "#ECB939FF", size = 3, hjust = -0.55,  xlim = c(2017.5, NA), direction = "y", segment.size = .5, segment.alpha = .33,  segment.curvature = .10, segment.ncp = 3, segment.angle = 10, box.padding = .2,  nudge_y = 655) +
+              colour = "#C1000EFF", size = 3, hjust = -0.55,  xlim = c(2017.5, NA), direction = "y", segment.size = .5, segment.alpha = .33,  segment.curvature = .10, segment.ncp = 3, segment.angle = 10, box.padding = .2,  nudge_y = 655) +
   
   
   scale_x_continuous(breaks = seq(2008, 2017, 1), expand = expansion(mult = c(0, 0.2))) +
@@ -898,12 +822,9 @@ phd_field |>
        y = "# of PhD Awards",
        colour = "Faculty",
        title = "Tracking PhD Awards Across Life Sciences (2008–2017)",
-       subtitle = "Between 2008 and 2017, PhD awards in the life sciences showed an overall upward trend, though growth varied across disciplines. Biological and biomedical sciences consistently produced the highest number of PhDs, maintaining their lead throughout the decade. However, <span style = 'color:#ECB939FF;'>health sciences</span> experienced the most significant growth, with numbers rising sharply from 2012 and nearly surpassing chemistry and geosciences by 2017. Meanwhile, fields like physics, chemistry, and geosciences saw steady but moderate increases in PhD awards. Agricultural sciences remained the least awarded field, growing slowly but consistently. Overall, the data suggests a gradual shift toward health-focused research within the life sciences, alongside enduring strength in traditional core fields.") +
+       subtitle = "Between 2008 and 2017, PhD awards in the life sciences showed an overall upward trend, though growth varied across disciplines. Biological and biomedical sciences consistently produced the highest number of PhDs, maintaining their lead throughout the decade. However, <span style = 'color:#C1000EFF;'>health sciences</span> experienced the most significant growth, with numbers rising sharply from 2012 and nearly surpassing chemistry and geosciences by 2017. Meanwhile, fields like physics, chemistry, and geosciences saw steady but moderate increases in PhD awards. Agricultural sciences remained the least awarded field, growing slowly but consistently. Overall, the data suggests a gradual shift toward health-focused research within the life sciences, alongside enduring strength in traditional core fields.") +
   theme(axis.title.y = element_text(hjust = 0.9),
         plot.subtitle = element_textbox_simple(size = 8))
-
-
-
 
 
 ```
@@ -922,12 +843,13 @@ phd_field |>
   group_by(year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
-  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
+  geom_point(aes(year, total), size = 2, colour = "#131142FF") +
+  geom_line(aes(year, total), size = 1.2, colour = "#131142FF") +
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
+  scale_y_continuous(labels = scales::comma_format()) +
   labs(x = "Year",
-       y = "Total PhD Awards",
-       title = "Total PhD Awards in Life Sciences (2008–2017)")
+       y = "# of PhD Awards",
+       title = "PhD Awards in Life Sciences (2008–2017)")
 
 ```
 
@@ -940,16 +862,14 @@ phd_field |>
   group_by(year) |> 
   summarise(total = sum(n_phds, na.rm = TRUE)) |> 
   ggplot() +
-  geom_line(aes(year, total), size = 1.2, colour = "#372E29FF") +
-  geom_point(aes(year, total), size = 2, colour = "#372E29FF") +
+  geom_line(aes(year, total), size = 1.2, colour = "#131142FF") +
+  geom_point(aes(year, total), size = 2, colour = "#131142FF") +
   
   scale_x_continuous(breaks = seq(2008, 2017, 1)) +
   scale_y_continuous(limits = c(0, 22500), labels = scales::comma_format()) +
   labs(x = "Year",
-       y = "Total PhD Awards",
+       y = "# of PhD Awards",
        title = "PhD Awards in Life Sciences (2008–2017)")
-
-
 
 ```
 
@@ -957,7 +877,7 @@ phd_field |>
 
 ## Slopegraph
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Slopegraph is a hybrid of a line graph and a time series as it only compares two values, connected by a line, with a continuous date axis.
 
 Slopegraphs are powerful visual tools that convey a wealth of information at a glance. Not only do the points show actual values, but the connecting lines instantly reveal upward or downward trends—visually communicating changes over time. Without needing to define concepts like “rate of change,” the slope naturally tells the story, making the data intuitive and easy to interpret.
@@ -1114,10 +1034,7 @@ phd_gap |>
          axis.text.x.top = element_text(color = "grey30"))
 
 
- 
-      
-  
-  # caption = "Data: NSF • Viz: Ifeoma Egbogah")
+ # caption = "Data: NSF • Viz: Ifeoma Egbogah")
 
 ```
 
@@ -1153,7 +1070,7 @@ phd_field |>
 
 ## Bars
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Bar graphs are among the most familiar and versatile tools in data visualization. They excel at showing comparisons across categories, making them ideal for answering questions like **“Which is the highest?”**, **“Which is the lowest?”**, or **“How do these groups stack up against each other?”**
 
 This makes it easy for the viewer to scan and compare values visually—especially when the bars are arranged in a logical or meaningful order, such as descending size or alphabetical sequence.
@@ -1162,7 +1079,7 @@ This makes it easy for the viewer to scan and compare values visually—especial
 
 ## Bush Tax Cuts
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Back in the fall of 2012, there was growing uncertainty about the future of the Bush-era tax cuts. A key concern was what would happen if they were allowed to expire. At that time, the top marginal tax rate stood at 35%. However, if the cuts were not extended, it was set to rise to 39.6% starting January 1.
 
 </div>
@@ -1177,7 +1094,7 @@ Back in the fall of 2012, there was growing uncertainty about the future of the 
 
 ## Bars: Why Zero Matters
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 In fact, the way this is graphed, the visual increase is 460% (the heights of the bars are 35 – 34 = 1 and 39.6 – 34 = 5.6, so (5.6 – 1) / 1 = 460%). If we graph the bars with a zero baseline so that the heights are accurately represented (35 and 39.6), we get an actual visual increase of 13% ((39.6 – 35) / 35). 
 
 </div>
@@ -1190,7 +1107,7 @@ tax <- tibble(year = c("Now", "Jan 1, 2013"),
 t1 <- tax |> 
   mutate(year = factor(year, levels = c("Now", "Jan 1, 2013"))) |> 
   ggplot(aes(year, tax_cut)) +
-  geom_col() +
+  geom_col(fill = "#131142FF") +
   geom_text(aes(label = glue::glue("{tax_cut*100}%")), fontface = "bold", nudge_y = 0.005, colour = "grey30") +
   coord_cartesian(ylim = c(0.34, 0.40)) +
   scale_y_continuous(position = "right", labels = scales::percent_format()) +
@@ -1203,7 +1120,7 @@ t1 <- tax |>
 t2 <- tax |> 
   mutate(year = factor(year, levels = c("Now", "Jan 1, 2013"))) |> 
   ggplot(aes(year, tax_cut)) +
-  geom_col() +
+  geom_col(fill = "#131142FF") +
   geom_text(aes(label = glue::glue("{tax_cut*100}%")), nudge_y = -0.05, colour = "white", fontface = "bold") +
   scale_y_continuous(labels = scales::percent_format()) +
   labs(x = " ",
@@ -1218,25 +1135,239 @@ t1 + t2
 
 
 # Rule #1 {.inverse} 
-Bar charts must have a zero baseline. Misleading by inaccurately visualizing data is not OK. 
+Bar graphs must have a zero baseline. Misleading by inaccurately visualizing data is not OK. 
 
 ## The Bar Graph Family
 
-<div style = "font-size:0.75em;">
+<div style = "font-size:0.85em;">
 Bar graph also lend themselves well to variations like:
 
-* Vertical bar chart
+* Vertical bar graph
 
-* Stacked vertical bar chart
+* Stacked vertical bar graph
 
 * Waterfall
 
-* Horizontal bar charts
+* Horizontal bar graph
 
-* Stacked horizontal bar charts
+* Stacked horizontal bar graph
+
+Having a number of bar charts at your disposal gives you flexibility when facing different data visualization challenges.
 </div>
 
-## Type
+## XYZ Logistics
+
+```{r}
+#| echo: false
+#| 
+
+data <- logistics_data |> 
+  select(-date, -month2) |> 
+  head(5) 
+
+clean_names <- names(data) |> 
+  (\(x) gsub("_", " ", x))() |>   # Replace underscores
+  (\(x) tolower(x))() |>      # Convert to lowercase
+  (\(x) tools::toTitleCase(x))() 
+
+data |> 
+  knitr::kable(col.names = clean_names, caption = "XYZ Logistics Customer Data") |> 
+  kableExtra::kable_paper("hover", full_width = F)
+
+```
+
+## Types of Bar Graph
+
+::: panel-tabset
+
+### Vert. Bar
+
+```{r  fig.height=5, fig.width=10}
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints)) |> 
+  group_by(region) |> 
+  summarise(total = sum(customer_complaints)) |>
+  mutate(region = fct_reorder(region, total)) |> 
+  ggplot(aes(region, total)) +
+  geom_col(fill = "#767791FF") +
+  geom_col(data = logistics_data |> 
+             mutate(region = str_replace(region, "-", " "),
+                    region = fct_reorder(region, customer_complaints)) |> 
+             group_by(region) |> 
+             summarise(total = sum(customer_complaints)) |> 
+             filter(region == "North Central"), fill = "#C1000EFF") +
+  geom_text(aes(label = total), colour = "white", fontface = "bold", nudge_y = -50) +
+  labs(x = "Region",
+       y = "Total Compliants",
+       title = "<b><span style = 'color:#C1000EFF;'>North Central:</span></b> A Hot Spot for Customer Compliants") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        plot.title = element_textbox_simple(size = 16))
+
+```
+
+
+### Stacked Vert. Bar
+
+``` {r  fig.height=6.5, fig.width=13}
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, customer_complaints),
+         region_fill = if_else(region == "North Central", "#C1000EFF", "#767791FF")) |> 
+  ggplot(aes(x = month2, y = customer_complaints, fill = region_fill)) +
+  geom_col(colour = "white") +
+  geom_text(data = logistics_data |>
+              mutate(region = str_replace(region, "-", " "),
+                     region = fct_reorder(region, customer_complaints),
+                     region_fill = if_else(region == "North Central", "#C1000EFF", "#767791FF")) |>
+              filter(month2 == "Jun"),
+            aes(label = region),
+            position = position_stack(vjust = 0.5),
+            color = "white", size = 6, fontface = "bold") +
+  scale_fill_identity() +
+  theme_minimal() +
+  labs(title = "Monthly Customer Complaints by Region",
+       y = "Customer Complaints",
+       x = "Month")
+
+
+
+```
+
+
+
+### Multiple Series
+
+```{r fig.height=5.7, fig.width=10}
+
+
+logistics_data |> 
+  mutate(
+    region = str_replace(region, "-", " "),
+    region = fct_reorder(region, returns),
+    month2 = factor(month2, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))) |>
+  group_by(region) |>
+  mutate(
+    is_max = returns == max(returns)) |>
+  ungroup() |>
+  ggplot(aes(x = region, y = returns, group = month2, fill = is_max)) +
+  geom_col(position = position_dodge2(), colour = "white") +
+  geom_text(aes(y = -2.5, label = month2),
+    position = position_dodge(width = 0.85),
+    vjust = -0.3, size = 3.5
+  ) +
+  scale_fill_manual(values = c("#DADEE1FF", "#C1000EFF"), guide = "none") +
+  
+ labs(title = "Monthly Delivery Returns by Region: Uneven Patterns",
+      subtitle = "The North and North Central regions appear to be the most volatile, with significant monthly fluctuations, possibly driven by logistics challenges, customer dissatisfaction, or seasonal product issues. In contrast, South East may reflect better process control or lower product movement, contributing to more stable return rates. The high return volumes in May and June across several regions could indicate a systemic issue or seasonal demand pressure that warrants further investigation.",
+       x = "Region",
+       y ="# of Returns",
+       fill = "Months") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        plot.subtitle = element_textbox_simple())
+
+```
+
+### Hort. Bar
+
+```{r fig.height=5.7, fig.width=10}
+
+
+logistics_data |> 
+  mutate(region = str_replace(region, "-", " "),
+         region = fct_reorder(region, returns),
+         month2 = factor(month2, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun")),
+         month2 = fct_rev(month2) 
+         ) |> 
+  group_by(region) |> 
+  mutate(is_max = returns == max(returns)) |> 
+  ungroup() |> 
+  ggplot(aes(returns, region, group = month2, fill = is_max)) +
+  geom_col(position = position_dodge(), colour = "white") +
+  geom_text(aes(x = -1, label = month2),
+    position = position_dodge(width = 0.85),
+    vjust = 0.5, size = 3.5
+  ) +
+  scale_fill_manual(values = c("#DADEE1FF", "#C1000EFF"), guide = "none") +
+
+  labs(title = "Monthly Delivery Returns by Region: Uneven Patterns",
+      subtitle = "The North and North Central regions appear to be the most volatile, with significant monthly fluctuations, possibly driven by logistics challenges, customer dissatisfaction, or seasonal product issues. In contrast, South East may reflect better process control or lower product movement, contributing to more stable return rates. The high return volumes in May and June across several regions could indicate a systemic issue or seasonal demand pressure that warrants further investigation.",
+       y = "Region",
+       x ="# of Returns",
+       fill = "Months") +
+  theme(axis.title.y = element_text(hjust = 0.9),
+        plot.subtitle = element_textbox_simple())
+
+```
+
+
+### Stacked Hort. Bar
+
+```{r}
+
+customer_survey |> 
+  mutate(likert_scale = factor(likert_scale, levels = c("Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"))) |> 
+  group_by(region, likert_scale) |> 
+  summarise(survey = n(), .groups = "drop") |> 
+  group_by(region) |> 
+  mutate(total = sum(survey),
+         percent = survey/total) |> 
+  mutate(bar_colour = case_when(likert_scale == "Very Dissatisfied" ~ "#C1000EFF",
+                                likert_scale == "Dissatisfied" ~ "grey85",
+                                likert_scale == "Neutral" ~ "grey95",
+                                likert_scale == "Satisfied" ~ "grey75",
+                                likert_scale == "Very Satisfied" ~ "grey55"),
+         bar_colour = factor(bar_colour, levels = c("#C1000EFF", "grey85", "grey95", "grey75","grey55"))) |> 
+
+  ggplot() +
+  geom_col(aes(percent, region, fill = fct_rev(bar_colour)), show.legend = FALSE) +
+  geom_col(aes(percent, region, fill = fct_rev(bar_colour)), colour ="white", show.legend = FALSE) +
+  scale_x_continuous(labels = scales::percent_format(), position = "top") +
+  scale_fill_identity() +
+  labs(title = "Survey Results",
+       x = "% of Result",
+       y = "Region",
+       subtitle = "<b><span style = 'color:#C1000EFF;'>Very Dissatisfied</span></b> | <b><span style = 'color:grey85;'>Dissatisfied</span></b> | <b><span style = 'color:grey95;'>Neutral</span></b> | <b><span style = 'color:grey75;'>Satisfied</span></b> | <b><span style = 'color:grey55;'>Very Satisfied</span></b>",
+       fill = "") +
+  theme(legend.position = "top",
+        legend.text.position = "bottom",
+        plot.subtitle = element_textbox_simple(),
+        axis.title.y = element_text(hjust = 0.9))
+  
+  
+
+```
+
+
+:::
+
+## Area
+
+```{r}
+
+emissions |> 
+  mutate(commodity2 = if_else(str_detect(commodity, "Coal"), "Coal", commodity)) |> 
+  group_by(year, commodity2) |> 
+  summarise(total = sum(total_emissions_MtCO2e)) |> 
+  ggplot(aes(year, total, fill = commodity2)) +
+  geom_area(alpha = 0.7) +
+  scale_fill_got_d(option = "tully") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  labs(x = "Year",
+       y = "CO<sub>2</sub> Emission",
+       fill = " ",
+       title = "CO<sub>2</sub> Emissions from Fossil Fuel and Cement from 1800s to 2000s") +
+  theme(axis.title.y = element_markdown(),
+        plot.title = element_markdown(size = 16),
+        axis.title = element_text(size = 13),
+        axis.text = element_text(size = 12))
+
+```
+
+
+## In Summary
 
 <div style = "font-size:0.75em;">
 | Chart Type   | Best For                     |
@@ -1251,43 +1382,4 @@ Bar graph also lend themselves well to variations like:
 
 </div>
 
-
-# Bridging the Gap Between Data and Decisions {.inverse}
-
-## Mind the Gap
-
-**Problem:** Data is abundant, but insights are scarce.
-
-**Solution:** Visualization bridges the gap between raw data and strategic action.
-
-**Outcome:** Simplifies storytelling and supports real-time decisions.
-
-# What is R and Why Use It? {.inverse}
-
-## R
-
--   Free and open-source statistical language
-
--   Used in academia and business
-
--   Integrates data wrangling, analysis, and visualization
-
-*Key Visualization Packages:*
-
-`ggplot2`
-
-`plotly`
-
-`shiny`
-
-## Data Visualization
-
-:::: columns
-::: {.column width="100%"}
-<div style="text-align: center;">
-  <img src="images/program.png" width="70%">
-</div>
-:::
-::::
-
-
+# THANK YOU {.inverse}
