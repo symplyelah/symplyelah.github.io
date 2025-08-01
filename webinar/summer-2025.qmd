@@ -1,8 +1,7 @@
 ---
 title: "Bridging Data and Decision-Making: Data Visualization Techniques with R"
 subtitle: "IEEE Nigeria Southeast Subsection"
-description: Webinar Presentation
-author: Ifeoma Egbogah
+description: In this talk, I’ll highlight the importance of data visualization, share practical guidelines for creating more effective charts, and walk through examples of both well-designed and poorly designed visuals.
 ---
 
 # Webinar Overview
