@@ -5,6 +5,54 @@ description: Webinar Presentation
 author: Ifeoma Egbogah
 ---
 
+## Join
+
+[Google Meet](https:/meet.google.com/jyn-ftyj-cdz){.btn .btn-primary target="_blank"}
+
+## Speaker
+
+:::: columns
+::: {.column width="85%"}
+![](./images/ifeoma.jpg){width="30%"} 
+
+#### [Ifeoma Egbogah](https://ifeoma-egbogah.netlify.app/) 
+
+:::{.smaller80}
+Lead Data Scientist
+
+[Zelah Ltd](https://www.zelahexports.com/)
+
+<i class="fa fa-envelope"></i> [negbogah@gmail.com](mailto:negbogah@gmail.com)
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+📆  July 26, 2025
+⏰  10:00AM
+[🏨  Google Meet](https:/meet.google.com/jyn-ftyj-cdz)
+
+------------------------------------------------------------------------
+
+# Webinar Overview
+
+In today’s world, data is everywhere—but data alone doesn’t drive decisions. It's
+
+Communicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you're a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.
+
+## Is this webinar for me?
+
+This webinar is ideal for you if you:
+
+-   want to master the art of presenting data through clear, impactful visualizations;
+
+-   are looking to enhance your design skills to create visuals that are both effective and informative; and
+
+-   are ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message.
+
+
+
 # Slides
 
 Here's a link to the [slides](/slides/index.html){target="_blank"} in a new window.
@@ -23,9 +71,11 @@ Thank you to developers, sharers, teachers, and the entire R community for build
 -   `tidyverse`: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
 -   `ggplot2`: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 -   `ggrepel`: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with 'ggplot2'. R package version 0.9.1. https://github.com/slowkow/ggrepel
--   `gghighlight`: Hiroaki Yutani (2020). gghighlight: Highlight Lines and Points in 'ggplot2'. R package version 0.3.1. https://github.com/yutannihilation/gghighlight/
--   `R Markdown`: Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide. Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.
--   `sf`: Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009
--   `paletteer`: See AUTHORS file. (2021). paletteer: Comprehensive Collection of Color Palettes. R package version 1.3.0. https://github.com/EmilHvitfeldt/paletteer
--   `gapminder`: Jennifer Bryan (2017). gapminder: Data from Gapminder. https://github.com/jennybc/gapminder, http://www.gapminder.org/data/, https://doi.org/10.5281/zenodo.594018.
 -   `janitor`:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor
+
+
+
+
+::: {align="center"}
+<a href="https://ifeoma-egbogah.netlify.app/blog/"><img src="https://assets.dryicons.com/uploads/icon/svg/4926/home.svg" alt="Blog" border="0" width="35" height="35"/></a>  <a href="mailto:negbogah@gmail.com"><img src="https://assets.dryicons.com/uploads/icon/svg/8009/02dc3a5c-6504-4347-85fb-3f510cfecc45.svg" alt="Email" border="0" width="35" height="35"/></a>  <a href="https://twitter.com/negbogah"><img src="https://assets.dryicons.com/uploads/icon/svg/8385/c23f7ffc-ca8d-4246-8978-ce9f6d5bcc99.svg" alt="Twitter" border="0" width="35" height="35"/></a>  <a href="https://www.instagram.com/ifyegbogah/"><img src="https://assets.dryicons.com/uploads/icon/svg/8330/62263227-bb78-4b42-a9a9-e222e0cc7b97.svg" alt="Instagram" border="0" width="35" height="35"/></a>  <a href="https://www.linkedin.com/in/ifeoma-egbogah-a88527110/"><img src="https://assets.dryicons.com/uploads/icon/svg/8337/a347cd89-1662-4421-be90-58e5e8004eae.svg" alt="LinkedIn" border="0" width="35" height="35"/></a>   <a href="https://www.buymeacoffee.com/z3tt" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Buy Me A Coffee" style="height: 35px !important;width: 122px !important;"/></a>
+:::
