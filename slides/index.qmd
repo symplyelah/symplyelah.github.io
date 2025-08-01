@@ -9,6 +9,15 @@ embed-resources: true
 editor_options: 
   chunk_output_type: console
 ---
+# What's this talk about? {.inverse}
+
+## In this talk we will cover:
+
+* Why you should visualise
+* What is data?
+* Data types
+* What is R?
+* Effective visualisation technique
 
 # Drowning in Data, Starving for Insight {.inverse}
 
@@ -44,6 +53,30 @@ Nightingale was also a skilled statistician. She used data and pioneering infogr
 
 <div style="text-align: center;">
   <img src="images/night.jpg" width="60%">
+</div>
+
+:::
+::::
+
+
+## Data That Saved Lives
+
+### John Snow: Father of Modern Epidemiology
+
+:::: columns
+::: {.column width="45%"} 
+<div style="text-align: left; font-size:0.70em;">
+John Snow, Father of Modern Epidemiology,is best known for his groundbreaking work during the 1854 cholera outbreak in London. 
+
+John Snow gathered data on cholera deaths and created a visualization in which the number of deaths was represented by bars placed at corresponding addresses in London.
+
+This visual clearly revealed a concentration of deaths around Broad Street, leading to the identification of the Broad Street water pump as the source of the cholera outbreak.
+</div>
+:::
+::: {.column width="55%"} 
+
+<div style="text-align: right;">
+  <img src="images/cholera.jpg" width="100%">
 </div>
 
 :::
@@ -97,9 +130,6 @@ medal <- read_csv("data/summer_olympic_medals.csv") |>
 logistics_data <- logistics_data |> 
   mutate(date = dmy(glue::glue("1-{month}")),
          month2 = month(date, label = TRUE))  
-
-
-
 
 
 logistics_data |> 
