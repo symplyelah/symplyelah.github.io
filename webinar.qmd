@@ -6,5 +6,5 @@ title: Webinar
 
 Click on the links below for details on how to join, the schedule, and the instructors.
 
-- [Summer 2025, Zoom](webinar/summer-2025.html)
+- [IEEE Nigeria Southeast Subsection, Google Meet](webinar/summer-2025.html)
 - [R ladies Abuja, Zoom](webinar/rladiesabuja.html)

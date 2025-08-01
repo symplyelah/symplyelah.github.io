@@ -28,6 +28,13 @@
     "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\n‘tidytext’:Silge, Julia, and David Robinson. 2016. “tidytext: Text Mining and Analysis Using Tidy Data Principles in r.” JOSS 1 (3). https://doi.org/10.21105/joss.00037."
   },
   {
+    "objectID": "slides/index.html#in-this-talk-we-will-cover",
+    "href": "slides/index.html#in-this-talk-we-will-cover",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "In this talk we will cover:",
+    "text": "In this talk we will cover:\n\nWhy you should visualise\nWhat is data?\nData types\nWhat is R?\nEffective visualisation technique"
+  },
+  {
     "objectID": "slides/index.html#story-too-many-reports-not-enough-direction",
     "href": "slides/index.html#story-too-many-reports-not-enough-direction",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
@@ -40,6 +47,13 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "Nightingale’s Rose Diagram/Coxcomb",
     "text": "Nightingale’s Rose Diagram/Coxcomb\n\nNightingale was also a skilled statistician. She used data and pioneering infographics—such as the coxcomb diagram (a type of pie chart)—to demonstrate the impact of sanitation on health. Her visual presentation of data helped persuade the British government and public of the need for healthcare reform."
+  },
+  {
+    "objectID": "slides/index.html#data-that-saved-lives",
+    "href": "slides/index.html#data-that-saved-lives",
+    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "section": "Data That Saved Lives",
+    "text": "Data That Saved Lives\nJohn Snow: Father of Modern Epidemiology\n\n\n\nJohn Snow, Father of Modern Epidemiology,is best known for his groundbreaking work during the 1854 cholera outbreak in London.\nJohn Snow gathered data on cholera deaths and created a visualization in which the number of deaths was represented by bars placed at corresponding addresses in London.\nThis visual clearly revealed a concentration of deaths around Broad Street, leading to the identification of the Broad Street water pump as the source of the cholera outbreak."
   },
   {
     "objectID": "slides/index.html#no-longer-drowning",
@@ -439,19 +453,5 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "R packages",
     "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "slides/index.html#in-this-talk-we-will-cover",
-    "href": "slides/index.html#in-this-talk-we-will-cover",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "In this talk we will cover:",
-    "text": "In this talk we will cover:\n\nWhy you should visualise\nWhat is data?\nData types\nWhat is R?\nEffective visualisation technique"
-  },
-  {
-    "objectID": "slides/index.html#data-that-saved-lives",
-    "href": "slides/index.html#data-that-saved-lives",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Data That Saved Lives",
-    "text": "Data That Saved Lives\nJohn Snow: Father of Modern Epidemiology\n\n\n\nJohn Snow, Father of Modern Epidemiology,is best known for his groundbreaking work during the 1854 cholera outbreak in London.\nJohn Snow gathered data on cholera deaths and created a visualization in which the number of deaths was represented by bars placed at corresponding addresses in London.\nThis visual clearly revealed a concentration of deaths around Broad Street, leading to the identification of the Broad Street water pump as the source of the cholera outbreak."
   }
 ]

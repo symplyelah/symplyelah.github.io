@@ -1389,6 +1389,15 @@ emissions |>
 
 ```
 
+# Red Flags {.inverse}
+
+## What not to do
+
+<div style = "font-size:0.75em;">
+* Avoid pie charts
+* Never use 3D
+* Avoid secondary y-axis
+</div>
 
 ## In Summary
 
