@@ -310,30 +310,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Ify’s Data Talk",
+    "title": "Ify’s Data Corner",
     "section": "",
     "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
   },
   {
-    "objectID": "index.html#join",
-    "href": "index.html#join",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Ify’s Data Corner",
     "section": "",
-    "text": "Google Meet"
-  },
-  {
-    "objectID": "index.html#speaker",
-    "href": "index.html#speaker",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Speaker",
-    "text": "Speaker\n\n\n\n\nIfeoma Egbogah\n\nLead Data Scientist\nZelah Ltd\n negbogah@gmail.com\n\n\n[📆  July 26, 2025][⏰  10:00AM]🏨  Google Meet\nWebinar Overview\nIn today’s world, data is everywhere—but data alone doesn’t drive decisions. It’s\nCommunicating data through clear, purposeful, and accessible visualizations is an essential skill for anyone working with data—whether you’re a scientist, analyst, researcher, or manager. When well-crafted, the insights we extract and how clearly we communicate them that truly make an impact. However, poor design choices can hinder understanding or, worse, mislead the audience—intentionally or not.\n\nIs this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
-  },
-  {
-    "objectID": "index.html#is-this-webinar-for-me",
-    "href": "index.html#is-this-webinar-for-me",
-    "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
-    "section": "Is this webinar for me?",
-    "text": "Is this webinar for me?\nThis webinar is ideal for you if you:\n\nwant to master the art of presenting data through clear, impactful visualizations;\nare looking to enhance your design skills to create visuals that are both effective and informative; and\nare ready to invest time in selecting the right chart types, color schemes, fonts, and other elements that guide your audience and amplify your message."
+    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
   },
   {
     "objectID": "prerequisites.html",
@@ -467,12 +453,5 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "R packages",
     "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Ify’s Data Talk",
-    "section": "",
-    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
   }
 ]

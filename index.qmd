@@ -1,6 +1,5 @@
 ---
 title: "Ify's Data Corner"
-author: Ifeoma Egbogah
 format:
   html:
     include-in-header: 
