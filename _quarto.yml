@@ -5,7 +5,7 @@ execute:
   freeze: auto
 
 website:
-  title: "IfyE Data Talks"
+  title: "IfyE Data Corner"
   navbar:
     right:
       - text: "Webinar"
