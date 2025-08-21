@@ -385,6 +385,20 @@
     "text": "What is Topic Modeling?\n\nTopic modeling is way to identify themes/semantic patterns in a corpus (complete document).\nTopic modeling finds the relationships between words in the text, thereby identifying clusters of words that represent topics.\nIt is a like an amplified reading, a way to discover themes you may not see yourself.\nGlossary:\nCorpus: Group of documents\nDocuments: Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc."
   },
   {
+    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
+    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Key Importance of Topic Modeling",
+    "text": "Key Importance of Topic Modeling\n\nUncovering Hidden Themes:\nTopic modeling helps discover latent themes and patterns within unstructured text data that might otherwise be missed, providing a deeper understanding of large datasets.\nEfficient Information Retrieval and Organization:\nIt automatically organizes and groups documents by their main themes, making it easier to find relevant information and creating a manageable structure for large text collections.\nSupporting Data-Driven Decisions:\nBy identifying prevalent topics in customer reviews, social media, or research, organizations can make more informed decisions to improve products, services, and strategies."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
+    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Key Importance of Topic Modeling",
+    "text": "Key Importance of Topic Modeling\n\nAutomating Text Analysis:\nIt automates the time-consuming process of manually reading and categorizing large volumes of text, increasing efficiency and reducing human effort.\nEnhancing Research and Discovery:\nIn academia, topic modeling helps analyze research publications to reveal trends and key topics, thereby streamlining the research process and potentially leading to new discoveries.\nImproving Customer Experience:\nBusinesses can use topic modeling to analyze customer service emails or feedback to understand major challenges and concerns, allowing for targeted improvements to service delivery."
+  },
+  {
     "objectID": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
     "href": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
     "title": "Topic Modeling: Turning Conversations into Strategy",
@@ -441,6 +455,111 @@
     "text": "Packages\n\nWe will make use of the following packages\n\ntidyverse\ntidytext\ntopicmodels\ntm"
   },
   {
+    "objectID": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
+    "href": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "BBC News: Ever wondered what the news was really talking about beneath the headlines?",
+    "text": "BBC News: Ever wondered what the news was really talking about beneath the headlines?\n\nWe’ll be working with the BBC News dataset, a collection of 2225 news articles published between 2004 and 2005, covering five major categories: Business, Entertainment, Politics, Sport, and Technology.\nThe goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#about-the-dataset",
+    "href": "slides/rladiesabuja.html#about-the-dataset",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "About the Dataset",
+    "text": "About the Dataset\n\nThe BBC News dataset contains three key columns:\n\nTitle – the headline of each news article\nDescription – a brief summary or excerpt from the article\nCategory – the labeled topic (e.g., Business, Sport, etc.)\n\nFor this project, we focus on the Description column as the primary source of text. This is where we perform all of our text cleaning and preprocessing — removing punctuation, converting to lowercase, tokenizing, eliminating stop words, and so on.\nOnce the topic model is built, we use the Category column as a benchmark to evaluate how well our model’s discovered topics align with the actual labeled categories. This gives us a way to check the quality and accuracy of our model.\n\n\nglimpse(bbc)\n\nRows: 2,225\nColumns: 4\n$ ...1        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Title       &lt;chr&gt; \"India calls for fair trade rules\", \"Sluggish economy hits…\n$ Description &lt;chr&gt; \"india attend g7 meet seven lead industrialis nation frida…\n$ Category    &lt;chr&gt; \"Business\", \"Business\", \"Business\", \"Business\", \"Business\"…"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#data-cleaning",
+    "href": "slides/rladiesabuja.html#data-cleaning",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nWe start by using the clean_names() function from the janitor package to standardize all column names (e.g., convert to lowercase, replace spaces with underscores).\nThen we removed duplicate rows based on the description column using distinct(description, .keep_all = TRUE), so each news article description appears only once.\nThe data had 141 duplicate rows.\n\n\nbbc &lt;- bbc |&gt; \n  janitor::clean_names() |&gt; \n  distinct(description, .keep_all = TRUE)"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#preprocessing-1",
+    "href": "slides/rladiesabuja.html#preprocessing-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\nLet’s tokenized the description column using unnest_tokens() to break down each news article into individual words.\nThen use count(word, sort = TRUE) to calculate the frequency of each word across the dataset and sort them in descending order.\n\n\n\n# A tibble: 5 × 2\n  word      n\n  &lt;chr&gt; &lt;int&gt;\n1 mr     2799\n2 year   2655\n3 would  2401\n4 also   1997\n5 peopl  1855"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#preprocessing-contd.",
+    "href": "slides/rladiesabuja.html#preprocessing-contd.",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Preprocessing contd.",
+    "text": "Preprocessing contd.\n\nHow about title per word?\n\n\nbbc |&gt; \n  unnest_tokens(word, description) |&gt; \n  count(title, word, sort = TRUE)|&gt; \n  head(5)\n\n# A tibble: 5 × 3\n  title                            word      n\n  &lt;chr&gt;                            &lt;chr&gt; &lt;int&gt;\n1 Scissor Sisters triumph at Brits song     81\n2 Brits debate over 'urban' music  music    72\n3 Losing yourself in online gaming game     66\n4 Kilroy launches 'Veritas' party  parti    60\n5 Minimum wage increased to £5.05  wage     60"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#train-a-model",
+    "href": "slides/rladiesabuja.html#train-a-model",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Train a model",
+    "text": "Train a model\n\nTo train a topic model using LDA() from the topicmodel package, we need to create sparse matrix from our tidy dataframe of tokens using cast_sparse(category, word, n)\n\n\n\n[1] 1967 3458\n\n\n\nThis means there are 1967 titles (i.e documents) and different tokens (i.e. terms or words) in our dataset for modeling."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#train-a-model-1",
+    "href": "slides/rladiesabuja.html#train-a-model-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Train a Model",
+    "text": "Train a Model\n\nA topic model like this one models:\n\neach document as a mixture of topics\neach topic as a mixture of words\n\nThe most important parameter when training a topic modeling is K, the number of topics. This is like k in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result",
+    "text": "Explore Topic Model Result\nBeta matrix\n\nTo dig deeper into our topic model, we can use the tidy() function to convert the results into a dataframe that we can work with. This gives us two types of outputs:\n\nBeta matrix: shows the probability of each word belonging to each topic (topic-word distribution)\nGamma matrix: shows how much each topic contributes to each document (document-topic distribution)"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#beta-matrix-contd.",
+    "href": "slides/rladiesabuja.html#beta-matrix-contd.",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Beta Matrix Contd.",
+    "text": "Beta Matrix Contd.\n\nWe’ll start by looking at the beta matrix first.\n\n\n\n# A tibble: 17,290 × 3\n   topic term        beta\n   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;\n 1     1 song  0.00000532\n 2     2 song  0.00736   \n 3     3 song  0.00000587\n 4     4 song  0.00000655\n 5     5 song  0.00000511\n 6     1 music 0.00000532\n 7     2 music 0.0304    \n 8     3 music 0.00000587\n 9     4 music 0.00000655\n10     5 music 0.00000511\n# ℹ 17,280 more rows"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#beta-matrix-visualisation",
+    "href": "slides/rladiesabuja.html#beta-matrix-visualisation",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Beta Matrix Visualisation",
+    "text": "Beta Matrix Visualisation\n\nSince the output is a tidy dataframe, we can easily manipulate it — including visualizing the top words with the highest probabilities for each topic."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-1",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result",
+    "text": "Explore Topic Model Result\nGamma matrix\nThe probability that this document is about this topic.\n\n\n# A tibble: 9,835 × 3\n   document                          topic  gamma\n   &lt;chr&gt;                             &lt;int&gt;  &lt;dbl&gt;\n 1 Scissor Sisters triumph at Brits      1 0.0127\n 2 Brits debate over 'urban' music       1 0.0164\n 3 Losing yourself in online gaming      1 0.0207\n 4 Kilroy launches 'Veritas' party       1 0.701 \n 5 Minimum wage increased to £5.05       1 0.0951\n 6 Nadal puts Spain 2-0 up               1 0.0229\n 7 Mobile games come of age              1 0.0190\n 8 Apple laptop is 'greatest gadget'     1 0.0115\n 9 Peer-to-peer nets 'here to stay'      1 0.0479\n10 Terror powers expose 'tyranny'        1 0.295 \n# ℹ 9,825 more rows"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix\nMost common topic in the document."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix\nProbability of a document belonging to a topic"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix"
+  },
+  {
     "objectID": "webinar/summer-2025.html",
     "href": "webinar/summer-2025.html",
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
@@ -460,152 +579,5 @@
     "title": "Bridging Data and Decision-Making: Data Visualization Techniques with R",
     "section": "R packages",
     "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\nggrepel: Kamil Slowikowski (2021). ggrepel: Automatically Position Non-Overlapping Text Labels with ‘ggplot2’. R package version 0.9.1. https://github.com/slowkow/ggrepel\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#bbc-newsturning-conversations-into-strategy",
-    "href": "slides/rladiesabuja.html#bbc-newsturning-conversations-into-strategy",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "BBC News:Turning Conversations into Strategy",
-    "text": "BBC News:Turning Conversations into Strategy\n\nLet’s build a topic modelfor BBC News dataset (https://raw.githubusercontent.com/vahadruya/Capstone-Project-Unsupervised-ML-Topic-Modelling/refs/heads/main/Input_Data/input.csv) is a collection of news articles from the BBC News website from 2004-2005, consisting of 2225 articles divided into five categories: Business, Entertainment, Politics, Sport, and Technology.\nThe objective of this project is to create an aggregate dataset of all the news articles and perform topic modelling to identify the underlying, latent themes and topics present in the data, among the articles."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-data",
-    "href": "slides/rladiesabuja.html#explore-data",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Data",
-    "text": "Explore Data\n\nThe BBC News dataset has three columns: Title, Description, and Category. We use the Description column for all the text cleaning and preprocessing, and then we use the Category column to check how accurate our model is.\n\n\nglimpse(bbc)\n\nRows: 2,225\nColumns: 4\n$ ...1        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Title       &lt;chr&gt; \"India calls for fair trade rules\", \"Sluggish economy hits…\n$ Description &lt;chr&gt; \"india attend g7 meet seven lead industrialis nation frida…\n$ Category    &lt;chr&gt; \"Business\", \"Business\", \"Business\", \"Business\", \"Business\"…"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#data-cleaning",
-    "href": "slides/rladiesabuja.html#data-cleaning",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Data Cleaning",
-    "text": "Data Cleaning\n\nWe start by using the clean_names() function from the janitor package to standardize all column names (e.g., convert to lowercase, replace spaces with underscores).\nThen we removed duplicate rows based on the description column using distinct(description, .keep_all = TRUE), so each news article description appears only once.\nThe data had 141 duplicate rows.\n\n\nbbc &lt;- bbc |&gt; \n  janitor::clean_names() |&gt; \n  distinct(description, .keep_all = TRUE)"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result",
-    "text": "Explore Topic Model Result\nBeta matrix\n\nTo dig deeper into our topic model, we can use the tidy() function to convert the results into a dataframe that we can work with. This gives us two types of outputs:\n\nBeta matrix: shows the probability of each word belonging to each topic (topic-word distribution)\nGamma matrix: shows how much each topic contributes to each document (document-topic distribution)"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#beta-matrix-visualisation",
-    "href": "slides/rladiesabuja.html#beta-matrix-visualisation",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Beta Matrix Visualisation",
-    "text": "Beta Matrix Visualisation\n\nSince the output is a tidy dataframe, we can easily manipulate it — including visualizing the top words with the highest probabilities for each topic."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-1",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result",
-    "text": "Explore Topic Model Result\nGamma matrix\nThe probability that this document is about this topic.\n\n\n# A tibble: 9,835 × 3\n   document                          topic  gamma\n   &lt;chr&gt;                             &lt;int&gt;  &lt;dbl&gt;\n 1 Scissor Sisters triumph at Brits      1 0.0127\n 2 Brits debate over 'urban' music       1 0.0164\n 3 Losing yourself in online gaming      1 0.0207\n 4 Kilroy launches 'Veritas' party       1 0.701 \n 5 Minimum wage increased to £5.05       1 0.0951\n 6 Nadal puts Spain 2-0 up               1 0.0229\n 7 Mobile games come of age              1 0.0190\n 8 Apple laptop is 'greatest gadget'     1 0.0115\n 9 Peer-to-peer nets 'here to stay'      1 0.0479\n10 Terror powers expose 'tyranny'        1 0.295 \n# ℹ 9,825 more rows"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#preprocessing-1",
-    "href": "slides/rladiesabuja.html#preprocessing-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\nLet’s tokenized the description column using unnest_tokens() to break down each news article into individual words.\nThen use count(word, sort = TRUE) to calculate the frequency of each word across the dataset and sort them in descending order.\n\n\n\n# A tibble: 5 × 2\n  word      n\n  &lt;chr&gt; &lt;int&gt;\n1 mr     2799\n2 year   2655\n3 would  2401\n4 also   1997\n5 peopl  1855"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#train-a-model",
-    "href": "slides/rladiesabuja.html#train-a-model",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Train a model",
-    "text": "Train a model\n\nTo train a topic model using LDA() from the topicmodel package, we need to create sparse matrix from our tidy dataframe of tokens using cast_sparse(category, word, n)\n\n\n\n[1] 1967 3458\n\n\n\nThis means there are 1967 titles (i.e documents) and different tokens (i.e. terms or words) in our dataset for modeling."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#train-a-model-1",
-    "href": "slides/rladiesabuja.html#train-a-model-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Train a Model",
-    "text": "Train a Model\n\nA topic model like this one models:\n\neach document as a mixture of topics\neach topic as a mixture of words\n\nThe most important parameter when training a topic modeling is K, the number of topics. This is like k in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#bbc-newsever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "href": "slides/rladiesabuja.html#bbc-newsever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "BBC News:Ever wondered what the news was really talking about beneath the headlines?",
-    "text": "BBC News:Ever wondered what the news was really talking about beneath the headlines?\n\nWe’ll be working with the BBC News dataset, a collection of 2225 news articles published between 2004 and 2005, covering five major categories: Business, Entertainment, Politics, Sport, and Technology.\nThe goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#preprocessing-contd.",
-    "href": "slides/rladiesabuja.html#preprocessing-contd.",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Preprocessing contd.",
-    "text": "Preprocessing contd.\n\nHow about title per word?\n\n\nbbc |&gt; \n  unnest_tokens(word, description) |&gt; \n  count(title, word, sort = TRUE)|&gt; \n  head(5)\n\n# A tibble: 5 × 3\n  title                            word      n\n  &lt;chr&gt;                            &lt;chr&gt; &lt;int&gt;\n1 Scissor Sisters triumph at Brits song     81\n2 Brits debate over 'urban' music  music    72\n3 Losing yourself in online gaming game     66\n4 Kilroy launches 'Veritas' party  parti    60\n5 Minimum wage increased to £5.05  wage     60"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#beta-matrix-contd.",
-    "href": "slides/rladiesabuja.html#beta-matrix-contd.",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Beta Matrix Contd.",
-    "text": "Beta Matrix Contd.\n\nWe’ll start by looking at the beta matrix first.\n\n\n\n# A tibble: 17,290 × 3\n   topic term        beta\n   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;\n 1     1 song  0.00000532\n 2     2 song  0.00736   \n 3     3 song  0.00000587\n 4     4 song  0.00000655\n 5     5 song  0.00000511\n 6     1 music 0.00000532\n 7     2 music 0.0304    \n 8     3 music 0.00000587\n 9     4 music 0.00000655\n10     5 music 0.00000511\n# ℹ 17,280 more rows"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#about-the-dataset",
-    "href": "slides/rladiesabuja.html#about-the-dataset",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "About the Dataset",
-    "text": "About the Dataset\n\nThe BBC News dataset contains three key columns:\n\nTitle – the headline of each news article\nDescription – a brief summary or excerpt from the article\nCategory – the labeled topic (e.g., Business, Sport, etc.)\n\nFor this project, we focus on the Description column as the primary source of text. This is where we perform all of our text cleaning and preprocessing — removing punctuation, converting to lowercase, tokenizing, eliminating stop words, and so on.\nOnce the topic model is built, we use the Category column as a benchmark to evaluate how well our model’s discovered topics align with the actual labeled categories. This gives us a way to check the quality and accuracy of our model.\n\n\nglimpse(bbc)\n\nRows: 2,225\nColumns: 4\n$ ...1        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Title       &lt;chr&gt; \"India calls for fair trade rules\", \"Sluggish economy hits…\n$ Description &lt;chr&gt; \"india attend g7 meet seven lead industrialis nation frida…\n$ Category    &lt;chr&gt; \"Business\", \"Business\", \"Business\", \"Business\", \"Business\"…"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#evaluation",
-    "href": "slides/rladiesabuja.html#evaluation",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Evaluation",
-    "text": "Evaluation"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#evaluation-1",
-    "href": "slides/rladiesabuja.html#evaluation-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Evaluation",
-    "text": "Evaluation"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
-    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Key Importance of Topic Modeling",
-    "text": "Key Importance of Topic Modeling\n\nUncovering Hidden Themes:\nTopic modeling helps discover latent themes and patterns within unstructured text data that might otherwise be missed, providing a deeper understanding of large datasets.\nEfficient Information Retrieval and Organization:\nIt automatically organizes and groups documents by their main themes, making it easier to find relevant information and creating a manageable structure for large text collections.\nSupporting Data-Driven Decisions:\nBy identifying prevalent topics in customer reviews, social media, or research, organizations can make more informed decisions to improve products, services, and strategies."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
-    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Key Importance of Topic Modeling",
-    "text": "Key Importance of Topic Modeling\n\nAutomating Text Analysis:\nIt automates the time-consuming process of manually reading and categorizing large volumes of text, increasing efficiency and reducing human effort.\nEnhancing Research and Discovery:\nIn academia, topic modeling helps analyze research publications to reveal trends and key topics, thereby streamlining the research process and potentially leading to new discoveries.\nImproving Customer Experience:\nBusinesses can use topic modeling to analyze customer service emails or feedback to understand major challenges and concerns, allowing for targeted improvements to service delivery."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix\nMost common topic in the document."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "href": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "BBC News: Ever wondered what the news was really talking about beneath the headlines?",
-    "text": "BBC News: Ever wondered what the news was really talking about beneath the headlines?\n\nWe’ll be working with the BBC News dataset, a collection of 2225 news articles published between 2004 and 2005, covering five major categories: Business, Entertainment, Politics, Sport, and Technology.\nThe goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix\nProbability of a document belonging to a topic"
   }
 ]

@@ -106,6 +106,7 @@ Latent Dirichlet Allocation (LDA) is one of the most common algorithms for topic
 Collect the text data
 
 Examples:
+
 - Taylor Swift's lyrics (there is a `Taylor` package in R)
 
 - Spice Girls lyrics
