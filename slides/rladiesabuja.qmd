@@ -47,11 +47,36 @@ It is a like an amplified reading, a way to discover themes you may not see your
 ### Glossary:
 
 *Corpus:* Group of documents
+
 *Documents:* Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc.
 </div>
 
 # Importance of Topic Modeling {.inverse}
-##
+## Key Importance of Topic Modeling
+
+<div style = "font-size:0.70em;">
+### *Uncovering Hidden Themes:* 
+Topic modeling helps discover latent themes and patterns within unstructured text data that might otherwise be missed, providing a deeper understanding of large datasets. 
+
+### *Efficient Information Retrieval and Organization:*
+It automatically organizes and groups documents by their main themes, making it easier to find relevant information and creating a manageable structure for large text collections. 
+
+### *Supporting Data-Driven Decisions:*
+By identifying prevalent topics in customer reviews, social media, or research, organizations can make more informed decisions to improve products, services, and strategies. 
+</div>
+
+## Key Importance of Topic Modeling
+
+<div style = "font-size:0.70em;">
+### *Automating Text Analysis:*
+It automates the time-consuming process of manually reading and categorizing large volumes of text, increasing efficiency and reducing human effort. 
+
+### *Enhancing Research and Discovery:*
+In academia, topic modeling helps analyze research publications to reveal trends and key topics, thereby streamlining the research process and potentially leading to new discoveries. 
+
+### *Improving Customer Experience:*
+Businesses can use topic modeling to analyze customer service emails or feedback to understand major challenges and concerns, allowing for targeted improvements to service delivery. 
+</div>
 
 # Topic Modeling Techniques {.inverse}
 ## Latent Dirichlet Allocation (LDA)
@@ -68,7 +93,7 @@ It is a like an amplified reading, a way to discover themes you may not see your
 ::::
 
 <div style = "font-size:0.70em;">
-Latent Dirichlet allocation is one of the most common algorithms for topic modeling. It is guided by two principles, that:
+Latent Dirichlet Allocation (LDA) is one of the most common algorithms for topic modeling. It is guided by two principles, that:
 
 * Every document is a mixture of topics
 * Every topic is a mixture of words
@@ -79,6 +104,17 @@ Latent Dirichlet allocation is one of the most common algorithms for topic model
 ### Data  Preparation
 <div style = "font-size:0.85em;">
 Collect the text data
+
+Examples:
+- Taylor Swift's lyrics (there is a `Taylor` package in R)
+
+- Spice Girls lyrics
+
+- [BBC News](https://raw.githubusercontent.com/vahadruya/Capstone-Project-Unsupervised-ML-Topic-Modelling/refs/heads/main/Input_Data/input.csv)
+
+- `Gutenbergr` package
+
+- `quanteda` package
 </div>
 
 ## Step 2
@@ -101,9 +137,11 @@ Before modeling, we preprocess the data to put in it in a tidy format by:
 <div style = "font-size:0.85em;">
 A matrix that represents the frequency of each word (term) across all documents.
 
-We can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext’s `cast_dtm()`.
+We can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext’s `cast_sparse()`.
 
-*Rows = documents; Columns = terms/words.*
+*- Rows* = documents;
+
+*- Columns* = terms/words.
 
 </div>
 
@@ -122,7 +160,7 @@ We can then use the `LDA()` function from the `topicmodels` package to create a 
 
 * Label the topics manually (e.g., “Customer Service Issues” or “Product Features”).
 
-* Visualize using `tools like: `ggplot2` package
+* Visualize using tools like: `ggplot2` package
 
 </div>
 
@@ -130,7 +168,9 @@ We can then use the `LDA()` function from the `topicmodels` package to create a 
 ### Apply Result
 
 <div style = "font-size:0.85em;">
-Summarize the result, identify customer pain points, track emerging trends etc
+Summarize the result
+Identify customer pain points
+Track emerging trends etc
 
 </div>
 
@@ -140,10 +180,13 @@ Summarize the result, identify customer pain points, track emerging trends etc
 <div style = "font-size:0.85em;">
 We will make use of the following packages
 
-`tidyverse`
-`tidytext`
-`topicmodels`
-`tm`
+- `tidyverse`
+
+- `tidytext`
+
+- `topicmodels`
+
+- `tm`
 
 </div>
 
@@ -157,7 +200,355 @@ library(tidyverse)
 library(tidytext)
 library(topicmodels)
 library(tm)
+library(stm)
+library(yardstick)
+library(SnowballC)
+library(textstem)
 
+theme_set(theme_minimal())
+
+#bbc <- read_csv("https://raw.githubusercontent.com/vahadruya/Capstone-Project-Unsupervised-ML-Topic-Modelling/refs/heads/main/Input_Data/input.csv")
+
+
+
+
+
+```
+
+
+## BBC News: Ever wondered what the news was really talking about beneath the headlines?
+
+<div style = "font-size:0.85em;">
+We’ll be working with the [BBC News dataset](https://raw.githubusercontent.com/vahadruya/Capstone-Project-Unsupervised-ML-Topic-Modelling/refs/heads/main/Input_Data/input.csv), a collection of 2225 news articles published between 2004 and 2005, covering five major categories: **Business, Entertainment, Politics, Sport, and Technology**.
+
+The goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels.
+
+</div>
+
+## About the Dataset
+
+<div style = "font-size:0.75em;">
+The BBC News dataset contains three key columns:
+
+- Title – the headline of each news article
+
+- Description – a brief summary or excerpt from the article
+
+- Category – the labeled topic (e.g., Business, Sport, etc.)
+
+For this project, we focus on the Description column as the primary source of text. This is where we perform all of our text cleaning and preprocessing — removing punctuation, converting to lowercase, tokenizing, eliminating stop words, and so on.
+
+Once the topic model is built, we use the Category column as a benchmark to evaluate how well our model’s discovered topics align with the actual labeled categories. This gives us a way to check the quality and accuracy of our model.
+</div>
+
+```{r}
+
+bbc <- read_csv("data/bbc.csv")
+
+```
+
+
+```{r}
+#| echo: true
+
+
+glimpse(bbc)
+
+
+```
+
+
+## Data Cleaning
+
+<div style = "font-size:0.85em;">
+We start by using the `clean_names()` function from the `janitor` package to standardize all column names (e.g., convert to lowercase, replace spaces with underscores).
+
+Then we removed duplicate rows based on the description column using `distinct(description, .keep_all = TRUE)`, so each news article description appears only once.
+
+The data had 141 duplicate rows.
+
+</div>
+
+
+```{r}
+#| echo: true
+
+bbc <- bbc |> 
+  janitor::clean_names() |> 
+  distinct(description, .keep_all = TRUE)
+
+
+```
+
+
+## Preprocessing
+
+<div style = "font-size:0.85em;">
+Let's tokenized the description column using `unnest_tokens()` to break down each news article into individual words.
+
+Then use `count(word, sort = TRUE)` to calculate the frequency of each word across the dataset and sort them in descending order.
+
+</div>
+
+```{r}
+
+#| echo: true
+
+bbc |> 
+  unnest_tokens(word, description) |> 
+  count(word, sort = TRUE) |> 
+  head(5)
+
+```
+
+
+## Preprocessing contd.
+<div style = "font-size:0.85em;">
+How about title per word?
+</div>
+
+```{r}
+#| echo: true
+
+bbc |> 
+  unnest_tokens(word, description) |> 
+  count(title, word, sort = TRUE)|> 
+  head(5)
+
+```
+
+
+## Train a model
+
+<div style = "font-size:0.85em;">
+To train a topic model using `LDA()` from the `topicmodel` package, we need to create sparse matrix from our tidy dataframe of tokens using `cast_sparse(category, word, n)`
+</div>
+
+```{r}
+
+#| echo: true
+
+bbc_sparse <- 
+  bbc |> 
+  unnest_tokens(word, description) |> 
+  anti_join(get_stopwords()) |> 
+  #filter(!str_detect(word, "^[0-9]+$")) |> 
+  count(title, word, sort = TRUE) |> 
+  filter(n > 3) |> 
+  cast_sparse(title, word, n)
+  
+
+dim(bbc_sparse)
+
+```
+
+<div style = "font-size:0.85em;">
+This means there are 1967 titles (i.e documents) and different tokens (i.e. terms or words) in our dataset for modeling.
+
+</div>
+
+## Train a Model
+
+<div style = "font-size:0.85em;">
+
+A topic model like this one models:
+
+- each document as a mixture of topics
+- each topic as a mixture of words
+
+The most important parameter when training a topic modeling is K, the number of topics. This is like k in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time. 
+</div>
+
+
+```{r}
+
+#| echo: true
+
+set.seed(2025)
+
+bbc_lda_3 <- LDA(bbc_sparse, k = 5, method = "Gibbs" )
+
+
+```
+
+## Explore Topic Model Result
+
+### Beta matrix
+
+<div style = "font-size:0.85em;">
+To dig deeper into our topic model, we can use the `tidy()` function to convert the results into a dataframe that we can work with. This gives us two types of outputs:
+
+- *Beta matrix:* shows the probability of each word belonging to each topic (topic-word distribution)
+
+- *Gamma matrix:* shows how much each topic contributes to each document (document-topic distribution)
+
+</div>
+
+## Beta Matrix Contd.
+
+<div style="font-size:0.8em;">
+We'll start by looking at the beta matrix first.
+</div>
+
+```{r}
+
+#| echo: true
+
+bbc_tidy_beta <- tidy(bbc_lda_3, matrix = "beta")
+
+bbc_tidy_beta
+
+```
+
+
+## Beta Matrix Visualisation
+
+<div style = "font-size:0.85em;">
+Since the output is a tidy dataframe, we can easily manipulate it — including visualizing the top words with the highest probabilities for each topic.
+</div>
+
+```{r}
+
+#| echo: true
+
+bbc_tidy_beta |> 
+  group_by(topic) |> 
+  slice_max(beta, n = 10) |> 
+  ungroup() |> 
+  arrange(topic, beta) |> 
+  mutate(topic = paste("Topic", topic),
+         term = reorder_within(term, beta, topic)) |> 
+  ggplot(aes(beta, term, fill = as.factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~topic, scales = "free_y") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_reordered() +
+  labs(x = expression(beta), y = NULL)
+
+```
+
+
+## Explore Topic Model Result
+
+### Gamma matrix
+ The probability that this document is about this topic.
+```{r}
+
+#| echo: true
+
+
+bbc_tidy_gamma <- tidy(bbc_lda_3, matrix = "gamma")
+
+bbc_tidy_gamma
+
+```
+
+## Explore Topic Model Result Contd
+
+### Gamma matrix
+
+```{r}
+
+#| echo: true
+
+bbc_tidy_gamma |> 
+  ggplot(aes(gamma, fill = as.factor(topic))) +
+  geom_histogram(show.legend = FALSE) +
+  facet_wrap(~topic) +
+  labs(x = expression(gamma),
+       y = "")
+
+```
+
+## Explore Topic Model Result Contd
+
+### Gamma matrix
+
+Most common topic in the document.
+```{r}
+
+#| echo: true
+
+bbc_join <- bbc_tidy_gamma |>
+  left_join(bbc, by = join_by(document == title)) 
+
+
+bbc_join |> 
+  group_by(topic) |> 
+  mutate(topic = factor(topic)) |> 
+  ggplot(aes(gamma, topic, fill = topic)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = expression(gamma), 
+       y = NULL,
+       title = "Most common topic in the BBC News")
+
+
+```
+
+## Explore Topic Model Result Contd
+
+### Gamma matrix
+
+Probability of a document belonging to a topic
+```{r}
+
+#| echo: true
+
+
+b <- sample(2220, 10)
+
+bbc_join |> 
+  filter(x1 %in% b) |>  
+  group_by(topic) |> 
+  mutate(topic = factor(topic)) |> 
+  ggplot(aes(topic, gamma, fill = topic)) +
+  geom_boxplot(show.legend = FALSE) +
+  facet_wrap(~document, scales = "free") +
+  labs(x = "Topic",
+       y = expression(gamma),
+       title = "Probability of an Article Belonging to a Topic")
+
+```
+
+## Explore Topic Model Result Contd
+
+### Gamma matrix
+
+```{r}
+
+#| echo: true
+
+bbc_join |> 
+  ggplot(aes(category, gamma, fill = category)) +
+  geom_boxplot(show.legend = FALSE) +
+  facet_wrap(~topic) +
+  labs(x= "Category",
+       y = expression(gamma))
+
+
+```
+
+##
+
+```{r}
+
+bbc_join2 <- bbc_join |> 
+  mutate(topic_category = case_when(topic == 1 ~ "Politics",
+                                    topic == 2 ~ "Entertainment",
+                                    topic == 3 ~ "Business",
+                                    topic == 4 ~ "Sport",
+                                    topic == 5 ~ "Tech")) 
+
+bbc_slice <- bbc_join2 |> 
+  group_by(document, description) |> 
+  slice_max(gamma, n = 1) |> 
+  ungroup()
+
+bbc_slice |> 
+  mutate(category = factor(category),
+         topic_category = factor(topic_category)) |> 
+  conf_mat(category, topic_category) |> 
+  autoplot()
 
 ```
 
