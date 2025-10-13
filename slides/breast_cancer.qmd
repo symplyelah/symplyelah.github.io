@@ -1,0 +1,187 @@
+---
+title: "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data"
+subtitle: "R Ladies Abuja"
+author: Ifeoma Egbogah
+format: 
+  rladies-revealjs
+incremental: false
+embed-resources: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Every Story is Unique {.inverse}
+
+## Breast Cancer Awareness Month
+
+<div style = "font-size:0.85em;">
+
+October is Breast Cancer Awareness Month — a time to raise awareness, honour the millions of lives impacted by breast cancer, and reaffirm our global commitment to equitable access to care and improved survival for all.
+
+This webinar, *“Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data,”* brings together the worlds of data science and public health to demonstrate how coding can contribute to early detection and better health outcomes.
+
+</div>
+
+# Every Journey Matters {.inverse}
+
+## Why this theme?
+
+>Every Story is Unique, Every Journey Matters
+
+<div style = "font-size:0.85em;">
+
+Each breast cancer diagnosis tells a story — one of courage, resilience, and hope.
+
+Behind every statistic is a woman, a family, and a community navigating a deeply personal journey.
+
+This theme reminds us that:
+
+- Every experience with breast cancer is different.
+
+- Every story deserves compassion, dignity, and support.
+
+We must continue to advocate for timely, quality, and inclusive care — regardless of geography, income, or background.
+
+</div>
+
+# The Global Challenge {.inverse}
+
+## 
+
+<div style = "font-size:0.85em;">
+
+Breast cancer is the most commonly diagnosed cancer among women worldwide.
+In 2022 alone, an estimated 2.3 million women were diagnosed and 670,000 lost their lives.
+
+Yet survival outcomes vary sharply: over 90% in high-income countries compared to 66% in India and 40% in South Africa.
+
+These disparities reflect unequal access to early detection, timely diagnosis, and effective treatment. If current trends continue, global incidence and mortality could rise by 40% by 2050.
+
+</div>
+
+# The Nigerian Challenge {.inverse}
+
+## Focus on home
+
+<div style = "font-size:0.85em;">
+
+It’s crucial that we bring our focus home — to the realities of breast cancer in Nigeria. Breast cancer is the most common cancer among women in Nigeria. In fact, it accounts for nearly one in every four cancers diagnosed in Nigerian women. Sadly, it is also the leading cause of cancer-related deaths among women in our country.
+
+According to the Global Cancer Observatory, over 28,000 new cases of breast cancer are diagnosed in Nigeria every year, and we lose more than 15,000 women to this disease annually.
+
+One of the greatest challenges we face is late diagnosis.
+More than 70% of breast cancer cases in Nigeria are detected at advanced stages — when treatment options are limited and survival chances are lower.
+
+But there is hope.
+Every challenge presents an opportunity for change.
+
+</div>
+
+# Data Science Meets Health {.inverse}
+
+## In this session
+
+<div style = "font-size:0.85em;">
+As women in data and technology, We can harness the power of data and technology — the very reason we’re here today.
+
+By analyzing local health data, building predictive models, and visualizing patterns, we can help policymakers and health workers identify at-risk groups earlier and respond more effectively.
+
+Through this session, we aim to:
+
+- Raise awareness about breast cancer through data-driven storytelling.
+
+- Demonstrate how R and machine learning can assist in early detection using anthropometric data.
+
+- Inspire women to use their coding skills for impact — transforming data into tools that empower healthcare and save lives.
+
+</div>
+
+>“What gets measured, gets improved.” – Peter Drucker.
+
+# Every line of code can make a difference {.inverse}
+
+## Classification models
+
+<div style = "font-size:0.85em;">
+
+Classification models are a type of machine learning that categorizes data points into predefined groups, or classes, based on their learned characteristics. Classification models learn to identify patterns and relationships between input features (attributes of the data) and their corresponding class labels. 
+
+After training, the model can then assign new, unseen data points to the most appropriate class based on the learned characteristics. 
+
+Examples of classification algorithms:
+
+- Logistic Regression
+
+- Decision Trees
+
+- Random Forest
+
+- Support Vector Machines
+
+- k-Nearest Neighbors
+
+</div>
+
+# Anthropometric Data {.inverse}
+
+## Coimbra Breast Cancer Dataset
+
+<div style = "font-size:0.85em;">
+The dataset for today's webinar is from the (Coimbra Breast Cancer Dataset)[https://archive.ics.uci.edu/dataset/451/breast+cancer+coimbra].
+
+The data includes clinical observations from 64 patients with breast cancer and 52 healthy controls, encompassing 10 quantitative predictors including anthropometric data and parameters gathered from routine blood analysis, serving as the foundation for potential biomarkers of breast cancer. 
+
+The dataset presents an opportunity for developing prediction models, aiding in the identification and understanding of factors associated with breast cancer.
+
+Anthropometric data refers to measurable physical characteristics of the human body. 
+
+##
+
+<div style = "font-size:0.85em;">
+
+The quantitative attributes in the data are:
+
+- Age (years): Represents the age of individuals in the dataset.
+
+- BMI (kg/m²): Body Mass Index, a measure of body fat based on weight and height.
+
+- Glucose (mg/dL): Reflects blood glucose levels, a vital metabolic indicator.
+
+- Insulin (µU/mL): Indicates insulin levels, a hormone associated with glucose regulation.
+
+- HOMA: Homeostatic Model Assessment, a method assessing insulin resistance and beta-cell function.
+
+-  (ng/mL): Represents leptin levels, a hormone involved in appetite and energy balance regulation.
+
+- Adiponectin (µg/mL): Reflects adiponectin levels, a protein associated with metabolic regulation.
+
+- Resistin (ng/mL): Indicates resistin levels, a protein implicated in insulin resistance.
+
+- MCP-1 (pg/dL): Reflects Monocyte Chemoattractant Protein-1 levels, a cytokine involved in inflammation.
+
+Labels:
+
+0: Healthy controls
+
+1: Patients with breast cancer
+
+</div>
+
+# Workflow Overview {.inverse}
+
+## Steps in Building the Model:
+
+<div style = "font-size:0.85em;">
+- Import and explore data
+
+- Clean and preprocess data
+
+- Split into training and testing sets
+
+- Build classification model (e.g., logistic regression)
+
+- Evaluate model performance (accuracy, sensitivity, specificity)
+
+- Visualize results
+
+</div>

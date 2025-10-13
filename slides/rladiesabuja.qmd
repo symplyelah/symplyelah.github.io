@@ -210,10 +210,6 @@ theme_set(theme_minimal())
 
 #bbc <- read_csv("https://raw.githubusercontent.com/vahadruya/Capstone-Project-Unsupervised-ML-Topic-Modelling/refs/heads/main/Input_Data/input.csv")
 
-
-
-
-
 ```
 
 
@@ -244,7 +240,7 @@ Once the topic model is built, we use the Category column as a benchmark to eval
 
 ```{r}
 
-bbc <- read_csv("data/bbc.csv")
+bbc <- read_csv("slides/data/bbc.csv")
 
 ```
 

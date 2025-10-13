@@ -1,0 +1,41 @@
+---
+title: "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data"
+subtitle: "R Ladies Abuja"
+description: Webinar Presentation
+author: Ifeoma Egbogah
+---
+
+# Webinar Overview
+
+Breast cancer is the most common cancer among women in Nigeria. In fact, it accounts for nearly one in every four cancers diagnosed in Nigerian women. Sadly, it is also the leading cause of cancer-related deaths among women in our country.
+
+According to the Global Cancer Observatory, over 28,000 new cases of breast cancer are diagnosed in Nigeria every year, and we lose more than 15,000 women to this disease annually. Behind these numbers are mothers, daughters, sisters, friends — each with a story, each with a journey that matters.
+
+Today’s session connects data science with compassion — showing how coding can support early detection and hope.
+
+# Join
+
+
+Date: October 25, 2025
+
+Time: 10:00 AM (WAT)
+
+# Slides
+
+Here's a link to the [slides](/slides/breast_cancer.html){target="_blank"} in a new window.
+
+Here are the slides embedded:
+
+<iframe class="slide-deck ar16x9" src="/slides/breast_cancer.html" title="slides"></iframe>
+
+
+# Citations and data
+
+## R packages
+
+Thank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.
+
+-   `tidyverse`: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+-   `ggplot2`: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+-   `janitor`:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor
+- `tidymodels`: Kuhn et al., (2020). Tidymodels: a collection of packages for modeling and machine learning using tidyverse principles. https://www.tidymodels.org
