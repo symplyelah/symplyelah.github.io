@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/webinar.html</loc>
-    <lastmod>2025-07-26T13:27:15.572Z</lastmod>
+    <loc>https://ifydatatalks.netlify.app/webinar.html</loc>
+    <lastmod>2025-10-13T16:59:18.798Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/webinar/rladiesabuja.html</loc>
+    <loc>https://ifydatatalks.netlify.app/webinar/rladiesabuja.html</loc>
     <lastmod>2025-07-26T13:46:20.738Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/slides/index.html</loc>
-    <lastmod>2025-08-01T15:42:01.100Z</lastmod>
+    <loc>https://ifydatatalks.netlify.app/slides/rladiesabuja.html</loc>
+    <lastmod>2025-10-13T17:01:44.149Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/index.html</loc>
+    <loc>https://ifydatatalks.netlify.app/slides/breast_cancer.html</loc>
+    <lastmod>2025-10-13T16:45:31.424Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ifydatatalks.netlify.app/index.html</loc>
     <lastmod>2025-08-01T14:45:27.177Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/prerequisites.html</loc>
+    <loc>https://ifydatatalks.netlify.app/prerequisites.html</loc>
     <lastmod>2025-06-18T22:38:51.069Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/slides/rladiesabuja.html</loc>
-    <lastmod>2025-07-26T15:50:32.505Z</lastmod>
+    <loc>https://ifydatatalks.netlify.app/slides/index.html</loc>
+    <lastmod>2025-08-01T16:26:16.156Z</lastmod>
   </url>
   <url>
-    <loc>https://jade-churros-23a8d7.netlify.app/webinar/summer-2025.html</loc>
+    <loc>https://ifydatatalks.netlify.app/webinar/breast_cancer.html</loc>
+    <lastmod>2025-10-13T16:51:30.913Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ifydatatalks.netlify.app/webinar/summer-2025.html</loc>
     <lastmod>2025-08-01T14:55:44.008Z</lastmod>
   </url>
 </urlset>

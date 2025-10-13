@@ -7,4 +7,5 @@ title: Webinar
 Click on the links below for details on how to join, the schedule, and the instructors.
 
 - [IEEE Nigeria Southeast Subsection, Google Meet](webinar/summer-2025.html)
-- [R ladies Abuja, Zoom](webinar/rladiesabuja.html)
+- [R ladies Abuja, August Meetup](webinar/rladiesabuja.html)
+- [R ladies Abuja, October Meetup](webinar/breast_cancer.html)

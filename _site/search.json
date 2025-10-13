@@ -4,14 +4,14 @@
     "href": "webinar.html",
     "title": "Webinar",
     "section": "",
-    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nIEEE Nigeria Southeast Subsection, Google Meet\nR ladies Abuja, Zoom"
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nIEEE Nigeria Southeast Subsection, Google Meet\nR ladies Abuja, August Meetup\nR ladies Abuja, October Meetup"
   },
   {
     "objectID": "webinar.html#upcoming-workshops",
     "href": "webinar.html#upcoming-workshops",
     "title": "Webinar",
     "section": "",
-    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nIEEE Nigeria Southeast Subsection, Google Meet\nR ladies Abuja, Zoom"
+    "text": "Click on the links below for details on how to join, the schedule, and the instructors.\n\nIEEE Nigeria Southeast Subsection, Google Meet\nR ladies Abuja, August Meetup\nR ladies Abuja, October Meetup"
   },
   {
     "objectID": "webinar/rladiesabuja.html",
@@ -26,6 +26,300 @@
     "title": "Topic Modeling:Turning Conversations into Strategy",
     "section": "R packages",
     "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\n‘tidytext’:Silge, Julia, and David Robinson. 2016. “tidytext: Text Mining and Analysis Using Tidy Data Principles in r.” JOSS 1 (3). https://doi.org/10.21105/joss.00037."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#from-numbers-to-words",
+    "href": "slides/rladiesabuja.html#from-numbers-to-words",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "From Numbers to Words",
+    "text": "From Numbers to Words\n\nIf you’re in the field of analytics or data science, you’re likely well aware that data is being produced continuously—and at an increasingly rapid pace. (You might even be tired of hearing this repeated!) While analysts are typically trained to work with structured, numeric data in table formats, a significant portion of today’s data boom involves unstructured, text-based information.\n\nUnstructured data represents 80-90% of all new enterprise data, according to Gartner.\n\nFurthermore, it’s growing three times faster than structured data."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#overview",
+    "href": "slides/rladiesabuja.html#overview",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Overview",
+    "text": "Overview\nIn this webinar, we will look at:\n\nUnderstanding Topic Modeling\nImportance of Topi Modeling\nTopic Modeling Techniques\nImplementation of Topic Modeling\nDemo"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#what-is-topic-modeling",
+    "href": "slides/rladiesabuja.html#what-is-topic-modeling",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "What is Topic Modeling?",
+    "text": "What is Topic Modeling?\n\nTopic modeling is way to identify themes/semantic patterns in a corpus (complete document).\nTopic modeling finds the relationships between words in the text, thereby identifying clusters of words that represent topics.\nIt is a like an amplified reading, a way to discover themes you may not see yourself.\nGlossary:\nCorpus: Group of documents\nDocuments: Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
+    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Key Importance of Topic Modeling",
+    "text": "Key Importance of Topic Modeling\n\nUncovering Hidden Themes:\nTopic modeling helps discover latent themes and patterns within unstructured text data that might otherwise be missed, providing a deeper understanding of large datasets.\nEfficient Information Retrieval and Organization:\nIt automatically organizes and groups documents by their main themes, making it easier to find relevant information and creating a manageable structure for large text collections.\nSupporting Data-Driven Decisions:\nBy identifying prevalent topics in customer reviews, social media, or research, organizations can make more informed decisions to improve products, services, and strategies."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
+    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Key Importance of Topic Modeling",
+    "text": "Key Importance of Topic Modeling\n\nAutomating Text Analysis:\nIt automates the time-consuming process of manually reading and categorizing large volumes of text, increasing efficiency and reducing human effort.\nEnhancing Research and Discovery:\nIn academia, topic modeling helps analyze research publications to reveal trends and key topics, thereby streamlining the research process and potentially leading to new discoveries.\nImproving Customer Experience:\nBusinesses can use topic modeling to analyze customer service emails or feedback to understand major challenges and concerns, allowing for targeted improvements to service delivery."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
+    "href": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Latent Dirichlet Allocation (LDA)",
+    "text": "Latent Dirichlet Allocation (LDA)\n\n\n\n\n\nSource: Introduction to Probabilistic Topic Models paper by Blei et. al\n\n\n\n\nLatent Dirichlet Allocation (LDA) is one of the most common algorithms for topic modeling. It is guided by two principles, that:\n\nEvery document is a mixture of topics\nEvery topic is a mixture of words"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-1",
+    "href": "slides/rladiesabuja.html#step-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 1",
+    "text": "Step 1\nData Preparation\n\nCollect the text data\nExamples:\n\nTaylor Swift’s lyrics (there is a Taylor package in R)\nSpice Girls lyrics\nBBC News\nGutenbergr package\nquanteda package"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-2",
+    "href": "slides/rladiesabuja.html#step-2",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 2",
+    "text": "Step 2\nPreprocessing\n\nBefore modeling, we preprocess the data to put in it in a tidy format by:\n\nTokenization (splitting sentences into words)\nRemoving punctuation, numbers\nRemoving stop words (like the, and, is)\nFind document-word counts"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-3",
+    "href": "slides/rladiesabuja.html#step-3",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 3",
+    "text": "Step 3\nCreate Document-term Matrix\n\nA matrix that represents the frequency of each word (term) across all documents.\nWe can cast a one-token-per-row table into a DocumentTermMatrix with tidytext’s cast_sparse().\n- Rows = documents;\n- Columns = terms/words."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-4",
+    "href": "slides/rladiesabuja.html#step-4",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 4",
+    "text": "Step 4\nModel Fitting\n\nWe can then use the LDA() function from the topicmodels package to create a topic model."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-5",
+    "href": "slides/rladiesabuja.html#step-5",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 5",
+    "text": "Step 5\nInterprete and Visualise the Result\n\n\nExtract top keywords per topic.\nLabel the topics manually (e.g., “Customer Service Issues” or “Product Features”).\nVisualize using tools like: ggplot2 package"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#step-6",
+    "href": "slides/rladiesabuja.html#step-6",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Step 6",
+    "text": "Step 6\nApply Result\n\nSummarize the result Identify customer pain points Track emerging trends etc"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#packages-1",
+    "href": "slides/rladiesabuja.html#packages-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Packages",
+    "text": "Packages\n\nWe will make use of the following packages\n\ntidyverse\ntidytext\ntopicmodels\ntm"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
+    "href": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "BBC News: Ever wondered what the news was really talking about beneath the headlines?",
+    "text": "BBC News: Ever wondered what the news was really talking about beneath the headlines?\n\nWe’ll be working with the BBC News dataset, a collection of 2225 news articles published between 2004 and 2005, covering five major categories: Business, Entertainment, Politics, Sport, and Technology.\nThe goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#about-the-dataset",
+    "href": "slides/rladiesabuja.html#about-the-dataset",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "About the Dataset",
+    "text": "About the Dataset\n\nThe BBC News dataset contains three key columns:\n\nTitle – the headline of each news article\nDescription – a brief summary or excerpt from the article\nCategory – the labeled topic (e.g., Business, Sport, etc.)\n\nFor this project, we focus on the Description column as the primary source of text. This is where we perform all of our text cleaning and preprocessing — removing punctuation, converting to lowercase, tokenizing, eliminating stop words, and so on.\nOnce the topic model is built, we use the Category column as a benchmark to evaluate how well our model’s discovered topics align with the actual labeled categories. This gives us a way to check the quality and accuracy of our model.\n\n\nglimpse(bbc)\n\nRows: 2,225\nColumns: 4\n$ ...1        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Title       &lt;chr&gt; \"India calls for fair trade rules\", \"Sluggish economy hits…\n$ Description &lt;chr&gt; \"india attend g7 meet seven lead industrialis nation frida…\n$ Category    &lt;chr&gt; \"Business\", \"Business\", \"Business\", \"Business\", \"Business\"…"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#data-cleaning",
+    "href": "slides/rladiesabuja.html#data-cleaning",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nWe start by using the clean_names() function from the janitor package to standardize all column names (e.g., convert to lowercase, replace spaces with underscores).\nThen we removed duplicate rows based on the description column using distinct(description, .keep_all = TRUE), so each news article description appears only once.\nThe data had 141 duplicate rows.\n\n\nbbc &lt;- bbc |&gt; \n  janitor::clean_names() |&gt; \n  distinct(description, .keep_all = TRUE)"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#preprocessing-1",
+    "href": "slides/rladiesabuja.html#preprocessing-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\nLet’s tokenized the description column using unnest_tokens() to break down each news article into individual words.\nThen use count(word, sort = TRUE) to calculate the frequency of each word across the dataset and sort them in descending order.\n\n\n\n# A tibble: 5 × 2\n  word      n\n  &lt;chr&gt; &lt;int&gt;\n1 mr     2799\n2 year   2655\n3 would  2401\n4 also   1997\n5 peopl  1855"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#preprocessing-contd.",
+    "href": "slides/rladiesabuja.html#preprocessing-contd.",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Preprocessing contd.",
+    "text": "Preprocessing contd.\n\nHow about title per word?\n\n\nbbc |&gt; \n  unnest_tokens(word, description) |&gt; \n  count(title, word, sort = TRUE)|&gt; \n  head(5)\n\n# A tibble: 5 × 3\n  title                            word      n\n  &lt;chr&gt;                            &lt;chr&gt; &lt;int&gt;\n1 Scissor Sisters triumph at Brits song     81\n2 Brits debate over 'urban' music  music    72\n3 Losing yourself in online gaming game     66\n4 Kilroy launches 'Veritas' party  parti    60\n5 Minimum wage increased to £5.05  wage     60"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#train-a-model",
+    "href": "slides/rladiesabuja.html#train-a-model",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Train a model",
+    "text": "Train a model\n\nTo train a topic model using LDA() from the topicmodel package, we need to create sparse matrix from our tidy dataframe of tokens using cast_sparse(category, word, n)\n\n\n\n[1] 1967 3458\n\n\n\nThis means there are 1967 titles (i.e documents) and different tokens (i.e. terms or words) in our dataset for modeling."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#train-a-model-1",
+    "href": "slides/rladiesabuja.html#train-a-model-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Train a Model",
+    "text": "Train a Model\n\nA topic model like this one models:\n\neach document as a mixture of topics\neach topic as a mixture of words\n\nThe most important parameter when training a topic modeling is K, the number of topics. This is like k in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result",
+    "text": "Explore Topic Model Result\nBeta matrix\n\nTo dig deeper into our topic model, we can use the tidy() function to convert the results into a dataframe that we can work with. This gives us two types of outputs:\n\nBeta matrix: shows the probability of each word belonging to each topic (topic-word distribution)\nGamma matrix: shows how much each topic contributes to each document (document-topic distribution)"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#beta-matrix-contd.",
+    "href": "slides/rladiesabuja.html#beta-matrix-contd.",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Beta Matrix Contd.",
+    "text": "Beta Matrix Contd.\n\nWe’ll start by looking at the beta matrix first.\n\n\n\n# A tibble: 17,290 × 3\n   topic term        beta\n   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;\n 1     1 song  0.00000532\n 2     2 song  0.00736   \n 3     3 song  0.00000587\n 4     4 song  0.00000655\n 5     5 song  0.00000511\n 6     1 music 0.00000532\n 7     2 music 0.0304    \n 8     3 music 0.00000587\n 9     4 music 0.00000655\n10     5 music 0.00000511\n# ℹ 17,280 more rows"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#beta-matrix-visualisation",
+    "href": "slides/rladiesabuja.html#beta-matrix-visualisation",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Beta Matrix Visualisation",
+    "text": "Beta Matrix Visualisation\n\nSince the output is a tidy dataframe, we can easily manipulate it — including visualizing the top words with the highest probabilities for each topic."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-1",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result",
+    "text": "Explore Topic Model Result\nGamma matrix\nThe probability that this document is about this topic.\n\n\n# A tibble: 9,835 × 3\n   document                          topic  gamma\n   &lt;chr&gt;                             &lt;int&gt;  &lt;dbl&gt;\n 1 Scissor Sisters triumph at Brits      1 0.0127\n 2 Brits debate over 'urban' music       1 0.0164\n 3 Losing yourself in online gaming      1 0.0207\n 4 Kilroy launches 'Veritas' party       1 0.701 \n 5 Minimum wage increased to £5.05       1 0.0951\n 6 Nadal puts Spain 2-0 up               1 0.0229\n 7 Mobile games come of age              1 0.0190\n 8 Apple laptop is 'greatest gadget'     1 0.0115\n 9 Peer-to-peer nets 'here to stay'      1 0.0479\n10 Terror powers expose 'tyranny'        1 0.295 \n# ℹ 9,825 more rows"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix\nMost common topic in the document."
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix\nProbability of a document belonging to a topic"
+  },
+  {
+    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
+    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
+    "title": "Topic Modeling: Turning Conversations into Strategy",
+    "section": "Explore Topic Model Result Contd",
+    "text": "Explore Topic Model Result Contd\nGamma matrix"
+  },
+  {
+    "objectID": "slides/breast_cancer.html#breast-cancer-awareness-month",
+    "href": "slides/breast_cancer.html#breast-cancer-awareness-month",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Breast Cancer Awareness Month",
+    "text": "Breast Cancer Awareness Month\n\nOctober is Breast Cancer Awareness Month — a time to raise awareness, honour the millions of lives impacted by breast cancer, and reaffirm our global commitment to equitable access to care and improved survival for all.\nThis webinar, “Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data,” brings together the worlds of data science and public health to demonstrate how coding can contribute to early detection and better health outcomes."
+  },
+  {
+    "objectID": "slides/breast_cancer.html#why-this-theme",
+    "href": "slides/breast_cancer.html#why-this-theme",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Why this theme?",
+    "text": "Why this theme?\n\nEvery Story is Unique, Every Journey Matters\n\n\nEach breast cancer diagnosis tells a story — one of courage, resilience, and hope.\nBehind every statistic is a woman, a family, and a community navigating a deeply personal journey.\nThis theme reminds us that:\n\nEvery experience with breast cancer is different.\nEvery story deserves compassion, dignity, and support.\n\nWe must continue to advocate for timely, quality, and inclusive care — regardless of geography, income, or background."
+  },
+  {
+    "objectID": "slides/breast_cancer.html#section",
+    "href": "slides/breast_cancer.html#section",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "",
+    "text": "Breast cancer is the most commonly diagnosed cancer among women worldwide. In 2022 alone, an estimated 2.3 million women were diagnosed and 670,000 lost their lives.\nYet survival outcomes vary sharply: over 90% in high-income countries compared to 66% in India and 40% in South Africa.\nThese disparities reflect unequal access to early detection, timely diagnosis, and effective treatment. If current trends continue, global incidence and mortality could rise by 40% by 2050."
+  },
+  {
+    "objectID": "slides/breast_cancer.html#focus-on-home",
+    "href": "slides/breast_cancer.html#focus-on-home",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Focus on home",
+    "text": "Focus on home\n\nIt’s crucial that we bring our focus home — to the realities of breast cancer in Nigeria. Breast cancer is the most common cancer among women in Nigeria. In fact, it accounts for nearly one in every four cancers diagnosed in Nigerian women. Sadly, it is also the leading cause of cancer-related deaths among women in our country.\nAccording to the Global Cancer Observatory, over 28,000 new cases of breast cancer are diagnosed in Nigeria every year, and we lose more than 15,000 women to this disease annually.\nOne of the greatest challenges we face is late diagnosis. More than 70% of breast cancer cases in Nigeria are detected at advanced stages — when treatment options are limited and survival chances are lower.\nBut there is hope. Every challenge presents an opportunity for change."
+  },
+  {
+    "objectID": "slides/breast_cancer.html#in-this-session",
+    "href": "slides/breast_cancer.html#in-this-session",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "In this session",
+    "text": "In this session\n\nAs women in data and technology, We can harness the power of data and technology — the very reason we’re here today.\nBy analyzing local health data, building predictive models, and visualizing patterns, we can help policymakers and health workers identify at-risk groups earlier and respond more effectively.\nThrough this session, we aim to:\n\nRaise awareness about breast cancer through data-driven storytelling.\nDemonstrate how R and machine learning can assist in early detection using anthropometric data.\nInspire women to use their coding skills for impact — transforming data into tools that empower healthcare and save lives.\n\n\n\n“What gets measured, gets improved.” – Peter Drucker."
+  },
+  {
+    "objectID": "slides/breast_cancer.html#classification-models",
+    "href": "slides/breast_cancer.html#classification-models",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Classification models",
+    "text": "Classification models\n\nClassification models are a type of machine learning that categorizes data points into predefined groups, or classes, based on their learned characteristics. Classification models learn to identify patterns and relationships between input features (attributes of the data) and their corresponding class labels.\nAfter training, the model can then assign new, unseen data points to the most appropriate class based on the learned characteristics.\nExamples of classification algorithms:\n\nLogistic Regression\nDecision Trees\nRandom Forest\nSupport Vector Machines\nk-Nearest Neighbors"
+  },
+  {
+    "objectID": "slides/breast_cancer.html#coimbra-breast-cancer-dataset",
+    "href": "slides/breast_cancer.html#coimbra-breast-cancer-dataset",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Coimbra Breast Cancer Dataset",
+    "text": "Coimbra Breast Cancer Dataset\n\nThe dataset for today’s webinar is from the (Coimbra Breast Cancer Dataset)[https://archive.ics.uci.edu/dataset/451/breast+cancer+coimbra].\nThe data includes clinical observations from 64 patients with breast cancer and 52 healthy controls, encompassing 10 quantitative predictors including anthropometric data and parameters gathered from routine blood analysis, serving as the foundation for potential biomarkers of breast cancer.\nThe dataset presents an opportunity for developing prediction models, aiding in the identification and understanding of factors associated with breast cancer.\nAnthropometric data refers to measurable physical characteristics of the human body.\n\n\n\nThe quantitative attributes in the data are:\n\nAge (years): Represents the age of individuals in the dataset.\nBMI (kg/m²): Body Mass Index, a measure of body fat based on weight and height.\nGlucose (mg/dL): Reflects blood glucose levels, a vital metabolic indicator.\nInsulin (µU/mL): Indicates insulin levels, a hormone associated with glucose regulation.\nHOMA: Homeostatic Model Assessment, a method assessing insulin resistance and beta-cell function.\n(ng/mL): Represents leptin levels, a hormone involved in appetite and energy balance regulation.\nAdiponectin (µg/mL): Reflects adiponectin levels, a protein associated with metabolic regulation.\nResistin (ng/mL): Indicates resistin levels, a protein implicated in insulin resistance.\nMCP-1 (pg/dL): Reflects Monocyte Chemoattractant Protein-1 levels, a cytokine involved in inflammation.\n\nLabels:\n0: Healthy controls\n1: Patients with breast cancer\n\n\n\nWorkflow Overview\n\n\n\nSteps in Building the Model:\n\n\nImport and explore data\nClean and preprocess data\nSplit into training and testing sets\nBuild classification model (e.g., logistic regression)\nEvaluate model performance (accuracy, sensitivity, specificity)\nVisualize results"
+  },
+  {
+    "objectID": "slides/breast_cancer.html#section-1",
+    "href": "slides/breast_cancer.html#section-1",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "",
+    "text": "The quantitative attributes in the data are:\n\nAge (years): Represents the age of individuals in the dataset.\nBMI (kg/m²): Body Mass Index, a measure of body fat based on weight and height.\nGlucose (mg/dL): Reflects blood glucose levels, a vital metabolic indicator.\nInsulin (µU/mL): Indicates insulin levels, a hormone associated with glucose regulation.\nHOMA: Homeostatic Model Assessment, a method assessing insulin resistance and beta-cell function.\n(ng/mL): Represents leptin levels, a hormone involved in appetite and energy balance regulation.\nAdiponectin (µg/mL): Reflects adiponectin levels, a protein associated with metabolic regulation.\nResistin (ng/mL): Indicates resistin levels, a protein implicated in insulin resistance.\nMCP-1 (pg/dL): Reflects Monocyte Chemoattractant Protein-1 levels, a cytokine involved in inflammation.\n\nLabels:\n0: Healthy controls\n1: Patients with breast cancer"
+  },
+  {
+    "objectID": "slides/breast_cancer.html#steps-in-building-the-model",
+    "href": "slides/breast_cancer.html#steps-in-building-the-model",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "Steps in Building the Model:",
+    "text": "Steps in Building the Model:\n\n\nImport and explore data\nClean and preprocess data\nSplit into training and testing sets\nBuild classification model (e.g., logistic regression)\nEvaluate model performance (accuracy, sensitivity, specificity)\nVisualize results"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ify’s Data Corner",
+    "section": "",
+    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Ify’s Data Corner",
+    "section": "",
+    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
+  },
+  {
+    "objectID": "prerequisites.html",
+    "href": "prerequisites.html",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Last updated: May 16th, 2025"
+  },
+  {
+    "objectID": "prerequisites.html#prior-knowledge",
+    "href": "prerequisites.html#prior-knowledge",
+    "title": "Prerequisites",
+    "section": "Prior knowledge",
+    "text": "Prior knowledge\nWe do not assume any prior knowledge of R pacakge development, but basic knowledge of R is expected. In particular, participants should be confident writing functions. Some experience with RStudio is beneficial."
+  },
+  {
+    "objectID": "prerequisites.html#r-and-rstudio",
+    "href": "prerequisites.html#r-and-rstudio",
+    "title": "Prerequisites",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
   },
   {
     "objectID": "slides/index.html#in-this-talk-we-will-cover",
@@ -329,235 +623,18 @@
     "text": "In Summary\n\n\n\n\nChart Type\nBest For\n\n\n\n\nLine Chart\nTrends over time\n\n\nBar Chart\nComparing categories\n\n\nScatter Plot\nCorrelations, relationships\n\n\nMaps\nGeospatial data\n\n\nDashboard\nMonitoring KPIs in real-time\n\n\n\nTip: Choose simplicity and clarity over complexity."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ify’s Data Corner",
+    "objectID": "webinar/breast_cancer.html",
+    "href": "webinar/breast_cancer.html",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
     "section": "",
-    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
+    "text": "Breast cancer is the most common cancer among women in Nigeria. In fact, it accounts for nearly one in every four cancers diagnosed in Nigerian women. Sadly, it is also the leading cause of cancer-related deaths among women in our country.\nAccording to the Global Cancer Observatory, over 28,000 new cases of breast cancer are diagnosed in Nigeria every year, and we lose more than 15,000 women to this disease annually. Behind these numbers are mothers, daughters, sisters, friends — each with a story, each with a journey that matters.\nToday’s session connects data science with compassion — showing how coding can support early detection and hope."
   },
   {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Ify’s Data Corner",
-    "section": "",
-    "text": "I’m Ifeoma Egbogah — a data scientist, educator, and storyteller passionate about using data to drive understanding and inspire action.\nThis site is a hub for my data-focused talks, workshops, and presentations. Whether you’re a student, professional, or simply curious about data, you’ll find practical insights, downloadable slides, and real-world examples to support your journey.\nI believe that data should be clear, accessible, and meaningful — and that anyone can learn to work with it.\nTake a look around, explore my latest sessions, and feel free to reach out if you’d like to connect or collaborate!"
-  },
-  {
-    "objectID": "prerequisites.html",
-    "href": "prerequisites.html",
-    "title": "Prerequisites",
-    "section": "",
-    "text": "Last updated: May 16th, 2025"
-  },
-  {
-    "objectID": "prerequisites.html#prior-knowledge",
-    "href": "prerequisites.html#prior-knowledge",
-    "title": "Prerequisites",
-    "section": "Prior knowledge",
-    "text": "Prior knowledge\nWe do not assume any prior knowledge of R pacakge development, but basic knowledge of R is expected. In particular, participants should be confident writing functions. Some experience with RStudio is beneficial."
-  },
-  {
-    "objectID": "prerequisites.html#r-and-rstudio",
-    "href": "prerequisites.html#r-and-rstudio",
-    "title": "Prerequisites",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nPlease ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.5.0 and RStudio-2025.05.0.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.5.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.5.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.5.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer for your OS listed under “Installers for Supported Platforms”. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall XCode. Either:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/enroll/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#from-numbers-to-words",
-    "href": "slides/rladiesabuja.html#from-numbers-to-words",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "From Numbers to Words",
-    "text": "From Numbers to Words\n\nIf you’re in the field of analytics or data science, you’re likely well aware that data is being produced continuously—and at an increasingly rapid pace. (You might even be tired of hearing this repeated!) While analysts are typically trained to work with structured, numeric data in table formats, a significant portion of today’s data boom involves unstructured, text-based information.\n\nUnstructured data represents 80-90% of all new enterprise data, according to Gartner.\n\nFurthermore, it’s growing three times faster than structured data."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#overview",
-    "href": "slides/rladiesabuja.html#overview",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Overview",
-    "text": "Overview\nIn this webinar, we will look at:\n\nUnderstanding Topic Modeling\nImportance of Topi Modeling\nTopic Modeling Techniques\nImplementation of Topic Modeling\nDemo"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#what-is-topic-modeling",
-    "href": "slides/rladiesabuja.html#what-is-topic-modeling",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "What is Topic Modeling?",
-    "text": "What is Topic Modeling?\n\nTopic modeling is way to identify themes/semantic patterns in a corpus (complete document).\nTopic modeling finds the relationships between words in the text, thereby identifying clusters of words that represent topics.\nIt is a like an amplified reading, a way to discover themes you may not see yourself.\nGlossary:\nCorpus: Group of documents\nDocuments: Newspaper, Blogpost, Tweets, Articles, Journals, Customer reviews etc."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
-    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Key Importance of Topic Modeling",
-    "text": "Key Importance of Topic Modeling\n\nUncovering Hidden Themes:\nTopic modeling helps discover latent themes and patterns within unstructured text data that might otherwise be missed, providing a deeper understanding of large datasets.\nEfficient Information Retrieval and Organization:\nIt automatically organizes and groups documents by their main themes, making it easier to find relevant information and creating a manageable structure for large text collections.\nSupporting Data-Driven Decisions:\nBy identifying prevalent topics in customer reviews, social media, or research, organizations can make more informed decisions to improve products, services, and strategies."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
-    "href": "slides/rladiesabuja.html#key-importance-of-topic-modeling-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Key Importance of Topic Modeling",
-    "text": "Key Importance of Topic Modeling\n\nAutomating Text Analysis:\nIt automates the time-consuming process of manually reading and categorizing large volumes of text, increasing efficiency and reducing human effort.\nEnhancing Research and Discovery:\nIn academia, topic modeling helps analyze research publications to reveal trends and key topics, thereby streamlining the research process and potentially leading to new discoveries.\nImproving Customer Experience:\nBusinesses can use topic modeling to analyze customer service emails or feedback to understand major challenges and concerns, allowing for targeted improvements to service delivery."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
-    "href": "slides/rladiesabuja.html#latent-dirichlet-allocation-lda",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Latent Dirichlet Allocation (LDA)",
-    "text": "Latent Dirichlet Allocation (LDA)\n\n\n\n\n\nSource: Introduction to Probabilistic Topic Models paper by Blei et. al\n\n\n\n\nLatent Dirichlet Allocation (LDA) is one of the most common algorithms for topic modeling. It is guided by two principles, that:\n\nEvery document is a mixture of topics\nEvery topic is a mixture of words"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-1",
-    "href": "slides/rladiesabuja.html#step-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 1",
-    "text": "Step 1\nData Preparation\n\nCollect the text data\nExamples: - Taylor Swift’s lyrics (there is a Taylor package in R)\n\nSpice Girls lyrics\nBBC News\nGutenbergr package\nquanteda package"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-2",
-    "href": "slides/rladiesabuja.html#step-2",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 2",
-    "text": "Step 2\nPreprocessing\n\nBefore modeling, we preprocess the data to put in it in a tidy format by:\n\nTokenization (splitting sentences into words)\nRemoving punctuation, numbers\nRemoving stop words (like the, and, is)\nFind document-word counts"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-3",
-    "href": "slides/rladiesabuja.html#step-3",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 3",
-    "text": "Step 3\nCreate Document-term Matrix\n\nA matrix that represents the frequency of each word (term) across all documents.\nWe can cast a one-token-per-row table into a DocumentTermMatrix with tidytext’s cast_sparse().\n- Rows = documents;\n- Columns = terms/words."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-4",
-    "href": "slides/rladiesabuja.html#step-4",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 4",
-    "text": "Step 4\nModel Fitting\n\nWe can then use the LDA() function from the topicmodels package to create a topic model."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-5",
-    "href": "slides/rladiesabuja.html#step-5",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 5",
-    "text": "Step 5\nInterprete and Visualise the Result\n\n\nExtract top keywords per topic.\nLabel the topics manually (e.g., “Customer Service Issues” or “Product Features”).\nVisualize using tools like: ggplot2 package"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#step-6",
-    "href": "slides/rladiesabuja.html#step-6",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Step 6",
-    "text": "Step 6\nApply Result\n\nSummarize the result Identify customer pain points Track emerging trends etc"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#packages-1",
-    "href": "slides/rladiesabuja.html#packages-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Packages",
-    "text": "Packages\n\nWe will make use of the following packages\n\ntidyverse\ntidytext\ntopicmodels\ntm"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "href": "slides/rladiesabuja.html#bbc-news-ever-wondered-what-the-news-was-really-talking-about-beneath-the-headlines",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "BBC News: Ever wondered what the news was really talking about beneath the headlines?",
-    "text": "BBC News: Ever wondered what the news was really talking about beneath the headlines?\n\nWe’ll be working with the BBC News dataset, a collection of 2225 news articles published between 2004 and 2005, covering five major categories: Business, Entertainment, Politics, Sport, and Technology.\nThe goal of this project is to combine all the articles into one dataset and apply unsupervised topic modeling to uncover the hidden, underlying themes within the news stories. By analyzing the text, we’ll reveal the most prominent topics that dominated the public narrative during that time — all without manually assigning any labels."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#about-the-dataset",
-    "href": "slides/rladiesabuja.html#about-the-dataset",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "About the Dataset",
-    "text": "About the Dataset\n\nThe BBC News dataset contains three key columns:\n\nTitle – the headline of each news article\nDescription – a brief summary or excerpt from the article\nCategory – the labeled topic (e.g., Business, Sport, etc.)\n\nFor this project, we focus on the Description column as the primary source of text. This is where we perform all of our text cleaning and preprocessing — removing punctuation, converting to lowercase, tokenizing, eliminating stop words, and so on.\nOnce the topic model is built, we use the Category column as a benchmark to evaluate how well our model’s discovered topics align with the actual labeled categories. This gives us a way to check the quality and accuracy of our model.\n\n\nglimpse(bbc)\n\nRows: 2,225\nColumns: 4\n$ ...1        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Title       &lt;chr&gt; \"India calls for fair trade rules\", \"Sluggish economy hits…\n$ Description &lt;chr&gt; \"india attend g7 meet seven lead industrialis nation frida…\n$ Category    &lt;chr&gt; \"Business\", \"Business\", \"Business\", \"Business\", \"Business\"…"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#data-cleaning",
-    "href": "slides/rladiesabuja.html#data-cleaning",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Data Cleaning",
-    "text": "Data Cleaning\n\nWe start by using the clean_names() function from the janitor package to standardize all column names (e.g., convert to lowercase, replace spaces with underscores).\nThen we removed duplicate rows based on the description column using distinct(description, .keep_all = TRUE), so each news article description appears only once.\nThe data had 141 duplicate rows.\n\n\nbbc &lt;- bbc |&gt; \n  janitor::clean_names() |&gt; \n  distinct(description, .keep_all = TRUE)"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#preprocessing-1",
-    "href": "slides/rladiesabuja.html#preprocessing-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\nLet’s tokenized the description column using unnest_tokens() to break down each news article into individual words.\nThen use count(word, sort = TRUE) to calculate the frequency of each word across the dataset and sort them in descending order.\n\n\n\n# A tibble: 5 × 2\n  word      n\n  &lt;chr&gt; &lt;int&gt;\n1 mr     2799\n2 year   2655\n3 would  2401\n4 also   1997\n5 peopl  1855"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#preprocessing-contd.",
-    "href": "slides/rladiesabuja.html#preprocessing-contd.",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Preprocessing contd.",
-    "text": "Preprocessing contd.\n\nHow about title per word?\n\n\nbbc |&gt; \n  unnest_tokens(word, description) |&gt; \n  count(title, word, sort = TRUE)|&gt; \n  head(5)\n\n# A tibble: 5 × 3\n  title                            word      n\n  &lt;chr&gt;                            &lt;chr&gt; &lt;int&gt;\n1 Scissor Sisters triumph at Brits song     81\n2 Brits debate over 'urban' music  music    72\n3 Losing yourself in online gaming game     66\n4 Kilroy launches 'Veritas' party  parti    60\n5 Minimum wage increased to £5.05  wage     60"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#train-a-model",
-    "href": "slides/rladiesabuja.html#train-a-model",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Train a model",
-    "text": "Train a model\n\nTo train a topic model using LDA() from the topicmodel package, we need to create sparse matrix from our tidy dataframe of tokens using cast_sparse(category, word, n)\n\n\n\n[1] 1967 3458\n\n\n\nThis means there are 1967 titles (i.e documents) and different tokens (i.e. terms or words) in our dataset for modeling."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#train-a-model-1",
-    "href": "slides/rladiesabuja.html#train-a-model-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Train a Model",
-    "text": "Train a Model\n\nA topic model like this one models:\n\neach document as a mixture of topics\neach topic as a mixture of words\n\nThe most important parameter when training a topic modeling is K, the number of topics. This is like k in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result",
-    "text": "Explore Topic Model Result\nBeta matrix\n\nTo dig deeper into our topic model, we can use the tidy() function to convert the results into a dataframe that we can work with. This gives us two types of outputs:\n\nBeta matrix: shows the probability of each word belonging to each topic (topic-word distribution)\nGamma matrix: shows how much each topic contributes to each document (document-topic distribution)"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#beta-matrix-contd.",
-    "href": "slides/rladiesabuja.html#beta-matrix-contd.",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Beta Matrix Contd.",
-    "text": "Beta Matrix Contd.\n\nWe’ll start by looking at the beta matrix first.\n\n\n\n# A tibble: 17,290 × 3\n   topic term        beta\n   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;\n 1     1 song  0.00000532\n 2     2 song  0.00736   \n 3     3 song  0.00000587\n 4     4 song  0.00000655\n 5     5 song  0.00000511\n 6     1 music 0.00000532\n 7     2 music 0.0304    \n 8     3 music 0.00000587\n 9     4 music 0.00000655\n10     5 music 0.00000511\n# ℹ 17,280 more rows"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#beta-matrix-visualisation",
-    "href": "slides/rladiesabuja.html#beta-matrix-visualisation",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Beta Matrix Visualisation",
-    "text": "Beta Matrix Visualisation\n\nSince the output is a tidy dataframe, we can easily manipulate it — including visualizing the top words with the highest probabilities for each topic."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-1",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result",
-    "text": "Explore Topic Model Result\nGamma matrix\nThe probability that this document is about this topic.\n\n\n# A tibble: 9,835 × 3\n   document                          topic  gamma\n   &lt;chr&gt;                             &lt;int&gt;  &lt;dbl&gt;\n 1 Scissor Sisters triumph at Brits      1 0.0127\n 2 Brits debate over 'urban' music       1 0.0164\n 3 Losing yourself in online gaming      1 0.0207\n 4 Kilroy launches 'Veritas' party       1 0.701 \n 5 Minimum wage increased to £5.05       1 0.0951\n 6 Nadal puts Spain 2-0 up               1 0.0229\n 7 Mobile games come of age              1 0.0190\n 8 Apple laptop is 'greatest gadget'     1 0.0115\n 9 Peer-to-peer nets 'here to stay'      1 0.0479\n10 Terror powers expose 'tyranny'        1 0.295 \n# ℹ 9,825 more rows"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-1",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix\nMost common topic in the document."
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-2",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix\nProbability of a document belonging to a topic"
-  },
-  {
-    "objectID": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
-    "href": "slides/rladiesabuja.html#explore-topic-model-result-contd-3",
-    "title": "Topic Modeling: Turning Conversations into Strategy",
-    "section": "Explore Topic Model Result Contd",
-    "text": "Explore Topic Model Result Contd\nGamma matrix"
+    "objectID": "webinar/breast_cancer.html#r-packages",
+    "href": "webinar/breast_cancer.html#r-packages",
+    "title": "Coding Against Cancer: Using R to Detect Breast Cancer from Anthropometric Data",
+    "section": "R packages",
+    "text": "R packages\nThank you to developers, sharers, teachers, and the entire R community for building things and creating resources to help us all learn.\n\ntidyverse: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686\nggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.\njanitor:Sam Firke (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://github.com/sfirke/janitor\ntidymodels: Kuhn et al., (2020). Tidymodels: a collection of packages for modeling and machine learning using tidyverse principles. https://www.tidymodels.org"
   },
   {
     "objectID": "webinar/summer-2025.html",

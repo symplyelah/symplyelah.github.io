@@ -1,1 +1,1 @@
-Sitemap: https://jade-churros-23a8d7.netlify.app/sitemap.xml
+Sitemap: https://ifydatatalks.netlify.app/sitemap.xml
