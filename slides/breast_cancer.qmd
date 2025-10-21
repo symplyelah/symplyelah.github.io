@@ -314,7 +314,13 @@ cancer |>
 
 ### Insulin
 
+<div style = "font-size:0.75m;">
 Insulin levels are right-skewed in both groups; however, patients with breast cancer display a higher mean and greater variability compared to healthy individuals. This pattern indicates that healthy individuals generally maintain lower and more stable insulin levels, reflecting better glucose regulation and metabolic balance. In contrast, the elevated and fluctuating insulin levels observed among breast cancer patients may suggest insulin resistance or hyperinsulinemia—metabolic disturbances that have been associated with increased cancer risk and progression.
+</div>
+
+## Insulin
+
+
 :::: panel-tabset
 
 ### Histogram
@@ -391,12 +397,17 @@ cancer |>
 ## Exploratory Data Analysis
 ### BMI
 
+<div style = "font-size:0.75em;">
 The BMI distribution in this dataset shows a bimodal pattern, reflecting two distinct subgroups: one centered around 22–24 kg/m² (normal weight) and another around 28–32 kg/m² (overweight/obese).
 
 The bimodal pattern in BMI indicates that both healthy women and those with breast cancer consist of two distinct subgroups — likely corresponding to normal-weight and overweight/obese individuals.
 This suggests underlying biological, hormonal, or lifestyle differences within the population, which may contribute to variations in breast cancer risk or disease progression.
 
 The presence of a higher BMI peak in older women is consistent with known metabolic and hormonal changes that contribute to increased breast cancer risk in overweight and postmenopausal populations.
+
+</div>
+
+## BMI
 
 :::: panel-tabset
 
@@ -473,9 +484,14 @@ cancer |>
 ## Exploratory Data Ananlysis
 ### Two peaks in BMI
 
+<div style = "font-size:0.75em;">
 This pattern is consistent with the BMI–age–classification analysis, which showed that both healthy and breast cancer groups include individuals across different BMI categories, though obesity is more prevalent among women with breast cancer. The coexistence of these two BMI clusters suggests heterogeneity in body composition across the sample—likely reflecting differences in age, metabolic profiles, or lifestyle factors. 
 
 Overall, the bimodal pattern highlights the varying weight distributions within the study population and may point to the elevated representation of obesity among breast cancer patients.
+
+</div>
+
+## Two peaks in BMI
 
 :::: panel-tabset
 
@@ -563,7 +579,10 @@ cancer |>
 
 ### HOMA (Homeostatic Model Assessment)
 
+<div style = "font-size:0.75em;">
 Calculated from fasting glucose and insulin. It indicates insulin resistance—a metabolic state linked to obesity and higher breast cancer risk.
+
+</div>
 
 ```{r}
 
@@ -581,7 +600,10 @@ cancer |>
 ## Exploratory Data Analysis
 
 ### Adiponectin
+
+<div style = "font-size:0.75em;">
 Usually protective—it decreases as body fat increases. Low adiponectin levels are linked to insulin resistance and higher breast cancer risk.
+</div>
 
 ```{r}
 
@@ -597,7 +619,10 @@ cancer |>
 
 ## Exploratory Data Analysis
 ### Leptin
+
+<div style = "font-size:0.75em;">
 A hormone produced by fat cells; higher levels are common in obesity and have been associated with tumor growth stimulation.
+</div>
 
 :::: panel-tabset
 ### Leptin vs BMI
