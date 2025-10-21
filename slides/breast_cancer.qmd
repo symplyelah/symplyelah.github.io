@@ -46,7 +46,7 @@ We must continue to advocate for timely, quality, and inclusive care — regardl
 
 # The Global Challenge {.inverse}
 
-## 
+## Breast Cancer Worldwide
 
 <div style = "font-size:0.85em;">
 
@@ -77,9 +77,9 @@ Every challenge presents an opportunity for change.
 
 </div>
 
-# Data Science Meets Health {.inverse}
+# Turning Data into Hope {.inverse}
 
-## In this session
+## Data Science meets Health
 
 <div style = "font-size:0.85em;">
 As women in data and technology, We can harness the power of data and technology — the very reason we’re here today.
@@ -122,12 +122,12 @@ Examples of classification algorithms:
 
 </div>
 
-# Anthropometric Data {.inverse}
+# Every Story, Every Dataset {.inverse}
 
 ## Coimbra Breast Cancer Dataset
 
 <div style = "font-size:0.85em;">
-The dataset for today's webinar is from the (Coimbra Breast Cancer Dataset)[https://archive.ics.uci.edu/dataset/451/breast+cancer+coimbra].
+The dataset for today's webinar is from the [Coimbra Breast Cancer Dataset](https://archive.ics.uci.edu/dataset/451/breast+cancer+coimbra).
 
 The data includes clinical observations from 64 patients with breast cancer and 52 healthy controls, encompassing 10 quantitative predictors including anthropometric data and parameters gathered from routine blood analysis, serving as the foundation for potential biomarkers of breast cancer. 
 
@@ -135,7 +135,9 @@ The dataset presents an opportunity for developing prediction models, aiding in 
 
 Anthropometric data refers to measurable physical characteristics of the human body. 
 
-##
+</div>
+
+## Coimbra Breast Cancer Dataset
 
 <div style = "font-size:0.85em;">
 
@@ -185,3 +187,463 @@ Labels:
 - Visualize results
 
 </div>
+
+# Demo: Together, We Code for Change {.inverse}
+## 
+
+```{r}
+
+#| echo: true
+
+library(tidyverse)
+library(tidymodels)
+
+theme_set(theme_minimal())
+
+cancer <- read_csv("data/breast_cancer.csv")
+
+```
+
+
+```{r}
+
+#| echo: true
+
+cancer <- cancer |> 
+  janitor::clean_names() |> 
+  mutate(classification = if_else(classification == 1, 0, 1),
+         classification = factor(classification))
+
+glimpse(cancer)
+
+```
+
+
+## Exploratory Data Analysis
+
+### Healthy Controls and Patients
+
+```{r}
+
+cancer |> 
+  group_by(classification) |> 
+  summarise(tot = n()) |> 
+  ggplot(aes(classification, tot)) +
+  geom_col() +
+  geom_text(aes(label = tot), fontface = "bold", nudge_y = -3, colour = "white") +
+  labs(x = "Classification",
+       y = "Count",
+       title = "Number of Healthy Controls and Patients in the Coimbra Data")
+
+```
+
+
+## Exploratory Data Analysis
+### Glucose
+
+:::: panel-tabset
+
+### Histogram
+
+```{r}
+
+
+# Summarise mean and median for each classification
+summary_stats <- cancer |> 
+  group_by(classification) |> 
+  summarise(
+    glu_median = median(glucose, na.rm = TRUE),
+    glu_mean = mean(glucose, na.rm = TRUE)
+  ) |> 
+  tidyr::pivot_longer(
+    cols = c(glu_median, glu_mean),
+    names_to = "statistic",
+    values_to = "value"
+  )
+
+# Plot
+
+cancer |> 
+  ggplot(aes(glucose)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "white") +
+  geom_vline(
+    data = summary_stats,
+    aes(xintercept = value, color = statistic, linetype = statistic),
+    linewidth = 1
+  ) +
+  facet_wrap(~classification) +
+  scale_x_continuous(breaks = seq(0, 200, 20)) +
+  scale_color_manual(
+    values = c(glu_median = "red", glu_mean = "darkred"),
+    labels = c(glu_median = "Median", glu_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  scale_linetype_manual(
+    values = c(glu_median = "dashed", glu_mean = "dotted"),
+    labels = c(glu_median = "Median", glu_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  labs(
+    x = "Glucose",
+    y = "Count",
+    title = "Distribution of Glucose Levels by Cancer Classification"
+  ) +
+  theme(legend.position = "bottom")
+
+
+```
+
+### Boxplot
+
+```{r}
+
+cancer |> 
+  ggplot(aes(glucose, classification)) +
+  geom_boxplot() +
+  labs(
+    x = "Glucose",
+    y = "Classification",
+    title = "Distribution of Glucose Levels by Cancer Classification"
+  ) 
+
+```
+
+::::
+
+## Exploratory Data Analysis
+
+### Insulin
+
+Insulin levels are right-skewed in both groups; however, patients with breast cancer display a higher mean and greater variability compared to healthy individuals. This pattern indicates that healthy individuals generally maintain lower and more stable insulin levels, reflecting better glucose regulation and metabolic balance. In contrast, the elevated and fluctuating insulin levels observed among breast cancer patients may suggest insulin resistance or hyperinsulinemia—metabolic disturbances that have been associated with increased cancer risk and progression.
+:::: panel-tabset
+
+### Histogram
+
+```{r}
+
+
+# Summarise mean and median for each classification
+summary_insulin <- cancer |> 
+  group_by(classification) |> 
+  summarise(
+    ins_median = median(insulin, na.rm = TRUE),
+    ins_mean = mean(insulin, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = c(ins_median, ins_mean),
+    names_to = "statistic",
+    values_to = "value"
+  )
+
+# Plot
+
+cancer |> 
+  ggplot(aes(insulin)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "white") +
+  geom_vline(
+    data = summary_insulin,
+    aes(xintercept = value, color = statistic, linetype = statistic),
+    linewidth = 1
+  ) +
+  facet_wrap(~classification) +
+  
+  scale_color_manual(
+    values = c(ins_median = "red", ins_mean = "darkred"),
+    labels = c(ins_median = "Median", ins_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  scale_linetype_manual(
+    values = c(ins_median = "dashed", ins_mean = "dotted"),
+    labels = c(ins_median = "Median", ins_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  labs(
+    x = "Insulin",
+    y = "Count",
+    title = "Distribution of Insulin Levels by Cancer Classification",
+    subtitle = str_wrap("Insulin levels are right-skewed in both groups, with most individuals showing low values. However, the cancer group (1) displays a wider range and more medium-to-high insulin levels than the non-cancer group (0), suggesting greater variability in insulin among affected individuals.", width = 150)
+  ) +
+  
+  theme(legend.position = "bottom")
+
+
+```
+
+
+### Boxplot
+
+```{r}
+
+cancer |> 
+  ggplot(aes(insulin, classification)) +
+  geom_boxplot() +
+  labs(
+    x = "Insulin",
+    y = "Classification",
+    title = "Distribution of Glucose Levels by Cancer Classification"
+  )
+
+```
+
+
+::::
+
+## Exploratory Data Analysis
+### BMI
+
+The BMI distribution in this dataset shows a bimodal pattern, reflecting two distinct subgroups: one centered around 22–24 kg/m² (normal weight) and another around 28–32 kg/m² (overweight/obese).
+
+The bimodal pattern in BMI indicates that both healthy women and those with breast cancer consist of two distinct subgroups — likely corresponding to normal-weight and overweight/obese individuals.
+This suggests underlying biological, hormonal, or lifestyle differences within the population, which may contribute to variations in breast cancer risk or disease progression.
+
+The presence of a higher BMI peak in older women is consistent with known metabolic and hormonal changes that contribute to increased breast cancer risk in overweight and postmenopausal populations.
+
+:::: panel-tabset
+
+### Histogram
+
+```{r}
+
+
+# Summarise mean and median for each classification
+summary_bmi <- cancer |> 
+  group_by(classification) |> 
+  summarise(
+    bmi_median = median(bmi, na.rm = TRUE),
+    bmi_mean = mean(bmi, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = c(bmi_median, bmi_mean),
+    names_to = "statistic",
+    values_to = "value"
+  )
+
+# Plot
+
+cancer |> 
+  ggplot(aes(bmi)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "white") +
+  geom_vline(
+    data = summary_bmi,
+    aes(xintercept = value, color = statistic, linetype = statistic),
+    linewidth = 1
+  ) +
+  facet_wrap(~classification) +
+  #scale_x_continuous(breaks = seq(0, 200, 20)) +
+  scale_color_manual(
+    values = c(bmi_median = "red", bmi_mean = "darkred"),
+    labels = c(bmi_median = "Median", bmi_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  scale_linetype_manual(
+    values = c(bmi_median = "dashed", bmi_mean = "dotted"),
+    labels = c(bmi_median = "Median", bmi_mean = "Mean"),
+    name = "Statistic"
+  ) +
+  labs(
+    x = "BMI",
+    y = "Count",
+    title = "Distribution of BMI by Cancer Classification",
+    subtitle = str_wrap(".", width = 150)
+  ) +
+ 
+  theme(legend.position = "bottom")
+
+
+```
+
+### Density plot
+
+```{r}
+
+cancer |> 
+  ggplot(aes(bmi)) +
+  geom_density() +
+  facet_wrap(~classification) +
+  labs(
+    x = "Glucose",
+    y = "Classification",
+    title = "Distribution of Glucose Levels by Cancer Classification"
+  )
+
+```
+
+::::
+
+## Exploratory Data Ananlysis
+### Two peaks in BMI
+
+This pattern is consistent with the BMI–age–classification analysis, which showed that both healthy and breast cancer groups include individuals across different BMI categories, though obesity is more prevalent among women with breast cancer. The coexistence of these two BMI clusters suggests heterogeneity in body composition across the sample—likely reflecting differences in age, metabolic profiles, or lifestyle factors. 
+
+Overall, the bimodal pattern highlights the varying weight distributions within the study population and may point to the elevated representation of obesity among breast cancer patients.
+
+:::: panel-tabset
+
+### BMI and Health Status
+
+```{r}
+
+ cancer |> 
+  mutate(
+    bmi_group = case_when(
+      bmi < 18.5 ~ "Underweight",
+      bmi >= 18.5 & bmi < 25 ~ "Normal",
+      bmi >= 25 & bmi < 30 ~ "Overweight",
+      bmi >= 30 ~ "Obese"
+    )
+  ) |> 
+  ggplot(aes(bmi, fill = bmi_group)) +
+  geom_density(alpha = 0.6) +
+  facet_wrap(~classification, labeller = labeller(classification = c("0" = "Healthy", "1" = "Breast Cancer"))) +
+  labs(
+    title = "BMI Distribution by Weight Category and Health Status",
+    x = "BMI (kg/m²)",
+    y = "Density",
+    fill = "BMI Group"
+  ) +
+  scale_fill_brewer(palette = "Set2")
+
+```
+
+### Age and Health Status
+
+```{r}
+
+cancer |> 
+  mutate(
+    bmi_group = case_when(
+      bmi < 18.5 ~ "Underweight",
+      bmi >= 18.5 & bmi < 25 ~ "Normal",
+      bmi >= 25 & bmi < 30 ~ "Overweight",
+      bmi >= 30 ~ "Obese"
+    ),
+    age_group = cut(age, breaks = c(20, 40, 60, 80, 100)),
+    bmi_group = fct_relevel(factor(bmi_group), "Underweight", "Normal", "Overweight", "Obese")) |> 
+  
+  ggplot(aes(bmi, fill = bmi_group)) +
+  geom_density(alpha = 0.5) +
+  facet_grid(vars(classification), vars(age_group)) +
+  labs(
+    title = "BMI Distribution by Age Group and Health Status",
+    x = "BMI (kg/m²)",
+    y = "Density",
+    fill = "BMI Group"
+  )
+
+```
+
+### BMI and Age Group
+
+```{r}
+
+cancer |> 
+  mutate(
+    bmi_group = case_when(
+      bmi < 18.5 ~ "Underweight",
+      bmi >= 18.5 & bmi < 25 ~ "Normal",
+      bmi >= 25 & bmi < 30 ~ "Overweight",
+      bmi >= 30 ~ "Obese"
+    ),
+    age_group = cut(age, breaks = c(20, 40, 60, 80, 100)),
+    bmi_group = fct_relevel(factor(bmi_group), "Underweight", "Normal", "Overweight", "Obese")) |> 
+  group_by(bmi_group, classification, age_group) |> 
+  summarise(tot = n()) |> 
+  ggplot(aes(bmi_group, tot)) +
+  geom_col() +
+  facet_grid(vars(age_group), vars(classification))
+
+
+
+```
+
+
+::::
+
+## Exploratory Data Analysis
+
+### HOMA (Homeostatic Model Assessment)
+
+Calculated from fasting glucose and insulin. It indicates insulin resistance—a metabolic state linked to obesity and higher breast cancer risk.
+
+```{r}
+
+cancer |> 
+  ggplot(aes(insulin, homa)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~classification) +
+  labs(y = "Homeostatic Model Assessment",
+       x = "Insulin")
+
+
+```
+
+## Exploratory Data Analysis
+
+### Adiponectin
+Usually protective—it decreases as body fat increases. Low adiponectin levels are linked to insulin resistance and higher breast cancer risk.
+
+```{r}
+
+cancer |> 
+  ggplot(aes(adiponectin, insulin)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~classification) +
+  labs(x = "Adiponectin",
+       y = "Insulin")
+
+```
+
+## Exploratory Data Analysis
+### Leptin
+A hormone produced by fat cells; higher levels are common in obesity and have been associated with tumor growth stimulation.
+
+:::: panel-tabset
+### Leptin vs BMI
+
+```{r}
+
+cancer |> 
+  ggplot(aes(leptin, bmi)) +
+  geom_smooth() +
+  facet_wrap(~classification) +
+  labs(x = "Leptin",
+       y = "BMI")
+
+```
+
+### BMI Group vs Leptin
+```{r}
+
+cancer |> 
+  mutate(
+    bmi_group = case_when(
+      bmi < 18.5 ~ "Underweight",
+      bmi >= 18.5 & bmi < 25 ~ "Normal",
+      bmi >= 25 & bmi < 30 ~ "Overweight",
+      bmi >= 30 ~ "Obese"
+    ),
+     bmi_group = fct_relevel(factor(bmi_group), "Underweight", "Normal", "Overweight", "Obese")) |> 
+  ggplot(aes(leptin)) +
+  geom_histogram() +
+  facet_wrap(~bmi_group, nrow = 2) +
+  labs(x = "Leptin",
+       y = "")
+
+
+
+```
+
+::::
+
+```{r}
+
+library(GGally)
+
+ggpairs(cancer)
+
+
+```
+
+
